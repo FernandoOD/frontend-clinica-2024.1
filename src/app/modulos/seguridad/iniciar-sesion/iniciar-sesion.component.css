@@ -1,0 +1,83 @@
+body{
+    background: rgb(33,135,200);
+    background: linear-gradient(90deg, rgba(33,135,200,1) 0%, rgba(8,172,242,1) 100%);
+    height: 100vh;
+    font-family: sans-serif;
+    width: 100%;
+    float: none;
+}
+
+.loginDiv{
+    top:20vh;
+    position:relative;
+    background: white;
+    width: 100%;
+    border-radius: 40px;
+    height: auto;
+}
+
+.responsive-img{
+    width: 200px;
+    height: 200px;
+}
+
+.background-image{
+    background: url(../../../../assets/Imagenes/logoLogin.png);
+    background-position: center;
+    background-size:contain;
+    height: 350px;
+    width: 300px;
+}
+
+.loginContainer{
+    padding: 40px 50px 20px 20px;
+}
+
+.loginTitle{
+    width: 100%;
+    text-align: center;
+}
+
+.loginTitle h5{
+    font-weight: bold;
+}
+
+.customInput{
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+    background-color: #eee;
+    border-radius: 100px;
+    padding: 14px;
+}
+
+.customInput input{
+    position: relative;
+    padding-left: 30px;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.customInput i{
+    position: absolute;
+    color: #b6b6b6;
+    transition:all 2s ease 0s ;
+}
+
+.customInput:hover i{
+    color: #2187c8;
+    transition: all 2s ease 0s;
+}
+
+.btnLogin{
+    border-radius: 100px;
+}
+
+.olvideContraseña{
+    text-align: center;
+}
+
+.mensajeValidacion{
+    color: red;
+}

@@ -1,0 +1,13 @@
+h1{
+    color:red;
+}
+p{
+    color:gray
+}
+
+.contenidoError{
+    width: 100%;
+    border: 2px solid #efefef;
+    text-align: center;
+    margin: 1%;
+}

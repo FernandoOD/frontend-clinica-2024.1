@@ -1,1 +1,52 @@
-<p>iniciar-sesion works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l8 offset-l2 loginDiv">
+                <div class="row loginContainer">
+                    <div class="col s12 m6 l6">
+                        <div class="col s11 offset-s1">
+                            <div class="background-image"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m5 l5 offset-l1 offset-m1">
+                        <div class="loginTitle">
+                            <h5>Iniciar Sesion</h5>
+                        </div>
+                        <form [formGroup]="fgValidation" (ngSubmit)="userAuthentication()">
+                            <div class="row">
+                                <div class="col s12 customInput">
+                                    <i class="material-icons prefix">email</i>
+                                    <input formControlName="email" class="browser-default" type="text" id="email" placeholder="Correo Electronico" autocomplete="off">
+                                </div>
+                                <div class="mensajeValidacion" *ngIf="(getFGV['email'].errors && (getFGV['email'].dirty || getFGV['email'].touched))">
+                                    <strong>Este campo es requerido</strong>
+                                </div>
+                                <div class="col s12 customInput">
+                                    <i class="material-icons prefix">vpn_key</i>
+                                    <input formControlName="password" class="browser-default" type="password" id="password" placeholder="Contraseña" autocomplete="off">
+                                </div>
+                                <div class="mensajeValidacion" *ngIf="(getFGV['password'].errors && (getFGV['password'].dirty || getFGV['password'].touched))">
+                                    <strong>Este campo es requerido</strong>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button [disabled]="getFGV['email'].errors || getFGV['password'].errors" class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Iniciar Sesion</button>
+                                <div class="col l12 m12 s12 olvideContraseña">
+                                    <a href="">Olvide mi contraseña</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

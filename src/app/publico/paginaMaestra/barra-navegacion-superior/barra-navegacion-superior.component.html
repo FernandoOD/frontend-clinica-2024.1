@@ -1,0 +1,20 @@
+
+  <nav>
+    <div class="nav-wrapper">
+      <a [routerLink]="['/']" class="brand-logo">
+      
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li *ngIf="isLoggedIn"><a [routerLink]="['seguridad/cerrar-sesion']">Cerrar sesión</a></li>
+        <li *ngIf="isLoggedIn"><a [routerLink]="['seguridad/cambiar-clave']">Cambiar contraseña</a></li>
+        
+        <li *ngIf="!isLoggedIn"><a [routerLink]="['seguridad/iniciar-sesion']">Iniciar Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- <ul class="sidenav" id="mobile-demo">
+    <li *ngIf="isLoggedIn"><a [routerLink]="['seguridad/cerrar-sesion']">Cerrar sesión</a></li>
+    <li *ngIf="isLoggedIn"><a [routerLink]="['seguridad/cambiar-clave']">Cambiar contraseña</a></li>
+    <li *ngIf="!isLoggedIn"><a [routerLink]="['seguridad/iniciar-sesion']">Iniciar Sesión</a></li>
+  </ul>-->

@@ -1,0 +1,94 @@
+
+@media only screen and (max-width: 992px) {
+    .sidenav {
+      transform: translateX(-105%);
+    }
+    .sidenav.sidenav-fixed {
+      transform: translateX(0);
+    }
+}
+
+
+.circle{
+    background-image: url(../../../../assets/Imagenes/logoBarraSup.png);
+    background-size: contain;
+
+}
+
+.sidenav{
+    width: 15%;
+    background-color: "fff";
+}
+
+.imagenUsuarioContainer{
+    display: flex;
+    justify-content: center;
+    padding: 25px 0 10px;
+}
+
+.imagenUsuario{
+    background-image: url(../../../../assets/Imagenes/admin.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 80px;
+    width: 75px;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px #0003;
+}
+
+.sidenav .user-view .name{
+    margin-top: 0;
+}
+
+.user-view{
+    padding: 5px 0 0;
+}
+
+.profileUserTitle{
+    text-align: center;
+    color: #060606;
+}
+
+.name{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.rol{
+    font-size: 11px;
+    color: black;
+    margin-top: -10px;
+}
+
+.header{
+    font-size: 12px;
+    margin: 40px 0 5px 28px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: black;
+}
+
+.menu-top{
+    color: black;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    line-height: 2rem;
+    cursor: pointer;
+    padding: 9px;
+    margin: 8px 13px 0;
+    border-radius: 0.5rem;
+    transition:all 1s ease 0s ;
+}
+
+.menu-top:hover{
+    background: #c9eaff;
+    transition: all 1s ease 0s;
+}
+
+.menu-top i{
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 2rem;
+}
