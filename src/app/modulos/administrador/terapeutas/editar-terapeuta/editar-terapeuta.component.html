@@ -1,0 +1,94 @@
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Editar Terapeuta</h4>
+                </li>
+                <li *ngIf="isLoggedIn" class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Terapeutas
+                </li>
+                <li class="breadcrumb-item">
+                    Editar Terapeuta
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row clear-fix">
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="header">
+                    <h2>Información del Terapeuta</h2>
+                </div>
+                <div class="body">
+                    <form action="" class="m-4" [formGroup]="fgValidation" (ngSubmit)="actualizarRegistro()">
+                        <input type="hidden" formControlName="id">
+                        <div class="row">
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="nombre" class="browser-default" type="text" id="nombre" placeholder="Nombre" autocomplete="off">
+                                </div>   
+                            </div>
+                            <div class="col l4 m12 s12 ">
+                                <div class="customInput">
+                                    <input formControlName="apellidoPaterno" class="browser-default" type="text" id="apellidoPaterno" placeholder="Apellido Paterno" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col l4 m12 s12t">
+                                <div class="customInput">
+                                    <input formControlName="apellidoMaterno" class="browser-default" type="text" id="apellidoMaterno" placeholder="Apellido Materno" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="cedulaLicenciatura" class="browser-default" type="text" id="cedulaLicenciatura" placeholder="Cédula de Licenciatura" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="cedulaEspecialidad" class="browser-default" type="text" id="cedulaEspecialidad" placeholder="Cédula de Especialidad" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="especialidad" class="browser-default" type="text" id="especialidad" placeholder="Especialidad" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="telefono" class="browser-default" type="text" id="telefono" placeholder="Número Telefónico" autocomplete="off"></div>
+                            </div>
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="email" class="browser-default" type="text" id="email" placeholder="Correo Electrónico" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="col l4 m12 s12">
+                                <input formControlName="fechaRegistro" class="browser-default" type="hidden" id="fechaRegistro" autocomplete="off">
+
+                            </div>
+                        </div>
+                        <div class="row btn-container">
+                            <div class="col l2 m3 s6">
+                                <button [disabled]="getFGV['nombre'].errors || getFGV['apellidoPaterno'].errors || getFGV['apellidoMaterno'].errors || getFGV['cedulaLicenciatura'].errors
+                                || getFGV['especialidad'].errors ||getFGV['cedulaEspecialidad'].errors|| getFGV['telefono'].errors || getFGV['email'].errors"  
+                                class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
+                            </div>
+                            <div class="col l2 m3 s6">
+                                <button  
+                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/admin/listar-terapeuta">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ import { BarraNavegacionLateralComponent } from './publico/paginaMaestra/barra-n
 import { FooterComponent } from './publico/paginaMaestra/footer/footer.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 
 @NgModule({

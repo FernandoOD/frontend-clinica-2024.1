@@ -9,15 +9,29 @@
 }
 
 
-.circle{
-    background-image: url(../../../../assets/Imagenes/logoBarraSup.png);
-    background-size: contain;
+.logo{
+    display: flex;
+    justify-content: start;
+    margin-bottom: 50px;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 100%;
+}
 
+.circle{
+    background-image: url(../../../../assets/Imagenes/logoBarraSupAzul.png);
+    background-size: cover;
+    background-position: center;
+    width: 80px !important;
+    height: 80px !important;
+   
 }
 
 .sidenav{
     width: 15%;
     background-color: "fff";
+
 }
 
 .imagenUsuarioContainer{
@@ -27,12 +41,12 @@
 }
 
 .imagenUsuario{
-    background-image: url(../../../../assets/Imagenes/admin.jpg);
+    background-image: url(../../../../assets/Imagenes/icon2.png);
     background-size: cover;
     background-position: center;
     height: 80px;
     width: 75px;
-    border: 2px solid white;
+    border: 2px solid #2187c8;
     border-radius: 10px;
     box-shadow: 0 5px 25px #0003;
 }
@@ -42,7 +56,7 @@
 }
 
 .user-view{
-    padding: 5px 0 0;
+    padding:0;
 }
 
 .profileUserTitle{
@@ -74,7 +88,6 @@
     position: relative;
     display: block;
     overflow: hidden;
-    line-height: 2rem;
     cursor: pointer;
     padding: 9px;
     margin: 8px 13px 0;
@@ -90,5 +103,75 @@
 .menu-top i{
     font-size: 20px;
     vertical-align: middle;
-    line-height: 2rem;
+    color: #47484b;
 }
+
+.sidenav li > a{
+        margin: 7px 0 7px 12px;
+        font-size: 14px;
+        font-weight:200;
+        letter-spacing: 1.5px;
+}
+
+.menu-toogle::before{
+    content: "+";
+    position: absolute;
+    top: calc(50% - 25px);
+    right: 17px;
+    font-size: 19px;
+    transition:all 0.3s ease 0s ;
+}
+
+.menu-toogle::after{
+    content: "\2013";
+    position: absolute;
+    top: calc(50% - 25px);
+    right: 17px;
+    font-size: 19px;
+}
+
+.active .menu-toogle::before{
+    transform: scale(0);
+    transition:all 0.3s ease 0s ;
+}
+
+.sidenav  li.active {
+    background:none;
+}
+
+.sidenav li.active .menu-top{
+    background-color:#c9eaff ;
+}
+
+.sidenav .collapsible-body li a:hover{
+    background: none;
+}
+
+.sidenav .collapsible-body  li a {
+    padding-left: 60px;
+}
+
+.sidenav .collapsible-body li.active a::before{
+    content: "\f105";
+}
+
+::-webkit-scrollbar {
+    width: 5px; /* Grosor de la barra de desplazamiento vertical */
+    height: 5px; /* Grosor de la barra de desplazamiento horizontal */
+  }
+  
+  /* Color del fondo de la barra */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Fondo del track del scrollbar */
+}
+  
+  /* Color y grosor del thumb (la parte que se mueve) */
+::-webkit-scrollbar-thumb {
+    background: #2187c8; /* Color de la barra */
+    border-radius: 10px; /* Bordes redondeados */
+}
+  
+  /* Cambiar el color de la barra al pasar el mouse por encima */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color cuando el mouse está sobre la barra */
+  }

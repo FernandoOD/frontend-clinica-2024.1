@@ -57,7 +57,10 @@ export class SeguridadService {
       let datos = {
         id: usuario.user?.id,
         email : usuario.user?.Email,
-        token : usuario.token
+        token : usuario.token,
+        roleId : usuario.user?.rolId,
+        rol : usuario.rol,
+        idPersona : usuario.user?.idPersona
       };
 
       let datosString = JSON.stringify(datos);
@@ -66,6 +69,29 @@ export class SeguridadService {
       this.refreshSessionData(usuario);
       return true;
     }
+  }
+
+  getToken(){
+    let datos = this.getDataLocalStorage();
+    if(datos){
+      let objetoDatos: UsuarioModelo = JSON.parse(datos);
+      return objetoDatos.token;
+    }
+    return "";
+  }
+
+  getRole(){
+    let datos = this.getDataLocalStorage();
+    if(datos){
+      let objetoDatos: UsuarioModelo = JSON.parse(datos);
+      return objetoDatos.rol;
+    }
+    return "";
+  }
+
+  hasRole(role : String){
+
+    return this.getRole() === role;
   }
 
   closeSession(){

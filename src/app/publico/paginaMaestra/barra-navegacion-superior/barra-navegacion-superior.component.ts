@@ -19,9 +19,14 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+  }
+
+  isLoggedInFn(){
     this.suscripcion = this.servicioSeguridad.getSessionData().subscribe((datos: UsuarioModelo)=>{
       this.isLoggedIn = datos.isLoggedIn;
     });
+    return this.isLoggedIn
   }
 
 }

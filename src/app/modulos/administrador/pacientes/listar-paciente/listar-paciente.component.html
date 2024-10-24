@@ -1,1 +1,125 @@
-<p>listar-paciente works!</p>
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Todos los Pacientes</h4>
+                </li>
+                <li *ngIf="isLoggedIn" class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Pacientes
+                </li>
+                <li class="breadcrumb-item">
+                    Todos los Pacientes
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row clear-fix">
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="materialTableHeader">
+                    <div class="left">
+                        <ul class="header-buttons-left">
+                            <li class="tbl-title"><h2>Pacientes</h2></li>
+                            <li class="tbl-search-box">
+                                <label for="search-input">
+                                    <i class="material-symbols-outlined search-icon">search</i>
+                                </label>
+                                <input type="text" placeholder="Search" aria-label="Search box" class="browser-default search-field">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <ul class="tbl-export-btn">
+                            <li class="tbl-header-btn">
+                                <div class="m-l-10">
+                                    <a href="" class="btn-floating green darken-1">
+                                        <i class="material-symbols-outlined">add</i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="tbl-header-btn">
+                                <div class="m-l-10">
+                                    <a href="" class="btn-floating grey darken-1">
+                                        <i class="material-symbols-outlined">refresh</i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="tbl-header-btn">
+                                <div class="m-l-10">
+                                    <a href="" class="btn-floating light-blue darken-4">
+                                        <i class="material-symbols-outlined">download</i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="overflow-auto">
+                    <div class="responsive-table">
+                        <table class="mat-mdc-table" role="table" id="grid">
+                            <thead role="rowgroup" class="mat-mdc-header-row">
+                                <tr>
+                                    <th class="sortable" data-column="Nombre" (click)="ordenarTabla('Nombre')">Nombre</th>
+                                    <th class="sortable" data-column="ApellidoPaterno" (click)="ordenarTabla('ApellidoPaterno')">Apellido Paterno</th>
+                                    <th class="sortable" data-column="ApellidoMaterno" (click)="ordenarTabla('ApellidoMaterno')">Apellido Materno</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo Electrónico</th>
+                                    <th class="sortable" data-column="FechaRegistro" (click)="ordenarTabla('FechaRegistro')">Fecha de Registro</th>
+                                    <th class="sortable" data-column="FechaNacimiento" (click)="ordenarTabla('FechaNacimiento')">Fecha de Nacimiento</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let r of listaRegistros | paginate: {itemsPerPage:10, currentPage:pagina}">
+                                    <td>{{r.Nombre}}</td>
+                                    <td>{{r.ApellidoPaterno}}</td>
+                                    <td>{{r.ApellidoMaterno}}</td>
+                                    <td>{{r.Direccion}}</td>
+                                    <td>{{r.Telefono}}</td>
+                                    <td>{{r.Email}}</td>
+                                    <td>{{r.FechaRegistro}}</td>
+                                    <td>{{r.FechaNacimiento}}</td>
+                                    <td>
+                                        <div class="actions">
+                                            <div class="m-l-10">
+                                                <a [routerLink]="['/admin/editar-paciente', r.id]" class="btn-floating blue darken-1 modal-trigger">
+                                                    <i class="material-symbols-outlined">edit_square</i>
+                                                </a>
+                                            </div>
+                                            <div class="m-l-10">
+                                                <a class="btn-floating red darken-1" (click)="VerificarEliminacion(r.id,r.Nombre)">
+                                                    <i class="material-symbols-outlined">delete</i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="paginatorContainer">
+                            <pagination-controls class="paginator" (pageChange)="pagina = $event"
+                                             previousLabel="Anterior"
+                                             nextLabel="Siguiente"
+                                             screenReaderPaginationLabel="Pagination"
+                                             screenReaderPageLabel="page"
+                                             screenReaderCurrentLabel="You're on page">
+
+                        </pagination-controls>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+

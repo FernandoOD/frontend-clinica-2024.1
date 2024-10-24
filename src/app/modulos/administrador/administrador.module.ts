@@ -5,8 +5,12 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
 import { DashboardVistaComponent } from './dashboard-vista/dashboard-vista.component';
 import { AgregarPacienteComponent } from './pacientes/agregar-paciente/agregar-paciente.component';
 import { EditarPacienteComponent } from './pacientes/editar-paciente/editar-paciente.component';
-import { EliminarPacienteComponent } from './pacientes/eliminar-paciente/eliminar-paciente.component';
 import { ListarPacienteComponent } from './pacientes/listar-paciente/listar-paciente.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AgregarTerapeutaComponent } from './terapeutas/agregar-terapeuta/agregar-terapeuta.component';
+import { EditarTerapeutaComponent } from './terapeutas/editar-terapeuta/editar-terapeuta.component';
+import { ListarTerapeutaComponent } from './terapeutas/listar-terapeuta/listar-terapeuta.component';
 
 
 @NgModule({
@@ -14,12 +18,17 @@ import { ListarPacienteComponent } from './pacientes/listar-paciente/listar-paci
     DashboardVistaComponent,
     AgregarPacienteComponent,
     EditarPacienteComponent,
-    EliminarPacienteComponent,
-    ListarPacienteComponent
+    ListarPacienteComponent,
+    AgregarTerapeutaComponent,
+    EditarTerapeutaComponent,
+    ListarTerapeutaComponent
   ],
   imports: [
     CommonModule,
-    AdministradorRoutingModule
+    AdministradorRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class AdministradorModule { }

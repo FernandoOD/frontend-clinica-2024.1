@@ -11,31 +11,99 @@
                 <div class="imagenUsuario"></div>
             </div>
             <div class="profileUserTitle">
-                <div class="name">Fernando Rivera Polvo</div>
-                <div class="rol">Administrador</div>
+                <div *ngIf="isAdmin()" class="name">Fernando Rivera Polvo</div>
+                <div class="name">{{userName}}</div>
+                <div *ngIf="isAdmin()" class="rol">Administrador</div>
+                <div *ngIf="isPaciente()" class="rol">Paciente</div>
+                <div *ngIf="isTerapeuta()" class="rol">Terapeuta</div>
             </div>
         </div>
     </li>
     <li>
         <div class="header">Principal</div>
     </li>
-    <li>
-        <a href="" class="menu-top menu-toogle">
+    <li *ngIf="isAdmin()">
+        <a routerLink="admin/dashboard" class="menu-top collapsible-header">
             <i class="material-symbols-outlined">space_dashboard</i>
             <span>Dashboard</span>
         </a>
     </li>
-    <li>
-        <a href="" class="menu-top menu-toogle">
-            <i class="material-symbols-outlined">group</i>
-            Pacientes
+    <li *ngIf="isPaciente()">
+        <a routerLink="paciente/dashboard" class="menu-top collapsible-header">
+            <i class="material-symbols-outlined">space_dashboard</i>
+            <span>Dashboard</span>
         </a>
     </li>
-    <li>
-        <a href="" class="menu-top menu-toogle">
-            <i class="material-symbols-outlined">neurology</i>
-            Terapeutas
+    <li *ngIf="isTerapeuta()">
+        <a routerLink="terapeuta/dashboard" class="menu-top collapsible-header">
+            <i class="material-symbols-outlined">space_dashboard</i>
+            <span>Dashboard</span>
         </a>
     </li>
-    
+    <li *ngIf="isAdmin()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">group</i> Pacientes
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="admin/agregar-paciente">Agregar Paciente</a></li>
+                        <li><a routerLink="admin/listar-paciente">Listar Pacientes</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isAdmin()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">neurology</i> Terapeutas
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="admin/agregar-terapeuta">Agregar Terapeuta</a></li>
+                        <li><a routerLink="admin/listar-terapeuta">Listar Terapeuta</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isPaciente()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top  collapsible-header">
+                    <i class="material-symbols-outlined">history</i> Historial Médico
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isPaciente()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top  collapsible-header">
+                    <i class="material-symbols-outlined">event_note</i> Consultas
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isPaciente()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top  collapsible-header">
+                    <i class="material-symbols-outlined">assignment_late</i> Ejercicios Prácticos
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isPaciente()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top  collapsible-header">
+                    <i class="material-symbols-outlined">forum</i> Chat
+                </a>
+            </li>
+        </ul>
+    </li>
 </ul>

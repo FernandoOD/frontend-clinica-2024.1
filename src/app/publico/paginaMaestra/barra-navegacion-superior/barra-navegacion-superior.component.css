@@ -1,10 +1,10 @@
 .nav-wrapper{
-    background: rgb(33,135,200);
-    background: linear-gradient(90deg, rgba(33,135,200,1) 0%, rgba(8,172,242,1) 100%);
-    font-weight: bold;
+    background-color:#fff;
 }
 
 nav ul a{
-    font-size: large;
+    font-size: 16px;
+    color:#444;
+    font-weight: 500;
 } 
  

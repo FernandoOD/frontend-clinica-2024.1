@@ -21,7 +21,7 @@ export class IniciarSesionComponent implements OnInit {
 
   construirFormulario(){
     this.fgValidation = this.fb.group({
-      email: ['',Validators.required, Validators.email],
+      email: ['',[Validators.required, Validators.email]],
       password: ['',Validators.required]
     });
   }
@@ -36,7 +36,6 @@ export class IniciarSesionComponent implements OnInit {
     let model = new UsuarioModelo();
     model.Email = email;
   
-    // Hashear la contraseña usando crypto-js MD5
     model.Password = crypto.MD5(password).toString();
   
     // Llamar al servicio de autenticación
@@ -45,7 +44,8 @@ export class IniciarSesionComponent implements OnInit {
         // Manejo de autenticación exitosa
         console.log("Datos Correctos", data);
         this.servicioSeguridad.dataSaveInLocal(data);
-        this.router.navigate(["/admin/dashboard"]);
+        this.router.navigate(["/"+data.rol+"/dashboard"]);
+        console.log(data.rol);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
