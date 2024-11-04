@@ -1,0 +1,119 @@
+.main-container{
+    
+    background-color: #F0F3FB;
+}
+
+.breadcrumb{
+    font-size: 15px;
+    margin: 20px 0;
+    padding: 0;
+    color:#555 ;
+}
+.breadcrumb i{
+    font-size: 24px;
+    color: #555;
+}
+.breadcrumb .page-title{
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #444 ;
+    margin: 0;
+}
+
+.breadcrumb .page-title::after{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.row{
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item::before{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 15px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.card{
+    background: #fff;
+    min-height: 50px;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b7c0ce33;
+}
+
+.card .header{
+    position: relative;
+    display: flex;
+    width: 100%;
+    color: #555;
+    padding: 10px 15px;
+    line-height: 30px;
+}
+
+.card .header h2{
+    margin: 0;
+    color: #5b626b;
+    font-size: 17px;
+    line-height: 28px;
+    padding-right: 10px;
+    font-weight: 500;
+}
+
+.card .body{
+    font-size: 14px;
+    color: #555;
+    padding: 15px;
+}
+
+.m-4 {
+    margin: 1.5rem !important;
+}
+
+.customInput{
+    height: 200px;
+    width: 90%;
+    margin-top: 30px;
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 14px;
+}
+
+.customInput textarea{
+    position: relative;
+    padding-left: 30px;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+    height: 180px;
+}
+
+.customInput textarea::placeholder{
+    color: #444;
+}
+
+.btn-container{
+    margin-top: 50px;
+}
+
+.btnLogin{
+    border-radius: 100px;
+}

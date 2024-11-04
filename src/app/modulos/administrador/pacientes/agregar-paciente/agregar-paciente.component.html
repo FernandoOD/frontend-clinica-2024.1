@@ -7,7 +7,7 @@
                 <li>
                     <h4 class="page-title">Agregar Paciente</h4>
                 </li>
-                <li *ngIf="isLoggedIn" class=" bcrum-1">
+                <li class=" bcrum-1">
                     <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
                 </li>
                 <li class="breadcrumb-item">
@@ -63,15 +63,16 @@
                             </div>
                             <div class="col l4 m12 s12">
                                 <div class="customInput">Fecha de Nacimiento:
-                                <input formControlName="fechaNacimiento" class="browser-default" type="date" id="fechaNacimiento" autocomplete="off">
-                            </div>
-                            </div>
-                           <!-- <div class="col l4 m12 s12">
-                                <div class="customInput">
-                                    Fecha de Registro:
-                                <input formControlName="fechaRegistro" class="browser-default" type="date" id="fechaRegistro" autocomplete="off">
+                                    <input formControlName="fechaNacimiento" class="browser-default" type="date" id="fechaNacimiento" autocomplete="off">
                                 </div>
-                            </div> -->
+                            </div>
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <select formControlName="terapeutaId" class="browser-default">
+                                        <option *ngFor="let t of terapeutaList" value="{{t.id}}">{{t.Nombre}} {{t.ApellidoPaterno}} {{t.ApellidoMaterno}}</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row btn-container">
                             <div class="col l2 m3 s6">

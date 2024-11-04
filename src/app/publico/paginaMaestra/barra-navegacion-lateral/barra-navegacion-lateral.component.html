@@ -70,6 +70,21 @@
             </li>
         </ul>
     </li>
+    <li *ngIf="isAdmin()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">rubric</i> Test Psicométricos
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="admin/agregar-test-psicometrico">Agregar Test Psicométrico</a></li>
+                        <li><a routerLink="admin/listar-test-psicometrico">Listar Test Psicométrico</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
     <li *ngIf="isPaciente()">
         <ul class="collapsible collapsible-accordion">
             <li>
@@ -103,6 +118,74 @@
                 <a class="menu-top  collapsible-header">
                     <i class="material-symbols-outlined">forum</i> Chat
                 </a>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isTerapeuta()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a routerLink="terapeuta/mis-pacientes" class="menu-top  collapsible-header">
+                    <i class="material-symbols-outlined">group</i> Mis Pacientes
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isTerapeuta()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">event_note</i> Consultas
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="terapeuta/listar-consulta">Ver Consultas</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isTerapeuta()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">clinical_notes</i> Notas Clínicas
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="terapeuta/agregar-nota-clinica">Nueva Nota</a></li>
+                        <li><a routerLink="terapeuta/listar-nota-clinica">Mis Notas</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isTerapeuta()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">view_module</i> Modulos Psicoeducativos
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="terapeuta/agregar-modulo-psicoeducativo">Nuevo Modulo</a></li>
+                        <li><a routerLink="terapeuta/listar-modulo-psicoeducativo">Ver Modulos</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li *ngIf="isTerapeuta()">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="menu-top menu-toogle collapsible-header">
+                    <i class="material-symbols-outlined">assignment_late</i> Ejercicios Prácticos
+                </a>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a routerLink="terapeuta/agregar-ejercicio-practico">Nuevo Ejercicio Práctico</a></li>
+                        <li><a routerLink="terapeuta/listar-ejercicio-practico">Todos los Ejercicios</a></li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </li>

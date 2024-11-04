@@ -29,8 +29,9 @@
 }
 
 .sidenav{
-    width: 15%;
+    width: 16%;
     background-color: "fff";
+    padding-right: 10px;
 
 }
 

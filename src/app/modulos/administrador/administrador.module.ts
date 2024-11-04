@@ -11,6 +11,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AgregarTerapeutaComponent } from './terapeutas/agregar-terapeuta/agregar-terapeuta.component';
 import { EditarTerapeutaComponent } from './terapeutas/editar-terapeuta/editar-terapeuta.component';
 import { ListarTerapeutaComponent } from './terapeutas/listar-terapeuta/listar-terapeuta.component';
+import { AgregarTestPsicometricoComponent } from './tests/agregar-test-psicometrico/agregar-test-psicometrico.component';
+import { EditarTestPsicometricoComponent } from './tests/editar-test-psicometrico/editar-test-psicometrico.component';
+import { ListarTestPsicometricoComponent } from './tests/listar-test-psicometrico/listar-test-psicometrico.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { ListarTerapeutaComponent } from './terapeutas/listar-terapeuta/listar-t
     ListarPacienteComponent,
     AgregarTerapeutaComponent,
     EditarTerapeutaComponent,
-    ListarTerapeutaComponent
+    ListarTerapeutaComponent,
+    AgregarTestPsicometricoComponent,
+    EditarTestPsicometricoComponent,
+    ListarTestPsicometricoComponent
   ],
   imports: [
     CommonModule,

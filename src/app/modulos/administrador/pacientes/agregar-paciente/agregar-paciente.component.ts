@@ -7,6 +7,10 @@ import { PacienteService } from '../../../../servicios/paciente.service';
 import { PacienteModelo } from '../../../../modelos/Paciente.modelo';
 import { UsuarioService } from '../../../../servicios/usuario.service';
 import { UsuarioModelo } from '../../../../modelos/Usuario.modelo';
+import { TerapeutaModelo } from '../../../../modelos/Terapeuta.modelo';
+import { TerapeutaService } from '../../../../servicios/terapeuta.service';
+import { PacienteTerapeutaModelo } from '../../../../modelos/PacienteTerapeuta.modelo';
+import { PacienteTerapeutaService } from '../../../../servicios/paciente-terapeuta.service';
 
 @Component({
   selector: 'app-agregar-paciente',
@@ -17,7 +21,7 @@ export class AgregarPacienteComponent implements OnInit{
   isLoggedIn: boolean = false;
 
   suscripcion: Subscription = new Subscription;
-
+  terapeutaList: TerapeutaModelo[] = [];
   fgValidation: FormGroup = new FormGroup({});
 
   constructor(
@@ -25,6 +29,8 @@ export class AgregarPacienteComponent implements OnInit{
     private servicioSeguridad: SeguridadService,
     private servicio: PacienteService,
     private servicioUser: UsuarioService,
+    private servicioTerapeuta: TerapeutaService,
+    private servicioPacienteTerapeuta: PacienteTerapeutaService,
     private router:Router){
 
   }
@@ -38,11 +44,29 @@ export class AgregarPacienteComponent implements OnInit{
       telefono: ['',[Validators.required, Validators.maxLength(10)]],
       email: ['',[Validators.required, Validators.email]],
       fechaNacimiento: ['',Validators.required],
+      terapeutaId: ['',Validators.required]
     });
   }
 
   ngOnInit(): void {
     this.construirFormulario();
+    this.servicioTerapeuta.listRecords().subscribe({
+      next: (data) => {
+        // Manejo de autenticación exitosa
+        this.terapeutaList = data;
+        console.log("Datos listados", data);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      },
+      error: (error: any) => {
+        // Manejo de error en autenticación
+        console.error("Error de autenticación", error);
+        alert("Error al listar los datos");
+      },
+      complete: () => {
+        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+        console.log('Proceso de guardado completado');
+      }
+    });
   }
 
   get getFGV(){
@@ -57,7 +81,7 @@ export class AgregarPacienteComponent implements OnInit{
     let telefono = this.getFGV['telefono'].value;
     let email = this.getFGV['email'].value;
     let fechaNacimiento = this.getFGV['fechaNacimiento'].value;
-    let fechaRegistro= new Date().toISOString().split('T')[0]
+    let fechaRegistro= new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' });
     let obj = new PacienteModelo();
 
     obj.Nombre = nombre;
@@ -74,6 +98,7 @@ export class AgregarPacienteComponent implements OnInit{
         // Manejo de autenticación exitosa
         console.log("Datos Correctos", data);
         this.crearUsuario(data);
+        this.asignarTerapeuta(data);
         this.router.navigate(["/admin/listar-paciente"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
@@ -104,6 +129,32 @@ export class AgregarPacienteComponent implements OnInit{
         // Manejo de error en autenticación
         console.error("Error de autenticación", error);
         alert("Error al crear Usuario");
+      },
+      complete: () => {
+        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+        console.log('Proceso de guardado completado');
+      }
+    });
+  }
+
+  asignarTerapeuta(data : PacienteModelo){
+    let terapeutaId = this.getFGV['terapeutaId'].value;
+    let fechaRegistro= new Date().toISOString().split('T')[0]
+    let obj = new PacienteTerapeutaModelo();
+    obj.pacienteId = data.id;
+    obj.terapeutaId = parseInt(terapeutaId);
+    obj.FechaInicio = fechaRegistro;
+    this.servicioPacienteTerapeuta.saveRecord(obj).subscribe({
+      next: (data: PacienteTerapeutaModelo) => {
+        // Manejo de autenticación exitosa
+        console.log("Datos Correctos", data);
+        this.router.navigate(["/admin/listar-paciente"]);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      },
+      error: (error: any) => {
+        // Manejo de error en autenticación
+        console.error("Error de autenticación", error);
+        alert("Error al asignar terapeuta");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario

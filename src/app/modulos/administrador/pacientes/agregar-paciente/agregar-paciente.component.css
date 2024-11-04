@@ -105,6 +105,19 @@
     outline: none;
 }
 
+.customInput select{
+    position: relative;
+    padding-left: 30px;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+    padding: 0;
+    height: 25px;
+}
+
+
+
+
 .customInput input::placeholder{
     color: #444;
 }

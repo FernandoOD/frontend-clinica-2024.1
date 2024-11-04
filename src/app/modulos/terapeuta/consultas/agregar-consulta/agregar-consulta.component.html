@@ -1,0 +1,72 @@
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Nueva Consulta</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="terapeuta/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Consultas
+                </li>
+                <li class="breadcrumb-item">
+                    Nueva Consulta
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row clear-fix">
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="header">
+                    <h2>Información de la Consulta</h2>
+                </div>
+                <div class="body">
+                    <form action="" class="m-4" [formGroup]="fgValidation" (ngSubmit)="guardarRegistro()">
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <textarea formControlName="notasConsulta" class="browser-default" id="contenido" placeholder="Descripción General" autocomplete="off"></textarea>
+                                </div>   
+                            </div>
+                            <div class="col l6 m12 s12">
+                                <div formArrayName="tests">
+                                    <label class="test-label">Asignación de tests psicométricos:</label>
+                                    <div *ngFor="let test of tests.controls; let i = index">
+                                      <div class="select-container">
+                                        <select [formControlName]="i" class="browser-default">
+                                            <option value="">Seleccione un test</option>
+                                            <option *ngFor="let t of testsDisponibles" value="{{t.id}}">{{t.Nombre}}</option>
+                                        </select>
+                                        <div class="actions">
+                                            <button class="btn-floating red darken-1" type="button" (click)="eliminarTest(i)">
+                                                <i class="material-symbols-outlined">close</i>
+                                            </button>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                
+                                  <button class="btn-add" type="button" (click)="agregarTest()">Agregar Test</button>
+                            </div>
+                        </div>
+                        <div class="row btn-container">
+                            <div class="col l2 m3 s6">
+                                <button [disabled]="getFGV['notasConsulta'].errors"  
+                                class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
+                            </div>
+                            <div class="col l2 m3 s6">
+                                <button  
+                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/terapeuta/mis-pacientes">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Nueva Nota Clínica</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="terapeuta/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Notas Clínicas
+                </li>
+                <li class="breadcrumb-item">
+                    Nueva Nota
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row clear-fix">
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="header">
+                    <h2>Contenido de la Nota Clínica</h2>
+                </div>
+                <div class="body">
+                    <form action="" class="m-4" [formGroup]="fgValidation" (ngSubmit)="guardarRegistro()">
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <textarea formControlName="contenido" class="browser-default" id="contenido" placeholder="Descripción" autocomplete="off"></textarea>
+                                </div>   
+                            </div>
+                            <div class="col l6 m12 s12 ">
+                                <div class="customInput">
+                                    <textarea formControlName="planTratamiento" class="browser-default" id="planTratamiento" placeholder="Plan de Tratamiento" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <textarea formControlName="objetivos" class="browser-default" id="objetivos" placeholder="Objetivos" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <textarea formControlName="conceptualizacion" class="browser-default" id="conceptualizacion" placeholder="Conceptualización" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row btn-container">
+                            <div class="col l2 m3 s6">
+                                <button [disabled]="getFGV['nombre'].errors || getFGV['apellidoPaterno'].errors || getFGV['apellidoMaterno'].errors || getFGV['direccion'].errors
+                                || getFGV['telefono'].errors || getFGV['email'].errors || getFGV['fechaNacimiento'].errors"  
+                                class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
+                            </div>
+                            <div class="col l2 m3 s6">
+                                <button  
+                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/admin/dashboard">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

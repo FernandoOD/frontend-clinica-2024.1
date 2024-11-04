@@ -5,7 +5,7 @@
                 <li>
                     <h4 class="page-title">Todos los Pacientes</h4>
                 </li>
-                <li *ngIf="isLoggedIn" class=" bcrum-1">
+                <li class=" bcrum-1">
                     <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
                 </li>
                 <li class="breadcrumb-item">
@@ -88,7 +88,7 @@
                                     <td>
                                         <div class="actions">
                                             <div class="m-l-10">
-                                                <a [routerLink]="['/admin/editar-paciente', r.id]" class="btn-floating blue darken-1 modal-trigger">
+                                                <a [routerLink]="['/admin/editar-paciente', r.id]" class="btn-floating blue darken-1">
                                                     <i class="material-symbols-outlined">edit_square</i>
                                                 </a>
                                             </div>

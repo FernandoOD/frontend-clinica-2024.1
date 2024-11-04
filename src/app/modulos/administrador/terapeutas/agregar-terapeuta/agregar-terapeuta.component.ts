@@ -59,7 +59,7 @@ export class AgregarTerapeutaComponent implements OnInit{
     let especialidad = this.getFGV['especialidad'].value;
     let telefono = this.getFGV['telefono'].value;
     let email = this.getFGV['email'].value;
-    let fechaRegistro= new Date().toISOString().split('T')[0];
+    let fechaRegistro= new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' });
     let obj = new TerapeutaModelo();
 
     obj.Nombre = nombre;

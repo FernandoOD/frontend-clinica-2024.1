@@ -8,6 +8,9 @@ import { AgregarTerapeutaComponent } from './terapeutas/agregar-terapeuta/agrega
 import { EditarTerapeutaComponent } from './terapeutas/editar-terapeuta/editar-terapeuta.component';
 import { ListarTerapeutaComponent } from './terapeutas/listar-terapeuta/listar-terapeuta.component';
 import { verificadorSesionGuard } from '../../guardianes/verificador-sesion.guard';
+import { AgregarTestPsicometricoComponent } from './tests/agregar-test-psicometrico/agregar-test-psicometrico.component';
+import { EditarTestPsicometricoComponent } from './tests/editar-test-psicometrico/editar-test-psicometrico.component';
+import { ListarTestPsicometricoComponent } from './tests/listar-test-psicometrico/listar-test-psicometrico.component';
 
 const routes: Routes = [
   {
@@ -43,6 +46,21 @@ const routes: Routes = [
   {
     path: 'listar-terapeuta',
     component: ListarTerapeutaComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'agregar-test-psicometrico',
+    component: AgregarTestPsicometricoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'editar-test-psicometrico/:id',
+    component: EditarTestPsicometricoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'listar-test-psicometrico',
+    component: ListarTestPsicometricoComponent,
     canActivate: [verificadorSesionGuard]
   }
 ];
