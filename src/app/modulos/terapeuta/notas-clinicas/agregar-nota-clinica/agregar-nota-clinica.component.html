@@ -51,13 +51,12 @@
                         </div>
                         <div class="row btn-container">
                             <div class="col l2 m3 s6">
-                                <button [disabled]="getFGV['nombre'].errors || getFGV['apellidoPaterno'].errors || getFGV['apellidoMaterno'].errors || getFGV['direccion'].errors
-                                || getFGV['telefono'].errors || getFGV['email'].errors || getFGV['fechaNacimiento'].errors"  
+                                <button [disabled]="getFGV['contenido'].errors || getFGV['planTratamiento'].errors || getFGV['objetivos'].errors || getFGV['conceptualizacion'].errors"  
                                 class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
                             </div>
                             <div class="col l2 m3 s6">
                                 <button  
-                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/admin/dashboard">Cancelar</button>
+                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/terapeuta/listar-consulta">Cancelar</button>
                             </div>
                         </div>
                     </form>

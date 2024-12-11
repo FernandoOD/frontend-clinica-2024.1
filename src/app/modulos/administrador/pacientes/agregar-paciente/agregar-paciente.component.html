@@ -74,10 +74,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col l12 m12 s12 ">
+                                <div class="customTextArea">
+                                    <textarea formControlName="descripcion" class="browser-default" id="descripcion" placeholder="Escriba información útil sobre el estado de salud o antecedentes del paciente" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row btn-container">
                             <div class="col l2 m3 s6">
                                 <button [disabled]="getFGV['nombre'].errors || getFGV['apellidoPaterno'].errors || getFGV['apellidoMaterno'].errors || getFGV['direccion'].errors
-                                || getFGV['telefono'].errors || getFGV['email'].errors || getFGV['fechaNacimiento'].errors"  
+                                || getFGV['telefono'].errors || getFGV['email'].errors || getFGV['fechaNacimiento'].errors || getFGV['descripcion'].errors"  
                                 class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
                             </div>
                             <div class="col l2 m3 s6">

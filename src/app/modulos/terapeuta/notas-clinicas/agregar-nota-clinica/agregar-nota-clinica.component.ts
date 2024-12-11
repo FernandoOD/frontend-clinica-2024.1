@@ -39,7 +39,7 @@ export class AgregarNotaClinicaComponent {
 
   ngOnInit(): void {
     this.construirFormulario();
-    this.idConsulta = this.route.snapshot.params["idConsulta"];
+    this.idConsulta = parseInt(this.route.snapshot.params["id"]);
   }
 
   get getFGV(){

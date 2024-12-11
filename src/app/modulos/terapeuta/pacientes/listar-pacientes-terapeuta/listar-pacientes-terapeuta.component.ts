@@ -12,8 +12,6 @@ import { PacienteTerapeutaService } from '../../../../servicios/paciente-terapeu
 })
 export class ListarPacientesTerapeutaComponent {
   pagina: number = 1;
-
-  isLoggedIn: boolean = false;
   suscripcion: Subscription = new Subscription;
 
   IdPersona: number = 0;

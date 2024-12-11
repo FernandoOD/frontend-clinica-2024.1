@@ -65,19 +65,25 @@
                             <thead role="rowgroup" class="mat-mdc-header-row">
                                 <tr>
                                     <th class="sortable" data-column="Nombre" (click)="ordenarTabla('FechaConsulta')">Fecha</th>
-                                    <th class="sortable" data-column="ApellidoPaterno" (click)="ordenarTabla('NotasConsulta')">Notas de la consulta</th>
+                                    <th class="sortable col-limited-width " data-column="ApellidoPaterno" (click)="ordenarTabla('NotasConsulta')">Notas de la consulta</th>
                                     <th class="sortable" data-column="ApellidoMaterno" (click)="ordenarTabla('pacienteId')">Paciente</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let r of listaRegistros | paginate: {itemsPerPage:10, currentPage:pagina}">
                                     <td>{{r.FechaConsulta}}</td>
-                                    <td>{{r.NotasConsulta}}</td>
-                                    <td>{{r.pacienteId}}</td>
+                                    <td class="col-limited-width ">{{r.NotasConsulta}}</td>
+                                    <td>{{r.pacienteConsulta.Nombre}} {{r.pacienteConsulta.ApellidoPaterno}} {{r.pacienteConsulta.ApellidoMaterno}}</td>
                                     <td>
                                         <div class="actions">
                                             <div class="m-l-10">
-                                                <a [routerLink]="['/admin/editar-paciente', r.id]" class="btn-floating blue darken-1">
+                                                <a [routerLink]="['/terapeuta/agregar-nota-clinica', r.id]" class="btn-floating yellow darken-3">
+                                                    <i class="material-symbols-outlined">clinical_notes</i>
+                                                </a>
+                                            </div>
+                                            <div class="m-l-10">
+                                                <a [routerLink]="['/terapeuta/editar-consulta', r.id]" class="btn-floating blue darken-1">
                                                     <i class="material-symbols-outlined">edit_square</i>
                                                 </a>
                                             </div>
@@ -86,6 +92,8 @@
                                                     <i class="material-symbols-outlined">delete</i>
                                                 </a>
                                             </div>
+                                            
+                                            
                                         </div>
                                     </td>
                                 </tr>

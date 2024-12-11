@@ -14,6 +14,7 @@ export class PacienteService {
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
     this.token = servicioSeguridad.getToken();
+    console.log(this.token);
    }
 
    listRecords(): Observable<PacienteModelo[]>{

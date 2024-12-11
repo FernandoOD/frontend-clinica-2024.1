@@ -1,0 +1,63 @@
+
+
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Editar Tets Psicométrico</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Tests Psicométricos
+                </li>
+                <li class="breadcrumb-item">
+                    Editar Test Psicométrico
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row clear-fix">
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="header">
+                    <h2>Información del Test Psicométrico</h2>
+                </div>
+                <div class="body">
+                    <form action="" class="m-4" [formGroup]="fgValidation" (ngSubmit)="actualizarRegistro()">
+                        <input type="hidden" formControlName="id">
+                        <input type="hidden" formControlName="fechaCreacion">
+                        <input type="hidden" formControlName="terapeutaId">
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="titulo" class="browser-default" type="text" id="titulo" placeholder="Titulo" autocomplete="off">
+                                </div>   
+                            </div>
+                            <div class="col l12 m12 s12 ">
+                                <div class="customTextArea">
+                                    <textarea formControlName="descripcion" class="browser-default" id="descripcion" placeholder="Descripción General" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row btn-container">
+                            <div class="col l2 m3 s6">
+                                <button [disabled]="getFGV['titulo'].errors || getFGV['descripcion'].errors"  
+                                class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
+                            </div>
+                            <div class="col l2 m3 s6">
+                                <button  
+                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/terapeuta/listar-modulo-psicoeducativo">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

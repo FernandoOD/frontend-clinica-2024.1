@@ -11,6 +11,11 @@ import { verificadorSesionGuard } from '../../guardianes/verificador-sesion.guar
 import { AgregarTestPsicometricoComponent } from './tests/agregar-test-psicometrico/agregar-test-psicometrico.component';
 import { EditarTestPsicometricoComponent } from './tests/editar-test-psicometrico/editar-test-psicometrico.component';
 import { ListarTestPsicometricoComponent } from './tests/listar-test-psicometrico/listar-test-psicometrico.component';
+import { AgregarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/agregar-modulo-psicoeducativo/agregar-modulo-psicoeducativo.component';
+import { EditarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/editar-modulo-psicoeducativo/editar-modulo-psicoeducativo.component';
+import { ListarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/listar-modulo-psicoeducativo/listar-modulo-psicoeducativo.component';
+import { AgregarEjercicioPracticoComponent } from './ejercicios-practicos/agregar-ejercicio-practico/agregar-ejercicio-practico.component';
+import { ListarEjercicioPracticoComponent } from './ejercicios-practicos/listar-ejercicio-practico/listar-ejercicio-practico.component';
 
 const routes: Routes = [
   {
@@ -61,6 +66,31 @@ const routes: Routes = [
   {
     path: 'listar-test-psicometrico',
     component: ListarTestPsicometricoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'agregar-modulo-psicoeducativo',
+    component: AgregarModuloPsicoeducativoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'editar-modulo-psicoeducativo',
+    component: EditarModuloPsicoeducativoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'listar-modulo-psicoeducativo',
+    component: ListarModuloPsicoeducativoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path : 'agregar-ejercicio-practico',
+    component : AgregarEjercicioPracticoComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path : 'listar-ejercicio-practico',
+    component : ListarEjercicioPracticoComponent,
     canActivate: [verificadorSesionGuard]
   }
 ];

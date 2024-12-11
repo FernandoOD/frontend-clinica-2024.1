@@ -11,8 +11,6 @@ import { Subscription } from 'rxjs';
 })
 export class ListarTestPsicometricoComponent {
   pagina: number = 1;
-
-  isLoggedIn: boolean = false;
   suscripcion: Subscription = new Subscription;
 
   ordenAscendente: boolean = true;

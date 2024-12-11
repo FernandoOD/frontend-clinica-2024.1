@@ -12,12 +12,14 @@ export class TestPsicometricoService {
   url: String = DatosGenerales.urlBackend;
   token?:String ="";
 
+  
+
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
     this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<TestPsicometricoModelo[]>{
-    return this.http.get<TestPsicometricoModelo[]>(`${this.url}/tests-psicometricos`,{
+    return this.http.get<TestPsicometricoModelo[]>(`${this.url}/tests-psicometricos/`,{
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

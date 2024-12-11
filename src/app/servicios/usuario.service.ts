@@ -28,4 +28,12 @@ export class UsuarioService {
     });
   }
 
+  deleteUser(id?:number): Observable<any>{
+    return this.http.delete<any>(`${this.url}/usuarios/${id}`,{
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
 }

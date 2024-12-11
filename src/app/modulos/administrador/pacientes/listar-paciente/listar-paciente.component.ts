@@ -3,6 +3,7 @@ import { PacienteService } from '../../../../servicios/paciente.service';
 import { PacienteModelo } from '../../../../modelos/Paciente.modelo';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { Subscription } from 'rxjs';
+import { UsuarioService } from '../../../../servicios/usuario.service';
 
 @Component({
   selector: 'app-listar-paciente',
@@ -12,8 +13,6 @@ import { Subscription } from 'rxjs';
 export class ListarPacienteComponent implements OnInit {
 
   pagina: number = 1;
-
-  isLoggedIn: boolean = false;
   suscripcion: Subscription = new Subscription;
 
   ordenAscendente: boolean = true;
@@ -22,7 +21,11 @@ export class ListarPacienteComponent implements OnInit {
   ordenActual: string = '';  // Columna que está ordenada
 
   listaRegistros: PacienteModelo[] = [];
-  constructor (private servicio: PacienteService, private servicioSeguridad: SeguridadService, ){
+  constructor (
+    private servicio: PacienteService,
+    private servicioSeguridad: SeguridadService,
+    private servicioUsuario: UsuarioService
+   ){
 
   }
 
@@ -93,7 +96,7 @@ export class ListarPacienteComponent implements OnInit {
       this.servicio.deleteRecord(id!).subscribe({
         next: (data) => {
           // Manejo de autenticación exitosa
-          
+          this.deleteUsuario(id!);
           console.log("Registro eliminado", data);
           this.listaRegistros = this.listaRegistros.filter(x => x.id != id);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
@@ -109,5 +112,20 @@ export class ListarPacienteComponent implements OnInit {
         }
       });
     }
+  }
+
+  deleteUsuario(idPersona: number){
+    this.servicioUsuario.deleteUser(idPersona).subscribe({
+      next: (data) => {
+        // Manejo de autenticación exitosa
+        console.log("Usuario eliminado", data);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      },
+      error: (error: any) => {
+        // Manejo de error en autenticación
+        console.error("Error de autenticación", error);
+        alert("Error al eliminar el Usuario");
+      }
+    })
   }
 }

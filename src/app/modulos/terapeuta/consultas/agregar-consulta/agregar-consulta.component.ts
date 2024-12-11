@@ -130,7 +130,8 @@ export class AgregarConsultaComponent {
     console.log("IDs",testsSeleccionados);
     const obj = {
       consultaId: data.id,  // ID de la consulta
-      testPsicometricoId: testsSeleccionados,   // Array de IDs de tests seleccionados
+      testPsicometricoId: testsSeleccionados,
+      testPsicometricos : new TestPsicometricoModelo   // Array de IDs de tests seleccionados
     };
     this.servicioConsultaTest.saveRecord(obj).subscribe({
       next: (data: ConsultaTestModelo) => {

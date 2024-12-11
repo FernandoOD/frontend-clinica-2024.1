@@ -13,20 +13,31 @@ export class ConsultaService {
   url: String = DatosGenerales.urlBackend;
   token?:String ="";
 
+  filter = encodeURIComponent(`{"include":[{"relation":"pacienteConsulta"}]}`);
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
     this.token = servicioSeguridad.getToken();
    }
 
-   listRecords(id:number): Observable<ConsultaModelo[]>{
-    return this.http.get<ConsultaModelo[]>(`${this.url}/terapeutas/${id}/consultas`,{
+   listRecordsTerapeuta(id:number): Observable<ConsultaModelo[]>{
+    return this.http.get<ConsultaModelo[]>(`${this.url}/terapeutas/${id}/consultas/?filter=${this.filter}`,{
       headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
+    });
+  }
+
+  listRecordsPaciente(id:number): Observable<ConsultaModelo[]>{
+    return this.http.get<ConsultaModelo[]>(`${this.url}/pacientes/${id}/consultas/?filter=${this.filter}`,{
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
       })
     });
   }
 
   findRecord(id : number): Observable<ConsultaModelo>{
-    return this.http.get<ConsultaModelo>(`${this.url}/pacientes/${id}`,{
+    return this.http.get<ConsultaModelo>(`${this.url}/consulta/${id}`,{
       headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
       })
     });
   }
@@ -44,7 +55,13 @@ export class ConsultaService {
     });
   }
   updateRecord(model : ConsultaModelo): Observable<ConsultaModelo>{
-    return this.http.put<ConsultaModelo>(`${this.url}/pacientes/${model.id}`, model,{
+    return this.http.patch<ConsultaModelo>(`${this.url}/pacientes/${model.pacienteId}/consultas?where[id]=${model.id}`,{
+      id : model.id,
+      FechaConsulta: model.FechaConsulta,
+      NotasConsulta: model.NotasConsulta,
+      terapeutaId: model.terapeutaId,
+      pacienteId: model.pacienteId
+    },{
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

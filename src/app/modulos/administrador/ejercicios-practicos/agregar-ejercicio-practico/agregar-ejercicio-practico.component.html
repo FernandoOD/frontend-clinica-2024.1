@@ -1,0 +1,77 @@
+
+
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Nuevo Ejercicio Práctico</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Ejercicios Prácticos
+                </li>
+                <li class="breadcrumb-item">
+                    Agregar Ejercicio Práctico
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row clear-fix">
+        <div class="col s12 m12 l12">
+            <div class="card">
+                <div class="header">
+                    <h2>Información del Ejercicio Práctico</h2>
+                </div>
+                <div class="body">
+                    <form action="" class="m-4" [formGroup]="fgValidation" (ngSubmit)="guardarRegistro()">
+                        <div class="row">
+                            <div class="col l12 m12 s12">
+                                <div class="customInput">
+                                    <input formControlName="titulo" class="browser-default" type="text" id="titulo" placeholder="Titulo" autocomplete="off">
+                                </div>   
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l6 m12 s12">
+                                <div class="customTextArea">
+                                    <textarea formControlName="descripcion" class="browser-default" type="text" id="descripcion" placeholder="Descripcion" autocomplete="off"></textarea>
+                                </div>   
+                            </div>
+                            <div class="col l6 m12 s12 ">
+                                <div class="customTextArea">
+                                    <textarea formControlName="instrucciones" class="browser-default" id="instrucciones" placeholder="Instrucciones" autocomplete="off"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <select formControlName="moduloId" class="browser-default">
+                                        <option *ngFor="let t of modulosList" value="{{t.id}}">{{t.Titulo}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row btn-container">
+                            <div class="col l2 m3 s6">
+                                <button [disabled]="getFGV['titulo'].errors || getFGV['descripcion'].errors || getFGV['instrucciones'].errors || getFGV['moduloId'].errors"  
+                                class="btn col l12 s12 m12 btnLogin blue accent-3" type="submit">Guardar</button>
+                            </div>
+                            <div class="col l2 m3 s6">
+                                <button  
+                                class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/terapeuta/dashboard">Cancelar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

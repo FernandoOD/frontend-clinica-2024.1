@@ -239,6 +239,12 @@ th.sortable.desc:hover::after{
     border-radius: 6px;
 }
 
+.col-limited-width {
+    max-width: 400px !important; /* Puedes ajustar el valor según lo necesites */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 
 

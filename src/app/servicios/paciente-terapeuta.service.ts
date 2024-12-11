@@ -25,8 +25,9 @@ export class PacienteTerapeutaService {
   }
 
   findRecord(id : number): Observable<PacienteTerapeutaModelo>{
-    return this.http.get<PacienteTerapeutaModelo>(`${this.url}/paciente-terapeutas/${id}`,{
+    return this.http.get<PacienteTerapeutaModelo>(`${this.url}/pacientes/${id}/terapeuta`,{
       headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
       })
     });
   }

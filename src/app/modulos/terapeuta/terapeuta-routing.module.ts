@@ -7,14 +7,8 @@ import { ListarConsultaComponent } from './consultas/listar-consulta/listar-cons
 import { AgregarNotaClinicaComponent } from './notas-clinicas/agregar-nota-clinica/agregar-nota-clinica.component';
 import { EditarNotaClinicaComponent } from './notas-clinicas/editar-nota-clinica/editar-nota-clinica.component';
 import { ListarNotaClinicaComponent } from './notas-clinicas/listar-nota-clinica/listar-nota-clinica.component';
-import { AgregarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/agregar-modulo-psicoeducativo/agregar-modulo-psicoeducativo.component';
-import { EditarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/editar-modulo-psicoeducativo/editar-modulo-psicoeducativo.component';
-import { ListarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/listar-modulo-psicoeducativo/listar-modulo-psicoeducativo.component';
-import { AgregarEjercicioComponent } from './ejercicios-practicos/agregar-ejercicio/agregar-ejercicio.component';
-import { EditarEjercicioComponent } from './ejercicios-practicos/editar-ejercicio/editar-ejercicio.component';
-import { ListarEjercicioComponent } from './ejercicios-practicos/listar-ejercicio/listar-ejercicio.component';
-import { ListarPacienteComponent } from '../administrador/pacientes/listar-paciente/listar-paciente.component';
 import { ListarPacientesTerapeutaComponent } from './pacientes/listar-pacientes-terapeuta/listar-pacientes-terapeuta.component';
+import { AsignarEjerciciosComponent } from './ejercicios-practicos/asignar-ejercicios/asignar-ejercicios.component';
 
 const routes: Routes = [
   {
@@ -30,7 +24,7 @@ const routes: Routes = [
     component : AgregarConsultaComponent
   },
   {
-    path : 'editar-consulta',
+    path : 'editar-consulta/:id',
     component : EditarConsultaComponent
   },
   {
@@ -38,11 +32,11 @@ const routes: Routes = [
     component : ListarConsultaComponent
   },
   {
-    path : 'agregar-nota-clinica',
+    path : 'agregar-nota-clinica/:id',
     component : AgregarNotaClinicaComponent
   },
   {
-    path : 'editar-nota-clinica',
+    path : 'editar-nota-clinica/:id',
     component : EditarNotaClinicaComponent
   },
   {
@@ -50,28 +44,8 @@ const routes: Routes = [
     component : ListarNotaClinicaComponent
   },
   {
-    path : 'agregar-modulo-psicoeducativo',
-    component : AgregarModuloPsicoeducativoComponent
-  },
-  {
-    path : 'editar-modulo-psicoeducativo',
-    component : EditarModuloPsicoeducativoComponent
-  },
-  {
-    path : 'listar-modulo-psicoeducativo',
-    component : ListarModuloPsicoeducativoComponent
-  },
-  {
-    path : 'agregar-ejercicio-practico',
-    component : AgregarEjercicioComponent
-  },
-  {
-    path : 'editar-ejercicio-practico',
-    component : EditarEjercicioComponent
-  },
-  {
-    path : 'listar-ejercicio-practico',
-    component : ListarEjercicioComponent
+    path : 'asignar-ejercicios/:id',
+    component : AsignarEjerciciosComponent
   }
 ];
 

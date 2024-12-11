@@ -36,22 +36,6 @@ export class AgregarTestPsicometricoComponent {
 
   ngOnInit(): void {
     this.construirFormulario();
-    this.servicio.listRecords().subscribe({
-      next: (data) => {
-        // Manejo de autenticación exitosa
-        console.log("Datos listados", data);
-        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
-      },
-      error: (error: any) => {
-        // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
-        alert("Error al listar los datos");
-      },
-      complete: () => {
-        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
-      }
-    });
   }
 
   get getFGV(){

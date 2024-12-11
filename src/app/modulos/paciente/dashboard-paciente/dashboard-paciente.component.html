@@ -1,1 +1,115 @@
-<p>dashboard-paciente works!</p>
+<div class="main-container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Dashboard</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Dashboard
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col l12">
+            <div class="card">
+                <div class="body">
+                    <div class="row align-items-center">
+                        <div class="col l4 m4 s12">
+                            <div class="image"></div>
+                        </div>
+                        <div class="col l8 m8 s12">
+                            <p class="bienvenida">¡Hola de nuevo!</p>
+                            <div class="name">{{userName}}</div>
+                            <p class="texto">
+                                ¡Bienvenido a nuestro espacio de apoyo y crecimiento personal! Nos alegra que estés aquí. En esta plataforma, encontrarás recursos y herramientas diseñadas para acompañarte en tu camino hacia el bienestar y equilibrio emocional. Nuestro equipo de profesionales está comprometido en brindarte la mejor experiencia, facilitando el acceso a contenido psicoeducativo, ejercicios prácticos y una comunicación cercana y confiable. Esperamos que este espacio sea una fuente de apoyo y aprendizaje para ti. ¡Estamos aquí para acompañarte!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col l3 m6 s12">
+            <div class="card">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="left">
+                        <p class="text-muted">Tests pendientes</p>
+                    </div>
+                    <div class="">
+                        <div class="responsive-table">
+                            <table class="mat-mdc-table" role="table" id="grid">
+                                <thead role="rowgroup" class="mat-mdc-header-row">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Tests Relacionados</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let r of listaConjunta">
+                                        <td>{{r.FechaConsulta}}</td>
+                                        <td>
+                                            <ul>
+                                              <button class="test-button" (click)="responderTest(test.id,test.Nombre,r.id,test.consultaTestId)" *ngFor="let test of r.tests">
+                                                {{ test.Nombre }}
+
+                                              </button>
+                                            </ul>
+                                          </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="col l4 m6 s12">
+    <div class="card">
+        <div class="card-body">
+            <div class="left">
+                <p class="text-muted">Ejercicios por hacer</p>
+            </div>
+            <div class="responsive-table">
+                <table class="mat-mdc-table" role="table" id="grid">
+                    <thead>
+                      <tr>
+                        <th>Modulo</th>
+                        <th>Ejercicio</th>
+                        <th>Seleccionar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let ejercicio of ejerciciosAsignadosConModulo">
+                        <td>{{ejercicio.moduloTitulo}}</td>
+                        <td ><span [class.tachado]="ejercicio.checked">{{ejercicio.nombre}}</span></td>
+                        <td>
+                          <input
+                            class="browser-default checkbox"
+                            type="checkbox"
+                            [(ngModel)]="ejercicio.checked"
+                            (change)="onCheckboxChange(ejercicio)"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>
+

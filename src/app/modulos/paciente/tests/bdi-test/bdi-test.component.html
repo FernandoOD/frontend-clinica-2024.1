@@ -1,0 +1,161 @@
+<div class="main-container">
+    <body>
+        <h1>Inventario de Depresión de Beck (BDI-II)</h1>
+        <p>Contesta cada pregunta seleccionando la opción que mejor describe cómo te has sentido en las últimas dos semanas, incluyendo el día de hoy:</p>
+    
+        <form id="bdiForm" class="radio" (submit)="onSubmit($event)">
+            <!-- Pregunta 1 -->
+            <p>1. Tristeza</p>
+            <label><input type="radio" name="p1" value="0"> No me siento triste</label>
+            <label><input type="radio" name="p1" value="1"> Me siento triste la mayor parte del tiempo</label>
+            <label><input type="radio" name="p1" value="2"> Me siento triste todo el tiempo</label>
+            <label><input type="radio" name="p1" value="3"> Me siento tan triste o infeliz que no lo puedo soportar</label>
+    
+            <!-- Pregunta 2 -->
+            <p>2. Pesimismo</p>
+            <label><input type="radio" name="p2" value="0"> No me siento desalentado sobre mi futuro</label>
+            <label><input type="radio" name="p2" value="1"> Me siento más desalentado de lo que solía estar</label>
+            <label><input type="radio" name="p2" value="2"> No espero que las cosas me salgan bien</label>
+            <label><input type="radio" name="p2" value="3"> Siento que mi futuro no tiene esperanza</label>
+    
+            <!-- Pregunta 3 -->
+            <p>3. Fracaso</p>
+            <label><input type="radio" name="p3" value="0"> No me siento como un fracasado</label>
+            <label><input type="radio" name="p3" value="1"> He fallado más de lo que debería</label>
+            <label><input type="radio" name="p3" value="2"> Cuando reflexiono en mi pasado, veo demasiados fracasos</label>
+            <label><input type="radio" name="p3" value="3"> Siento que soy un completo fracaso como persona</label>
+    
+            <!-- Pregunta 4 -->
+            <p>4. Pérdida de Placer</p>
+            <label><input type="radio" name="p4" value="0"> Me causan tanto placer las cosas que me gustaban como antes</label>
+            <label><input type="radio" name="p4" value="1"> No disfruto tanto de las cosas como antes</label>
+            <label><input type="radio" name="p4" value="2"> Obtengo muy poco placer de las cosas que antes disfrutaba</label>
+            <label><input type="radio" name="p4" value="3"> No puedo obtener placer de las cosas que antes disfrutaba</label>
+    
+            <!-- Pregunta 5 -->
+            <p>5. Sentimientos de culpa</p>
+            <label><input type="radio" name="p5" value="0"> No me siento particularmente culpable</label>
+            <label><input type="radio" name="p5" value="1"> Me siento culpable sobre cosas que hice o debí haber hecho</label>
+            <label><input type="radio" name="p5" value="2"> Me siento culpable la mayor parte del tiempo</label>
+            <label><input type="radio" name="p5" value="3"> Me siento culpable todo el tiempo</label>
+    
+            <!-- Pregunta 6 -->
+            <p>6. Sentimiento de castigo</p>
+            <label><input type="radio" name="p6" value="0"> No siento que me estén castigando</label>
+            <label><input type="radio" name="p6" value="1"> Siento que puedo estar siendo castigado</label>
+            <label><input type="radio" name="p6" value="2"> Siento que me van a castigar</label>
+            <label><input type="radio" name="p6" value="3"> Siento que estoy siendo castigado</label>
+    
+            <!-- Pregunta 7 -->
+            <p>7. Desagrado con uno mismo</p>
+            <label><input type="radio" name="p7" value="0"> Me siento igual conmigo mismo que siempre</label>
+            <label><input type="radio" name="p7" value="1"> He perdido confianza en mí mismo</label>
+            <label><input type="radio" name="p7" value="2"> Estoy decepcionado de mí mismo</label>
+            <label><input type="radio" name="p7" value="3"> Me desagrado</label>
+    
+            <!-- Pregunta 8 -->
+            <p>8. Autocrítica</p>
+            <label><input type="radio" name="p8" value="0"> No me critico ni me culpo más de lo usual</label>
+            <label><input type="radio" name="p8" value="1"> Soy más crítico conmigo mismo de lo usual</label>
+            <label><input type="radio" name="p8" value="2"> Me critico por todos mis errores o faltas</label>
+            <label><input type="radio" name="p8" value="3"> Me culpo de todo lo malo que pasa</label>
+    
+            <!-- Pregunta 9 -->
+            <p>9. Pensamientos suicidas</p>
+            <label><input type="radio" name="p9" value="0"> No tengo ningún pensamiento sobre suicidarme</label>
+            <label><input type="radio" name="p9" value="1"> He tenido pensamientos suicidas pero no los llevaría a cabo</label>
+            <label><input type="radio" name="p9" value="2"> Quisiera suicidarme</label>
+            <label><input type="radio" name="p9" value="3"> Si tuviese la oportunidad, me suicidaría</label>
+    
+            <!-- Pregunta 10 -->
+            <p>10. Llorar</p>
+            <label><input type="radio" name="p10" value="0"> No lloro más de lo usual</label>
+            <label><input type="radio" name="p10" value="1"> Lloro más de lo que solía</label>
+            <label><input type="radio" name="p10" value="2"> Lloro por cosas insignificantes</label>
+            <label><input type="radio" name="p10" value="3"> Me siento como si quisiera llorar pero no puedo</label>
+    
+            <!-- Pregunta 11 -->
+            <p>11. Agitación</p>
+            <label><input type="radio" name="p11" value="0"> No me encuentro más agitado de lo usual</label>
+            <label><input type="radio" name="p11" value="1"> Me siento más agitado de lo usual</label>
+            <label><input type="radio" name="p11" value="2"> Me siento tan agitado que me es difícil mantenerme quieto</label>
+            <label><input type="radio" name="p11" value="3"> Me siento tan agitado que tengo que estar moviéndome o haciendo algo</label>
+    
+            <!-- Pregunta 12 -->
+            <p>12. Pérdida de interés</p>
+            <label><input type="radio" name="p12" value="0"> No he perdido el interés en otras personas o actividades</label>
+            <label><input type="radio" name="p12" value="1"> Estoy menos interesado en otras personas o actividades que antes</label>
+            <label><input type="radio" name="p12" value="2"> He perdido la mayoría del interés en otras personas o actividades</label>
+            <label><input type="radio" name="p12" value="3"> Es difícil el interesarme en algo</label>
+    
+            <!-- Pregunta 13 -->
+            <p>13. Indecisión</p>
+            <label><input type="radio" name="p13" value="0"> Tomo decisiones tan bien como siempre</label>
+            <label><input type="radio" name="p13" value="1"> Encuentro más difícil tomar decisiones que antes</label>
+            <label><input type="radio" name="p13" value="2"> Tengo mucha mayor dificultad en tomar decisiones que antes</label>
+            <label><input type="radio" name="p13" value="3"> Tengo problemas en tomar cualquier decisión</label>
+    
+            <!-- Pregunta 14 -->
+            <p>14. Sentimientos de falta de valor</p>
+            <label><input type="radio" name="p14" value="0"> No me siento como una persona sin valía</label>
+            <label><input type="radio" name="p14" value="1"> No me considero tan útil o con tanta valía como solía hacerlo</label>
+            <label><input type="radio" name="p14" value="2"> Siento que valgo menos comparado con otras personas</label>
+            <label><input type="radio" name="p14" value="3"> Me siento completamente devaluado y sin valía alguna como persona</label>
+    
+            <!-- Pregunta 15 -->
+            <p>15. Pérdida de energía</p>
+            <label><input type="radio" name="p15" value="0"> Tengo tanta energía como siempre</label>
+            <label><input type="radio" name="p15" value="1"> Tengo menos energía de lo usual</label>
+            <label><input type="radio" name="p15" value="2"> No tengo suficiente energía para hacer demasiado</label>
+            <label><input type="radio" name="p15" value="3"> No tengo suficiente energía para hacer cualquier cosa</label>
+    
+            <!-- Pregunta 16 -->
+            <p>16. Cambios en patrones de sueño</p>
+            <label><input type="radio" name="p16" value="0"> No he experimentado ningún cambio en mis patrones de sueño</label>
+            <label><input type="radio" name="p16" value="1"> Duermo algo más o algo menos de lo usual</label>
+            <label><input type="radio" name="p16" value="2"> Duermo mucho más o mucho menos de lo usual</label>
+            <label><input type="radio" name="p16" value="3"> Duermo la mayor parte del día o me despierto 1-2 horas más temprano de lo usual y no puedo volver a dormir</label>
+    
+            <!-- Pregunta 17 -->
+            <p>17. Irritabilidad</p>
+            <label><input type="radio" name="p17" value="0"> No me encuentro más irritable de lo usual</label>
+            <label><input type="radio" name="p17" value="1"> Estoy más irritable de lo usual</label>
+            <label><input type="radio" name="p17" value="2"> Estoy mucho más irritable de lo usual</label>
+            <label><input type="radio" name="p17" value="3"> Estoy irritable todo el tiempo</label>
+    
+            <!-- Pregunta 18 -->
+            <p>18. Cambios en el apetito</p>
+            <label><input type="radio" name="p18" value="0"> No he tenido cambios en mi apetito</label>
+            <label><input type="radio" name="p18" value="1"> Mi apetito es algo menos o algo más de lo usual</label>
+            <label><input type="radio" name="p18" value="2"> Mi apetito es mucho menos o mucho más de lo usual</label>
+            <label><input type="radio" name="p18" value="3"> No tengo apetito o pienso en comida todo el tiempo</label>
+    
+            <!-- Pregunta 19 -->
+            <p>19. Dificultad para concentrarse</p>
+            <label><input type="radio" name="p19" value="0"> Me puedo concentrar tan bien como siempre</label>
+            <label><input type="radio" name="p19" value="1"> No me puedo concentrar tan bien como antes</label>
+            <label><input type="radio" name="p19" value="2"> Me es difícil mantener mi atención en algo por mucho tiempo</label>
+            <label><input type="radio" name="p19" value="3"> No me puedo concentrar en nada</label>
+    
+            <!-- Pregunta 20 -->
+            <p>20. Cansancio o fatiga</p>
+            <label><input type="radio" name="p20" value="0"> No me siento más cansado o fatigado de lo normal</label>
+            <label><input type="radio" name="p20" value="1"> Me he cansado o fatigado más fácilmente de lo usual</label>
+            <label><input type="radio" name="p20" value="2"> Estoy muy cansado o fatigado como para hacer muchas de las cosas que antes hacía</label>
+            <label><input type="radio" name="p20" value="3"> Estoy muy cansado o fatigado como para hacer todo lo que hacía antes</label>
+    
+            <!-- Pregunta 21 -->
+            <p>21. Pérdida de interés en el sexo</p>
+            <label><input type="radio" name="p21" value="0"> No he notado cambios recientes en mi interés por el sexo</label>
+            <label><input type="radio" name="p21" value="1"> Estoy menos interesado en el sexo de lo que solía estar</label>
+            <label><input type="radio" name="p21" value="2"> Estoy mucho menos interesado en el sexo ahora</label>
+            <label><input type="radio" name="p21" value="3"> He perdido el interés en el sexo por completo</label>
+    
+            <div id="error" *ngIf="error" class="error">{{ error }}</div>
+            <button type="submit">Calcular resultado</button>
+        </form>
+        <div id="resultado" [innerHTML]="resultado" style="display: block;"></div>
+    </body>
+    
+    
+</div>

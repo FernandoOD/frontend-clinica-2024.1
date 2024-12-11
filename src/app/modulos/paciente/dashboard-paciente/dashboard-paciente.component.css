@@ -1,0 +1,175 @@
+.main-container{
+    height: 100vh;
+    background-color: #F0F3FB;
+}
+
+.breadcrumb{
+    font-size: 15px;
+    margin: 20px 0;
+    padding: 0;
+    color:#555 ;
+}
+.breadcrumb i{
+    font-size: 24px;
+    color: #555;
+}
+.breadcrumb .page-title{
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #444 ;
+    margin: 0;
+}
+
+.breadcrumb .page-title::after{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.row{
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item::before{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 15px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.card {
+    background: #fff;
+    min-height: 50px;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b7c0ce33;
+}
+
+.card .body {
+    font-size: 14px;
+    color: #555;
+    padding: 15px;
+}
+
+.card .body .image {
+    background-image: url(../../../../assets/Imagenes/3918491.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 300px;
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+}
+
+.bienvenida{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.name{
+    font-size: 25px;
+    font-weight: 500;
+    color: #2196F3;
+}
+
+.texto{
+    font-size: 16px;
+    max-width: 800px;
+}
+
+.card-body{
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+.text-muted{
+    color: #96a2b4;
+    font-weight: 500;
+}
+
+.overflow-auto {
+    overflow: auto !important;
+}
+
+.mat-mdc-table{
+    min-width: 100%;
+    border: 0;
+    border-spacing: 0;
+    table-layout: auto;
+    white-space: normal;
+    background-color: #faf9fd;
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 10px 10px 0;
+}
+
+.mat-mdc-header-row{
+    height: unset;
+}
+
+th{
+    padding: 15px 15px;
+    text-align: left;  /* Alinea el texto a la izquierda */
+    position: relative; 
+    letter-spacing: 1px;
+}
+
+td{
+    padding: 15px 15px;
+}
+
+.actions{
+    display:flex;
+    flex-direction: row;
+}
+
+.test-button {
+    background-color: #009C86; /* Verde */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .test-button:hover {
+    background-color: #01705F; /* Cambia a un verde más oscuro */
+  }
+
+  .checkbox{
+    background-color: black;
+    opacity: 1;
+    pointer-events: all;
+    position: relative;
+}
+
+.tachado {
+    text-decoration: line-through;
+    text-decoration-color: #2196F3 ;
+    text-decoration-thickness: 2px;
+    color: gray; /* Opcional: para un efecto más claro */
+  }

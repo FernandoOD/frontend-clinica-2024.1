@@ -32,7 +32,7 @@ export class ListarConsultaComponent {
       this.IdPersona = info.idPersona;
     }
     console.log(this.IdPersona);
-    this.servicio.listRecords(this.IdPersona).subscribe({
+    this.servicio.listRecordsTerapeuta(this.IdPersona).subscribe({
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaRegistros = data;

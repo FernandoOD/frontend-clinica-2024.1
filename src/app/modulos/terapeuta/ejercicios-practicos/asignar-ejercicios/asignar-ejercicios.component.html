@@ -1,0 +1,77 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col s12 m12 l12">
+        <ul class="breadcrumb">
+            <li>
+                <h4 class="page-title">Asignar Ejercicios</h4>
+            </li>
+            <li class=" bcrum-1">
+                <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+            </li>
+            <li class="breadcrumb-item">
+                Mis Pacientes
+            </li>
+            <li class="breadcrumb-item">
+                Asignar Ejercicios Prácticos
+            </li>
+        </ul>
+    </div>
+</div>
+  <div class="row">
+    <div class="col s12 m12 l5">
+      <div class="select-container">
+        <label>Seleccionar Módulo:</label>
+        <select multiple [(ngModel)]="selectedModules" class="browser-default custom-select">
+          <option *ngFor="let modulo of listaModulos" value="{{modulo.id}}">{{modulo.Titulo}}</option>
+        </select>
+      </div>
+      
+      <div *ngFor="let moduleId of selectedModules" class="card">
+        <h6>Módulo: {{getModuleNameById(moduleId)}}</h6>
+        <table class="mat-mdc-table" role="table" id="grid">
+          <thead>
+            <tr>
+              <th>Ejercicio</th>
+              <th>Seleccionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ejercicio of getEjerciciosByModuleId(moduleId)">
+              <td>{{ejercicio.Titulo}}</td>
+              <td>
+                <input
+                  class="browser-default checkbox"
+                  type="checkbox"
+                  value="{{ejercicio.id}}"
+                  (change)="toggleEjercicioSeleccionado(moduleId, ejercicio.id, $event)"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col l1"></div>
+    <div class="col s12 m5 l5">
+      <div class="card">
+        <p class="title">Resumen de Ejercicios Seleccionados:</p>
+        <div *ngFor="let modelo of resumenAsignacion">
+          <p class="modulo">{{modelo.nombre}}</p>
+          <ul>
+            <li class="ejercicio" *ngFor="let ejercicio of modelo.ejercicios">{{ejercicio.Titulo}}</li>
+          </ul>
+        </div>
+        <div class="row btn-container">
+          <div class="col l3 m3 s6">
+              <button  
+              class="btn col l12 s12 m12 btnLogin blue accent-3" (click)="asignarEjercicios()">Guardar</button>
+          </div>
+          <div class="col l3 m3 s6">
+              <button  
+              class="btn col l12 s12 m12 btnLogin red accent-4" routerLink="/terapeuta/mis-pacientes">Cancelar</button>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

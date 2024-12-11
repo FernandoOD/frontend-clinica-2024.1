@@ -116,10 +116,29 @@
 }
 
 
+.customTextArea{
+    width: 98%;
+    margin-top: 30px;
+    background-color: #eee;
+    border-radius: 50px;
+    padding: 14px;
+}
 
+.customTextArea textarea{
+    position: relative;
+    padding-left: 30px;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+    height: 180px;
+}
 
 .customInput input::placeholder{
     color: #444;
+}
+
+.customTextArea textarea::placeholder{
+    color: #888;
 }
 
 .btn-container{

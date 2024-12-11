@@ -67,7 +67,13 @@
                             </div>
                             <div class="col l4 m12 s12">
                                 <input formControlName="fechaRegistro" class="browser-default" type="hidden" id="fechaRegistro" autocomplete="off">
-
+                            </div>
+                            <div class="col l4 m12 s12">
+                                <div class="customInput">
+                                    <select formControlName="terapeutaId" class="browser-default">
+                                        <option *ngFor="let t of terapeutaList" value="{{t.id}}">{{t.Nombre}} {{t.ApellidoPaterno}} {{t.ApellidoMaterno}}</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="row btn-container">

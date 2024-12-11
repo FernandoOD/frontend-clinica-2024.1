@@ -11,6 +11,8 @@ import { TerapeutaModelo } from '../../../../modelos/Terapeuta.modelo';
 import { TerapeutaService } from '../../../../servicios/terapeuta.service';
 import { PacienteTerapeutaModelo } from '../../../../modelos/PacienteTerapeuta.modelo';
 import { PacienteTerapeutaService } from '../../../../servicios/paciente-terapeuta.service';
+import { HistoriaClinicaModelo } from '../../../../modelos/HistoriaClinica.modelo';
+import { HistoriaClinicaService } from '../../../../servicios/historia-clinica.service';
 
 @Component({
   selector: 'app-agregar-paciente',
@@ -31,6 +33,7 @@ export class AgregarPacienteComponent implements OnInit{
     private servicioUser: UsuarioService,
     private servicioTerapeuta: TerapeutaService,
     private servicioPacienteTerapeuta: PacienteTerapeutaService,
+    private servicioHistoriaClinica: HistoriaClinicaService,
     private router:Router){
 
   }
@@ -44,7 +47,8 @@ export class AgregarPacienteComponent implements OnInit{
       telefono: ['',[Validators.required, Validators.maxLength(10)]],
       email: ['',[Validators.required, Validators.email]],
       fechaNacimiento: ['',Validators.required],
-      terapeutaId: ['',Validators.required]
+      terapeutaId: ['',Validators.required],
+      descripcion: ['',Validators.required]
     });
   }
 
@@ -99,6 +103,7 @@ export class AgregarPacienteComponent implements OnInit{
         console.log("Datos Correctos", data);
         this.crearUsuario(data);
         this.asignarTerapeuta(data);
+        this.crearHistorial(data);
         this.router.navigate(["/admin/listar-paciente"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
@@ -159,6 +164,34 @@ export class AgregarPacienteComponent implements OnInit{
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
         console.log('Proceso de guardado completado');
+      }
+    });
+  }
+
+  crearHistorial(data: PacienteModelo){
+    let descripcion = this.getFGV['descripcion'].value;
+    let fechaRegistro= new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' });
+    let obj = new HistoriaClinicaModelo ();
+
+    obj.Descripcion = descripcion;
+    obj.FechaCreacion = fechaRegistro;
+    obj.pacienteId = data.id;
+
+    this.servicioHistoriaClinica.saveRecord(obj).subscribe({
+      next: (data: HistoriaClinicaModelo) => {
+        // Manejo de autenticación exitosa
+        console.log("Datos Correctos", data);
+        this.router.navigate(["/admin/listar-paciente"]);
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      },
+      error: (error: any) => {
+        // Manejo de error en autenticación
+        console.error("Error de autenticación", error);
+        alert("Error al asignar terapeuta");
+      },
+      complete: () => {
+        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+        console.log('Proceso de guardado de historia completado');
       }
     });
   }

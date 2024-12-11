@@ -1,0 +1,249 @@
+.main-container{
+    height: 93vh;
+    background-color: #F0F3FB;
+}
+
+.breadcrumb{
+    font-size: 15px;
+    margin: 20px 0;
+    padding: 0;
+    color:#555 ;
+}
+.breadcrumb i{
+    font-size: 24px;
+    color: #555;
+}
+.breadcrumb .page-title{
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #444 ;
+    margin: 0;
+}
+
+.breadcrumb .page-title::after{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.row{
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item::before{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 15px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.card {
+    background: #fff;
+    min-height: 50px;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b7c0ce33;
+}
+
+.materialTableHeader{
+    -webkit-box-align: center;
+    align-items: center;
+    border-color: #dae1f3;
+    background-color: #dae1f3;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.materialTableHeader .left{
+    flex: 35%;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.materialTableHeader .header-buttons-left{
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+}
+
+.materialTableHeader .header-buttons-left .tbl-title{
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.materialTableHeader h2{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5b626b;
+}
+
+.materialTableHeader .header-buttons-left .tbl-search-box{
+    position: relative;
+    margin-left: 10px;
+}
+
+label{
+    font-size: 13px;
+    line-height: 1.42857;
+    color: #414244;
+    font-weight: 400;
+}
+
+.materialTableHeader .header-buttons-left .search-icon{
+    position: absolute;
+    top: 10px;
+    padding-left: 10px;
+    color: #0000008a;
+}
+
+.materialTableHeader .header-buttons-left input.search-field{
+    font-weight: 500;
+    color: #0000008a;
+    border-radius: 5px;
+    border: 0;
+    height: 45px;
+    padding: 8px 8px 8px 50px;
+    width: 250px;
+    background: #fff;
+}
+
+.materialTableHeader .right{
+    flex: 10%;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.materialTableHeader .tbl-export-btn{
+    float: right;
+    margin: 0 15px;
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.materialTableHeader .tbl-export-btn li{
+    display: inline-block;
+    position: relative;
+}
+
+.m-l-10{
+    margin-right: 10px;
+}
+
+.btn-floating{
+    width: 30px;
+    height: 30px;
+}
+
+.btn-floating i{
+    font-size: 1.3rem;
+    line-height: 30px;
+}
+
+.overflow-auto {
+    overflow: auto !important;
+}
+
+.mat-mdc-table{
+    min-width: 100%;
+    border: 0;
+    border-spacing: 0;
+    table-layout: auto;
+    white-space: normal;
+    background-color: #faf9fd;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mat-mdc-header-row{
+    height: unset;
+}
+
+.space{
+    white-space: pre-wrap;
+}
+
+th{
+    padding: 15px 15px;
+    text-align: left;  /* Alinea el texto a la izquierda */
+    position: relative; 
+    letter-spacing: 1px;
+}
+
+td{
+    padding: 15px 15px;
+}
+
+th::after{
+    content: '';
+}
+
+th.sortable:hover::after {
+    font-family: 'Material Symbols Outlined';
+  content: "arrow_upward_alt";  /* Icono de Material Symbols */
+  color: #a5a5a5;
+  font-size: 20px;
+  position: absolute; /* Hace que el ícono se posicione sin afectar el layout */
+  right: 5px; /* Coloca el ícono a la derecha dentro de la celda */
+  top: 50%;
+  transform: translateY(-50%); /* Centra el ícono verticalmente */
+  transition: all .2s ease;
+  }
+
+th.sortable.desc:hover::after{
+    font-family: 'Material Symbols Outlined';
+  content: "arrow_downward_alt";
+}
+
+.actions{
+    display:flex;
+    flex-direction: row;
+}
+
+
+.paginator ::ng-deep nav{
+    background: #faf9fd;
+    line-height: normal;
+    height: 60px;
+    display: flex;
+   justify-content: end;
+    align-items: center;
+}
+
+.paginator ::ng-deep .ngx-pagination{
+    margin-bottom: 0;
+}
+
+.paginator ::ng-deep .ngx-pagination .current{
+    border-radius: 6px;
+}
+
+
+
+
+

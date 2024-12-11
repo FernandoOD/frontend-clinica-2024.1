@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
 import { Token } from '@angular/compiler';
+import { TestPsicometricoModelo } from '../modelos/TestPsicometrico.modelo';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Token } from '@angular/compiler';
 export class SeguridadService {
   url: String = DatosGenerales.urlBackend;
   datosUsuarioSession = new BehaviorSubject<UsuarioModelo> (new UsuarioModelo);
+  datosTest = new BehaviorSubject<TestPsicometricoModelo> (new TestPsicometricoModelo); 
 
   constructor(private http: HttpClient ) {
     this.verifyDataSession();
@@ -30,8 +32,17 @@ export class SeguridadService {
     return datos;
   }
 
+  getDataTestLocal(){
+    let datos = localStorage.getItem("testData");
+    return datos;
+  }
+
   refreshSessionData(usuario:UsuarioModelo){
     this.datosUsuarioSession.next(usuario);
+  }
+
+  refreshTestData(test : TestPsicometricoModelo){
+    this.datosTest.next(test);
   }
 
   getSessionData(){
@@ -48,7 +59,6 @@ export class SeguridadService {
       })
     });
   }
-
   dataSaveInLocal(usuario: UsuarioModelo) : boolean{
     let datosLocales = localStorage.getItem("sessionData");
     if(datosLocales){
@@ -71,10 +81,40 @@ export class SeguridadService {
     }
   }
 
+  dataSaveTest(test: TestPsicometricoModelo, consultaTestId?: number) : boolean{
+    let datosLocales = localStorage.getItem("testData");
+    if(datosLocales){
+      return false;
+    }else{
+      let datos = {
+        id: test.test?.id,
+        nombre : test.test?.Nombre,
+        consultaId: test.consultaId,
+        token : test.token,
+        consultaTestId: consultaTestId,
+        descripcion : test.test?.Descripcion
+      };
+
+      let datosString = JSON.stringify(datos);
+      localStorage.setItem("testData", datosString);
+      this.refreshTestData(test);
+      return true;
+    }
+  }
+
   getToken(){
     let datos = this.getDataLocalStorage();
     if(datos){
       let objetoDatos: UsuarioModelo = JSON.parse(datos);
+      return objetoDatos.token;
+    }
+    return "";
+  }
+
+  getTokenTest(){
+    let datos = this.getDataTestLocal();
+    if(datos){
+      let objetoDatos: TestPsicometricoModelo = JSON.parse(datos);
       return objetoDatos.token;
     }
     return "";
@@ -97,5 +137,10 @@ export class SeguridadService {
   closeSession(){
     localStorage.removeItem("sessionData");
     this.refreshSessionData(new UsuarioModelo());
+  }
+
+  deleteDataTest(){
+    localStorage.removeItem("testData");
+    this.refreshTestData(new TestPsicometricoModelo());
   }
 }
