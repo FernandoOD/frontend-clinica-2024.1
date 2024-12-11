@@ -8,9 +8,10 @@ import { SeguridadService } from '../../../servicios/seguridad.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-iniciar-sesion',
-  templateUrl: './iniciar-sesion.component.html',
-  styleUrl: './iniciar-sesion.component.css'
+    selector: 'app-iniciar-sesion',
+    templateUrl: './iniciar-sesion.component.html',
+    styleUrl: './iniciar-sesion.component.css',
+    standalone: false
 })
 export class IniciarSesionComponent implements OnInit {
 

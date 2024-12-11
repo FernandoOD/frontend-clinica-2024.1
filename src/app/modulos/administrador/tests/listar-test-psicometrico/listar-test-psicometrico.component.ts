@@ -5,9 +5,10 @@ import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-listar-test-psicometrico',
-  templateUrl: './listar-test-psicometrico.component.html',
-  styleUrl: './listar-test-psicometrico.component.css'
+    selector: 'app-listar-test-psicometrico',
+    templateUrl: './listar-test-psicometrico.component.html',
+    styleUrl: './listar-test-psicometrico.component.css',
+    standalone: false
 })
 export class ListarTestPsicometricoComponent {
   pagina: number = 1;

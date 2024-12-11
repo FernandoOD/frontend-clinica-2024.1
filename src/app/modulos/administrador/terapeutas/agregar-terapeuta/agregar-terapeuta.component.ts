@@ -9,9 +9,10 @@ import { UsuarioModelo } from '../../../../modelos/Usuario.modelo';
 import { UsuarioService } from '../../../../servicios/usuario.service';
 
 @Component({
-  selector: 'app-agregar-terapeuta',
-  templateUrl: './agregar-terapeuta.component.html',
-  styleUrl: './agregar-terapeuta.component.css'
+    selector: 'app-agregar-terapeuta',
+    templateUrl: './agregar-terapeuta.component.html',
+    styleUrl: './agregar-terapeuta.component.css',
+    standalone: false
 })
 export class AgregarTerapeutaComponent implements OnInit{
   isLoggedIn: boolean = false;

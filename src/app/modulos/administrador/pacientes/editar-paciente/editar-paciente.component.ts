@@ -12,9 +12,10 @@ import { PacienteTerapeutaModelo } from '../../../../modelos/PacienteTerapeuta.m
 
 
 @Component({
-  selector: 'app-editar-paciente',
-  templateUrl: './editar-paciente.component.html',
-  styleUrl: './editar-paciente.component.css'
+    selector: 'app-editar-paciente',
+    templateUrl: './editar-paciente.component.html',
+    styleUrl: './editar-paciente.component.css',
+    standalone: false
 })
 export class EditarPacienteComponent {
   id: number = 0;

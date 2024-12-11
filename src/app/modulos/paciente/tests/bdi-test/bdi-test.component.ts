@@ -7,9 +7,10 @@ import { ConsultaTestService } from '../../../../servicios/consulta-test.service
 import { ConsultaTestModelo } from '../../../../modelos/ConsultaTest.modelo';
 
 @Component({
-  selector: 'app-bdi-test',
-  templateUrl: './bdi-test.component.html',
-  styleUrl: './bdi-test.component.css'
+    selector: 'app-bdi-test',
+    templateUrl: './bdi-test.component.html',
+    styleUrl: './bdi-test.component.css',
+    standalone: false
 })
 export class BDITestComponent {
   error: string = '';

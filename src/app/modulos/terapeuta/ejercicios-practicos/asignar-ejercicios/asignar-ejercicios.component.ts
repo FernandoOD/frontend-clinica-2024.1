@@ -10,9 +10,10 @@ import { PacienteEjercicioService } from '../../../../servicios/paciente-ejercic
 import { PacienteEjercicioModelo } from '../../../../modelos/PacienteEjercicio.modelo';
 
 @Component({
-  selector: 'app-asignar-ejercicios',
-  templateUrl: './asignar-ejercicios.component.html',
-  styleUrl: './asignar-ejercicios.component.css'
+    selector: 'app-asignar-ejercicios',
+    templateUrl: './asignar-ejercicios.component.html',
+    styleUrl: './asignar-ejercicios.component.css',
+    standalone: false
 })
 export class AsignarEjerciciosComponent {
   listaModulos : ModuloPsicoeducativoModelo [] = [];

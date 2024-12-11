@@ -7,9 +7,10 @@ import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoe
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-agregar-modulo-psicoeducativo',
-  templateUrl: './agregar-modulo-psicoeducativo.component.html',
-  styleUrl: './agregar-modulo-psicoeducativo.component.css'
+    selector: 'app-agregar-modulo-psicoeducativo',
+    templateUrl: './agregar-modulo-psicoeducativo.component.html',
+    styleUrl: './agregar-modulo-psicoeducativo.component.css',
+    standalone: false
 })
 export class AgregarModuloPsicoeducativoComponent {
   suscripcion: Subscription = new Subscription;

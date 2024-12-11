@@ -14,9 +14,10 @@ import { ConsultaTestService } from '../../../../servicios/consulta-test.service
 import { ConsultaTestModelo } from '../../../../modelos/ConsultaTest.modelo';
 
 @Component({
-  selector: 'app-agregar-consulta',
-  templateUrl: './agregar-consulta.component.html',
-  styleUrl: './agregar-consulta.component.css'
+    selector: 'app-agregar-consulta',
+    templateUrl: './agregar-consulta.component.html',
+    styleUrl: './agregar-consulta.component.css',
+    standalone: false
 })
 export class AgregarConsultaComponent {
 

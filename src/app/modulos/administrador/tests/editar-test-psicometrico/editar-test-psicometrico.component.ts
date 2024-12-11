@@ -7,9 +7,10 @@ import { Subscription } from 'rxjs';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-editar-test-psicometrico',
-  templateUrl: './editar-test-psicometrico.component.html',
-  styleUrl: './editar-test-psicometrico.component.css'
+    selector: 'app-editar-test-psicometrico',
+    templateUrl: './editar-test-psicometrico.component.html',
+    styleUrl: './editar-test-psicometrico.component.css',
+    standalone: false
 })
 export class EditarTestPsicometricoComponent {
   id: number = 0;

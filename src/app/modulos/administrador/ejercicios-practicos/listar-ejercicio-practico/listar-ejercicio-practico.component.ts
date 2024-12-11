@@ -7,9 +7,10 @@ import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { ModuloPsicoeducativoModelo } from '../../../../modelos/ModuloPsicoeducativo.modelo';
 
 @Component({
-  selector: 'app-listar-ejercicio-practico',
-  templateUrl: './listar-ejercicio-practico.component.html',
-  styleUrl: './listar-ejercicio-practico.component.css'
+    selector: 'app-listar-ejercicio-practico',
+    templateUrl: './listar-ejercicio-practico.component.html',
+    styleUrl: './listar-ejercicio-practico.component.css',
+    standalone: false
 })
 export class ListarEjercicioPracticoComponent {
   

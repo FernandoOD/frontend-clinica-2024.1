@@ -19,9 +19,10 @@ import { ModuloPsicoeducativoService } from '../../../servicios/modulo-psicoeduc
 import { PacienteService } from '../../../servicios/paciente.service';
 
 @Component({
-  selector: 'app-dashboard-paciente',
-  templateUrl: './dashboard-paciente.component.html',
-  styleUrl: './dashboard-paciente.component.css'
+    selector: 'app-dashboard-paciente',
+    templateUrl: './dashboard-paciente.component.html',
+    styleUrl: './dashboard-paciente.component.css',
+    standalone: false
 })
 export class DashboardPacienteComponent {
   suscripcion: Subscription = new Subscription;

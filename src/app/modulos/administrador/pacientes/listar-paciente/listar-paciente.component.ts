@@ -6,9 +6,10 @@ import { Subscription } from 'rxjs';
 import { UsuarioService } from '../../../../servicios/usuario.service';
 
 @Component({
-  selector: 'app-listar-paciente',
-  templateUrl: './listar-paciente.component.html',
-  styleUrl: './listar-paciente.component.css'
+    selector: 'app-listar-paciente',
+    templateUrl: './listar-paciente.component.html',
+    styleUrl: './listar-paciente.component.css',
+    standalone: false
 })
 export class ListarPacienteComponent implements OnInit {
 

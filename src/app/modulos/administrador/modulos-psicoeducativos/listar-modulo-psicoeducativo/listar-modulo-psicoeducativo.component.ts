@@ -5,9 +5,10 @@ import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoe
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-listar-modulo-psicoeducativo',
-  templateUrl: './listar-modulo-psicoeducativo.component.html',
-  styleUrl: './listar-modulo-psicoeducativo.component.css'
+    selector: 'app-listar-modulo-psicoeducativo',
+    templateUrl: './listar-modulo-psicoeducativo.component.html',
+    styleUrl: './listar-modulo-psicoeducativo.component.css',
+    standalone: false
 })
 export class ListarModuloPsicoeducativoComponent {
   pagina: number = 1;

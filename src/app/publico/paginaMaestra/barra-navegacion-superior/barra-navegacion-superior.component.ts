@@ -4,9 +4,10 @@ import { SeguridadService } from '../../../servicios/seguridad.service';
 import { UsuarioModelo } from '../../../modelos/Usuario.modelo';
 
 @Component({
-  selector: 'app-barra-navegacion-superior',
-  templateUrl: './barra-navegacion-superior.component.html',
-  styleUrl: './barra-navegacion-superior.component.css'
+    selector: 'app-barra-navegacion-superior',
+    templateUrl: './barra-navegacion-superior.component.html',
+    styleUrl: './barra-navegacion-superior.component.css',
+    standalone: false
 })
 export class BarraNavegacionSuperiorComponent implements OnInit {
 

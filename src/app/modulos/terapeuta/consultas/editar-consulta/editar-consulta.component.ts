@@ -11,9 +11,10 @@ import { ConsultaTestModelo } from '../../../../modelos/ConsultaTest.modelo';
 import { ConsultaModelo } from '../../../../modelos/Consulta.modelo';
 
 @Component({
-  selector: 'app-editar-consulta',
-  templateUrl: './editar-consulta.component.html',
-  styleUrl: './editar-consulta.component.css'
+    selector: 'app-editar-consulta',
+    templateUrl: './editar-consulta.component.html',
+    styleUrl: './editar-consulta.component.css',
+    standalone: false
 })
 export class EditarConsultaComponent {
   suscripcion: Subscription = new Subscription;

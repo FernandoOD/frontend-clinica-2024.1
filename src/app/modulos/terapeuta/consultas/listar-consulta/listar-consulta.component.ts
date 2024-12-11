@@ -5,9 +5,10 @@ import { Subscription } from 'rxjs';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-listar-consulta',
-  templateUrl: './listar-consulta.component.html',
-  styleUrl: './listar-consulta.component.css'
+    selector: 'app-listar-consulta',
+    templateUrl: './listar-consulta.component.html',
+    styleUrl: './listar-consulta.component.css',
+    standalone: false
 })
 export class ListarConsultaComponent {
   

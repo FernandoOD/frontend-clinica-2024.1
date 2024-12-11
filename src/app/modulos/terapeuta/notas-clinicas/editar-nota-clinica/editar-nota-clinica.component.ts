@@ -7,9 +7,10 @@ import { Subscription } from 'rxjs';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-editar-nota-clinica',
-  templateUrl: './editar-nota-clinica.component.html',
-  styleUrl: './editar-nota-clinica.component.css'
+    selector: 'app-editar-nota-clinica',
+    templateUrl: './editar-nota-clinica.component.html',
+    styleUrl: './editar-nota-clinica.component.css',
+    standalone: false
 })
 export class EditarNotaClinicaComponent {
   isLoggedIn: boolean = false;

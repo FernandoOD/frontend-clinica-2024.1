@@ -10,9 +10,10 @@ import { NotaClinicaModelo } from '../../../../modelos/NotaClinica.modelo';
 import { NotaClinicaService } from '../../../../servicios/nota-clinica.service';
 
 @Component({
-  selector: 'app-agregar-nota-clinica',
-  templateUrl: './agregar-nota-clinica.component.html',
-  styleUrl: './agregar-nota-clinica.component.css'
+    selector: 'app-agregar-nota-clinica',
+    templateUrl: './agregar-nota-clinica.component.html',
+    styleUrl: './agregar-nota-clinica.component.css',
+    standalone: false
 })
 export class AgregarNotaClinicaComponent {
   suscripcion: Subscription = new Subscription;

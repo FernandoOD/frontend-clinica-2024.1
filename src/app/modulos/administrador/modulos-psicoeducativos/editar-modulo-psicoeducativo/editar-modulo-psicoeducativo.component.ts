@@ -7,9 +7,10 @@ import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoe
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-editar-modulo-psicoeducativo',
-  templateUrl: './editar-modulo-psicoeducativo.component.html',
-  styleUrl: './editar-modulo-psicoeducativo.component.css'
+    selector: 'app-editar-modulo-psicoeducativo',
+    templateUrl: './editar-modulo-psicoeducativo.component.html',
+    styleUrl: './editar-modulo-psicoeducativo.component.css',
+    standalone: false
 })
 export class EditarModuloPsicoeducativoComponent {
   id: number = 0;

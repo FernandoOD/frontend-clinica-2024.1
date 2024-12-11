@@ -15,9 +15,10 @@ import { HistoriaClinicaModelo } from '../../../../modelos/HistoriaClinica.model
 import { HistoriaClinicaService } from '../../../../servicios/historia-clinica.service';
 
 @Component({
-  selector: 'app-agregar-paciente',
-  templateUrl: './agregar-paciente.component.html',
-  styleUrl: './agregar-paciente.component.css'
+    selector: 'app-agregar-paciente',
+    templateUrl: './agregar-paciente.component.html',
+    styleUrl: './agregar-paciente.component.css',
+    standalone: false
 })
 export class AgregarPacienteComponent implements OnInit{
   isLoggedIn: boolean = false;

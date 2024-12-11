@@ -6,9 +6,10 @@ import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { NotaClinicaService } from '../../../../servicios/nota-clinica.service';
 
 @Component({
-  selector: 'app-listar-nota-clinica',
-  templateUrl: './listar-nota-clinica.component.html',
-  styleUrl: './listar-nota-clinica.component.css'
+    selector: 'app-listar-nota-clinica',
+    templateUrl: './listar-nota-clinica.component.html',
+    styleUrl: './listar-nota-clinica.component.css',
+    standalone: false
 })
 export class ListarNotaClinicaComponent {
   pagina: number = 1;

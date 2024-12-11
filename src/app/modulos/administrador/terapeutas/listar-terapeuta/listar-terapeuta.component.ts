@@ -5,9 +5,10 @@ import { TerapeutaModelo } from '../../../../modelos/Terapeuta.modelo';
 import { TerapeutaService } from '../../../../servicios/terapeuta.service';
 
 @Component({
-  selector: 'app-listar-terapeuta',
-  templateUrl: './listar-terapeuta.component.html',
-  styleUrl: './listar-terapeuta.component.css'
+    selector: 'app-listar-terapeuta',
+    templateUrl: './listar-terapeuta.component.html',
+    styleUrl: './listar-terapeuta.component.css',
+    standalone: false
 })
 export class ListarTerapeutaComponent implements OnInit {
   pagina: number = 1;

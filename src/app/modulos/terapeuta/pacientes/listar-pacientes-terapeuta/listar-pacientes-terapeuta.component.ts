@@ -6,9 +6,10 @@ import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { PacienteTerapeutaService } from '../../../../servicios/paciente-terapeuta.service';
 
 @Component({
-  selector: 'app-listar-pacientes-terapeuta',
-  templateUrl: './listar-pacientes-terapeuta.component.html',
-  styleUrl: './listar-pacientes-terapeuta.component.css'
+    selector: 'app-listar-pacientes-terapeuta',
+    templateUrl: './listar-pacientes-terapeuta.component.html',
+    styleUrl: './listar-pacientes-terapeuta.component.css',
+    standalone: false
 })
 export class ListarPacientesTerapeutaComponent {
   pagina: number = 1;

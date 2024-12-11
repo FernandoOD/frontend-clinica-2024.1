@@ -7,9 +7,10 @@ import { TerapeutaModelo } from '../../../../modelos/Terapeuta.modelo';
 import { TerapeutaService } from '../../../../servicios/terapeuta.service';
 
 @Component({
-  selector: 'app-editar-terapeuta',
-  templateUrl: './editar-terapeuta.component.html',
-  styleUrl: './editar-terapeuta.component.css'
+    selector: 'app-editar-terapeuta',
+    templateUrl: './editar-terapeuta.component.html',
+    styleUrl: './editar-terapeuta.component.css',
+    standalone: false
 })
 export class EditarTerapeutaComponent {
 

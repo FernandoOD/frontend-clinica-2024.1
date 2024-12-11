@@ -10,9 +10,10 @@ import { TestPsicometricoService } from '../../../../servicios/test-psicometrico
 import { TestPsicometricoModelo } from '../../../../modelos/TestPsicometrico.modelo';
 
 @Component({
-  selector: 'app-agregar-test-psicometrico',
-  templateUrl: './agregar-test-psicometrico.component.html',
-  styleUrl: './agregar-test-psicometrico.component.css'
+    selector: 'app-agregar-test-psicometrico',
+    templateUrl: './agregar-test-psicometrico.component.html',
+    styleUrl: './agregar-test-psicometrico.component.css',
+    standalone: false
 })
 export class AgregarTestPsicometricoComponent {
 

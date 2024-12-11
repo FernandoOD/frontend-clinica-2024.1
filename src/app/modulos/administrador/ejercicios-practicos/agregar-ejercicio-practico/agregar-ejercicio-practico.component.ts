@@ -9,9 +9,10 @@ import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoe
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
-  selector: 'app-agregar-ejercicio-practico',
-  templateUrl: './agregar-ejercicio-practico.component.html',
-  styleUrl: './agregar-ejercicio-practico.component.css'
+    selector: 'app-agregar-ejercicio-practico',
+    templateUrl: './agregar-ejercicio-practico.component.html',
+    styleUrl: './agregar-ejercicio-practico.component.css',
+    standalone: false
 })
 export class AgregarEjercicioPracticoComponent {
   suscripcion: Subscription = new Subscription;

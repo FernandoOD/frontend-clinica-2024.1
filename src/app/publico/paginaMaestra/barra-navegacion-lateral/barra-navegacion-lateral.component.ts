@@ -9,9 +9,10 @@ import { TerapeutaService } from '../../../servicios/terapeuta.service';
 declare var M: any;
 
 @Component({
-  selector: 'app-barra-navegacion-lateral',
-  templateUrl: './barra-navegacion-lateral.component.html',
-  styleUrl: './barra-navegacion-lateral.component.css'
+    selector: 'app-barra-navegacion-lateral',
+    templateUrl: './barra-navegacion-lateral.component.html',
+    styleUrl: './barra-navegacion-lateral.component.css',
+    standalone: false
 })
 export class BarraNavegacionLateralComponent implements OnInit {
 

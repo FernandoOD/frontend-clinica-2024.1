@@ -17,7 +17,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "node_modules/crypto-js/crypto-js.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [

@@ -3,11 +3,10 @@ import { SeguridadService } from '../../../servicios/seguridad.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-cerrar-sesion',
-  standalone: true,
-  imports: [],
-  templateUrl: './cerrar-sesion.component.html',
-  styleUrl: './cerrar-sesion.component.css'
+    selector: 'app-cerrar-sesion',
+    imports: [],
+    templateUrl: './cerrar-sesion.component.html',
+    styleUrl: './cerrar-sesion.component.css'
 })
 export class CerrarSesionComponent implements OnInit {
 
