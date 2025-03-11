@@ -4,4 +4,5 @@ export class ModuloPsicoeducativoModelo{
     Descripcion?: String;
     FechaCreacion?: String;
     terapeutaId?: number;
+    UrlVideo?: String;
 }

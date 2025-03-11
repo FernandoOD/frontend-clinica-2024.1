@@ -1,0 +1,166 @@
+<div class="main-container">
+    <body>
+        <h1>Inventario de Ansiedad de Beck (BAI)</h1>
+    <p>A continuación encontrará una lista de síntomas de ansiedad. Por favor lea cuidadosamente cada enunciado e indique que tanto le ha molestado cada síntoma en la SEMANA PASADA, INCLUYENDO EL DÍA DE HOY. Rellene en el círculo que se encuentra a continuación de cada síntoma.</p>
+
+    <form id="baiForm" class="radio" (submit)="onSubmit($event)">
+        <!-- Pregunta 1 -->
+        <p>1. Entumecimiento / Hormigueo</p>
+        <label><input type="radio" name="p1" value="0"> Nada</label>
+        <label><input type="radio" name="p1" value="1"> Mediano</label>
+        <label><input type="radio" name="p1" value="2"> Moderado</label>
+        <label><input type="radio" name="p1" value="3"> Severo</label>
+
+        <!-- Pregunta 2 -->
+        <p>2. Sensación de aumento en temperatura corporal (independiente del clima)</p>
+        <label><input type="radio" name="p2" value="0"> Nada</label>
+        <label><input type="radio" name="p2" value="1"> Mediano</label>
+        <label><input type="radio" name="p2" value="2"> Moderado</label>
+        <label><input type="radio" name="p2" value="3"> Severo</label>
+
+        <!-- Pregunta 3 -->
+        <p>3. Piernas temblorosas</p>
+        <label><input type="radio" name="p3" value="0"> Nada</label>
+        <label><input type="radio" name="p3" value="1"> Mediano</label>
+        <label><input type="radio" name="p3" value="2"> Moderado</label>
+        <label><input type="radio" name="p3" value="3"> Severo</label>
+
+        <!-- Pregunta 4 -->
+        <p>4. Incapacidad de relajarse</p>
+        <label><input type="radio" name="p4" value="0"> Nada</label>
+        <label><input type="radio" name="p4" value="1"> Mediano</label>
+        <label><input type="radio" name="p4" value="2"> Moderado</label>
+        <label><input type="radio" name="p4" value="3"> Severo</label>
+
+        <!-- Pregunta 5 -->
+        <p>5. Temor a que lo peor pueda suceder</p>
+        <label><input type="radio" name="p5" value="0"> Nada</label>
+        <label><input type="radio" name="p5" value="1"> Mediano</label>
+        <label><input type="radio" name="p5" value="2"> Moderado</label>
+        <label><input type="radio" name="p5" value="3"> Severo</label>
+
+        <!-- Pregunta 6 -->
+        <p>6. Mareado</p>
+        <label><input type="radio" name="p6" value="0"> Nada</label>
+        <label><input type="radio" name="p6" value="1"> Mediano</label>
+        <label><input type="radio" name="p6" value="2"> Moderado</label>
+        <label><input type="radio" name="p6" value="3"> Severo</label>
+
+        <!-- Pregunta 7 -->
+        <p>7. Taquicardia / latidos acelerados</p>
+        <label><input type="radio" name="p7" value="0"> Nada</label>
+        <label><input type="radio" name="p7" value="1"> Mediano</label>
+        <label><input type="radio" name="p7" value="2"> Moderado</label>
+        <label><input type="radio" name="p7" value="3"> Severo</label>
+
+        <!-- Pregunta 8 -->
+        <p>8. Inestabilidad</p>
+        <label><input type="radio" name="p8" value="0"> Nada</label>
+        <label><input type="radio" name="p8" value="1"> Mediano</label>
+        <label><input type="radio" name="p8" value="2"> Moderado</label>
+        <label><input type="radio" name="p8" value="3"> Severo</label>
+
+        <!-- Pregunta 9 -->
+        <p>9. Aterrado</p>
+        <label><input type="radio" name="p9" value="0"> Nada</label>
+        <label><input type="radio" name="p9" value="1"> Mediano</label>
+        <label><input type="radio" name="p9" value="2"> Moderado</label>
+        <label><input type="radio" name="p9" value="3"> Severo</label>
+
+        <!-- Pregunta 10 -->
+        <p>10. Nerviosismo</p>
+        <label><input type="radio" name="p10" value="0"> Nada</label>
+        <label><input type="radio" name="p10" value="1"> Mediano</label>
+        <label><input type="radio" name="p10" value="2"> Moderado</label>
+        <label><input type="radio" name="p10" value="3"> Severo</label>
+
+        <!-- Pregunta 11 -->
+        <p>11. Sentimiento de Asfixia</p>
+        <label><input type="radio" name="p11" value="0"> Nada</label>
+        <label><input type="radio" name="p11" value="1"> Mediano</label>
+        <label><input type="radio" name="p11" value="2"> Moderado</label>
+        <label><input type="radio" name="p11" value="3"> Severo</label>
+
+        <!-- Pregunta 12 -->
+        <p>12. Manos temblorosas</p>
+        <label><input type="radio" name="p12" value="0"> Nada</label>
+        <label><input type="radio" name="p12" value="1"> Mediano</label>
+        <label><input type="radio" name="p12" value="2"> Moderado</label>
+        <label><input type="radio" name="p12" value="3"> Severo</label>
+
+        <!-- Pregunta 13 -->
+        <p>13. Temblor general</p>
+        <label><input type="radio" name="p13" value="0"> Nada</label>
+        <label><input type="radio" name="p13" value="1"> Mediano</label>
+        <label><input type="radio" name="p13" value="2"> Moderado</label>
+        <label><input type="radio" name="p13" value="3"> Severo</label>
+
+        <!-- Pregunta 14 -->
+        <p>14. Miedo a perder el control</p>
+        <label><input type="radio" name="p14" value="0"> Nada</label>
+        <label><input type="radio" name="p14" value="1"> Mediano</label>
+        <label><input type="radio" name="p14" value="2"> Moderado</label>
+        <label><input type="radio" name="p14" value="3"> Severo</label>
+
+        <!-- Pregunta 15 -->
+        <p>15. Dificultad para respirar</p>
+        <label><input type="radio" name="p15" value="0"> Nada</label>
+        <label><input type="radio" name="p15" value="1"> Mediano</label>
+        <label><input type="radio" name="p15" value="2"> Moderado</label>
+        <label><input type="radio" name="p15" value="3"> Severo</label>
+
+        <!-- Pregunta 16 -->
+        <p>16. Miedo a morir</p>
+        <label><input type="radio" name="p16" value="0"> Nada</label>
+        <label><input type="radio" name="p16" value="1"> Mediano</label>
+        <label><input type="radio" name="p16" value="2"> Moderado</label>
+        <label><input type="radio" name="p16" value="3"> Severo</label>
+
+        <!-- Pregunta 17 -->
+        <p>17. Asustado</p>
+        <label><input type="radio" name="p17" value="0"> Nada</label>
+        <label><input type="radio" name="p17" value="1"> Mediano</label>
+        <label><input type="radio" name="p17" value="2"> Moderado</label>
+        <label><input type="radio" name="p17" value="3"> Severo</label>
+
+        <!-- Pregunta 18 -->
+        <p>18. Indigestión o incomodidad en el abdomen</p>
+        <label><input type="radio" name="p18" value="0"> Nada</label>
+        <label><input type="radio" name="p18" value="1"> Mediano</label>
+        <label><input type="radio" name="p18" value="2"> Moderado</label>
+        <label><input type="radio" name="p18" value="3"> Severo</label>
+
+        <!-- Pregunta 19 -->
+        <p>19. Debilidad</p>
+        <label><input type="radio" name="p19" value="0"> Nada</label>
+        <label><input type="radio" name="p19" value="1"> Mediano</label>
+        <label><input type="radio" name="p19" value="2"> Moderado</label>
+        <label><input type="radio" name="p19" value="3"> Severo</label>
+
+        <!-- Pregunta 20 -->
+        <p>20. Sonrojamiento en el rostro</p>
+        <label><input type="radio" name="p20" value="0"> Nada</label>
+        <label><input type="radio" name="p20" value="1"> Mediano</label>
+        <label><input type="radio" name="p20" value="2"> Moderado</label>
+        <label><input type="radio" name="p20" value="3"> Severo</label>
+
+        <!-- Pregunta 21 -->
+        <p>21. Sudoración (no por calor)</p>
+        <label><input type="radio" name="p21" value="0"> Nada</label>
+        <label><input type="radio" name="p21" value="1"> Mediano</label>
+        <label><input type="radio" name="p21" value="2"> Moderado</label>
+        <label><input type="radio" name="p21" value="3"> Severo</label>
+
+        <div *ngIf="error"  id="error" class="error">
+            <p>{{ error }}</p>
+        </div>
+        <button type="submit">Calcular resultado</button>
+    </form>
+
+    <div *ngIf="resultado"  id="resultado">
+        <h3>Resultados del Test YSQ</h3>
+        <p><strong>Puntaje total:</strong> {{ total }}</p>
+    </div>
+
+    </body>
+</div>

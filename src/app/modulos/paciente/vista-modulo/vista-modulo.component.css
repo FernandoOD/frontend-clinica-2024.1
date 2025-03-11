@@ -1,0 +1,20 @@
+
+.card {
+    background: #fff;
+    min-height: 50px;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b7c0ce33;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: center;
+    height: 400px;
+}
+
+.card iframe{
+    width: 50%;
+    height: 100%;
+    position: relative;
+}

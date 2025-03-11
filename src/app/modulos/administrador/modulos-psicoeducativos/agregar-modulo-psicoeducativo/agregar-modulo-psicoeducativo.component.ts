@@ -31,6 +31,7 @@ export class AgregarModuloPsicoeducativoComponent {
     this.fgValidation = this.fb.group({
       titulo: ['',Validators.required],
       descripcion: ['',Validators.required],
+      url: ['',Validators.required],
     });
   }
 
@@ -50,19 +51,20 @@ export class AgregarModuloPsicoeducativoComponent {
   guardarRegistro(){
     let titulo = this.getFGV['titulo'].value;
     let descripcion = this.getFGV['descripcion'].value;
+    let url = this.getFGV['url'].value;
     let fechaRegistro= new Date().toLocaleDateString('en-CA', { timeZone: 'America/Mexico_City' });
     let obj = new ModuloPsicoeducativoModelo();
 
     obj.Titulo = titulo;
     obj.Descripcion = descripcion;
     obj.FechaCreacion = fechaRegistro;
-    obj.terapeutaId = this.terapeutaId;
+    obj.UrlVideo = url;
 
     this.servicio.saveRecord(obj).subscribe({
       next:(data: ModuloPsicoeducativoModelo) => {
         // Manejo de autenticación exitosa
         console.log("Datos Correctos", data);
-        this.router.navigate(["/terapeuta/listar-modulo-psicoeducativo"]);
+        this.router.navigate(["/admin/listar-modulo-psicoeducativo"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {

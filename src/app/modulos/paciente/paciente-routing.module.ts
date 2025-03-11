@@ -5,6 +5,10 @@ import { BDITestComponent } from './tests/bdi-test/bdi-test.component';
 import { EtraTestComponent } from './tests/etra-test/etra-test.component';
 import { PbqTestComponent } from './tests/pbq-test/pbq-test.component';
 import { Dsm5TestComponent } from './tests/dsm5-test/dsm5-test.component';
+import { VistaModuloComponent } from './vista-modulo/vista-modulo.component';
+import { AutoestimaTestComponent } from './tests/autoestima-test/autoestima-test.component';
+import { YsqTestComponent } from './tests/ysq-test/ysq-test.component';
+import { BaiTestComponent } from './tests/bai-test/bai-test.component';
 
 
 const routes: Routes = [
@@ -17,7 +21,7 @@ const routes: Routes = [
     component: BDITestComponent,
   },
   {
-    path: 'ETRA-test',
+    path: 'ETrA-test',
     component: EtraTestComponent,
   },
   {
@@ -25,9 +29,25 @@ const routes: Routes = [
     component: PbqTestComponent,
   },
   {
+    path: 'YSQ-test',
+    component: YsqTestComponent,
+  },
+  {
+    path: 'BAI-test',
+    component: BaiTestComponent,
+  },
+  {
     path: 'DSM5-test',
     component: Dsm5TestComponent,
-  }
+  },
+  {
+    path: 'vista-modulo/:id',
+    component: VistaModuloComponent,
+  },
+  {
+    path: 'Autoestima-test',
+    component: AutoestimaTestComponent,
+  },
 ];
 
 @NgModule({

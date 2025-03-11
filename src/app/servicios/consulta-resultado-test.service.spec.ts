@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ConsultaResultadoTestService } from './consulta-resultado-test.service';
+import it from '@angular/common/locales/it';
+import { describe, beforeEach } from 'node:test';
 
 describe('ConsultaResultadoTestService', () => {
   let service: ConsultaResultadoTestService;

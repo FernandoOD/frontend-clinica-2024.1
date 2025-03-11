@@ -29,9 +29,10 @@ export class ConsultaResultadoTestService {
     });
   }
 
-  findRecord(id : number): Observable<ConsultaResultadoTestModelo>{
-    return this.http.get<ConsultaResultadoTestModelo>(`${this.url}/generarToken/${id}`,{
+  findRecord(id?: number): Observable<ConsultaResultadoTestModelo>{
+    return this.http.get<ConsultaResultadoTestModelo>(`${this.url}/consultas/${id}/resultado-tests`,{
       headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
       })
     });
   }

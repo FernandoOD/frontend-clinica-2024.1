@@ -33,7 +33,8 @@ export class EditarModuloPsicoeducativoComponent {
       titulo: ['',Validators.required],
       descripcion: ['',Validators.required],
       fechaCreacion: ['',Validators.required],
-      terapeutaId: ['',Validators.required]
+      url: ['',Validators.required],
+      //terapeutaId: ['',Validators.required]
     });
   }
 
@@ -52,7 +53,8 @@ export class EditarModuloPsicoeducativoComponent {
         this.getFGV['titulo'].setValue(data.Titulo);
         this.getFGV['descripcion'].setValue(data.Descripcion);
         this.getFGV['fechaCreacion'].setValue(data.FechaCreacion);
-        this.getFGV['terapeutaId'].setValue(data.terapeutaId);
+        this.getFGV['url'].setValue(data.UrlVideo);
+        //this.getFGV['terapeutaId'].setValue(data.terapeutaId);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
@@ -76,14 +78,16 @@ export class EditarModuloPsicoeducativoComponent {
     let titulo = this.getFGV['titulo'].value;
     let descripcion = this.getFGV['descripcion'].value;
     let fechaCreacion = this.getFGV['fechaCreacion'].value;
-    let terapeutaId = this.getFGV['terapeutaId'].value;
+    let url = this.getFGV['url'].value;
+    //let terapeutaId = this.getFGV['terapeutaId'].value;
     let obj = new ModuloPsicoeducativoModelo();
 
     obj.id = id;
     obj.Titulo = titulo;
     obj.Descripcion = descripcion;
     obj.FechaCreacion = fechaCreacion;
-    obj.terapeutaId = terapeutaId;
+    obj.UrlVideo = url;
+    //obj.terapeutaId = terapeutaId;
 
     this.servicio.updateRecord(obj).subscribe({
       next: (data: ModuloPsicoeducativoModelo) => {

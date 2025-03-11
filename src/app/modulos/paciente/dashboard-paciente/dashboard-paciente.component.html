@@ -36,12 +36,81 @@
     </div>
 
     <div class="row">
-        <div class="col l3 m6 s12">
+        <div class="col l4 m6 s12">
             <div class="card">
-                
+                <div>
+                    <canvas id="depresion"></canvas>
+                    <div class="currentScore">
+                      <h2>{{ currentScoreDepresion }}</h2>
+                      <p>{{interpretacion}}</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div>
+                    <canvas id="autoestima"></canvas>
+                    <div class="currentScore">
+                        <h2>{{ currentScoreAutoestima }}</h2>
+                        <p>{{interpretacionAutoestima}}</p>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div>
+                    <canvas id="BAI"></canvas>
+                    <div class="currentScore">
+                        <h2>{{ currentScoreBAI }}</h2>
+                        <p>{{interpretacionBAI}}</p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    <!--
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div style="width: 100%; display: flex; justify-content: center;">
+                    <canvas id="DSM5"></canvas>
+                </div>
+            </div>
+        </div>  
+        
+    -->
+    </div>
+        <div class="row">
+            <div class="col l4 m6 s12">
+                <div class="card">
+                    <div>
+                        <canvas id="ETRABar"></canvas>
+                        
+                      </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="row">
+        <div class="col l9 m6 s12">
+            <div class="card">
+                <div style=>
+                    <canvas id="PBQ"></canvas>
+                  </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col l9 m6 s12">
+            <div class="card">
+                <div style=>
+                    <canvas id="YSQ"></canvas>
+                  </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="row">
         <div class="col l4 m6 s12">
@@ -89,13 +158,22 @@
                     <thead>
                       <tr>
                         <th>Modulo</th>
+                        <th>Visto</th>
                         <th>Ejercicio</th>
-                        <th>Seleccionar</th>
+                        <th>Realizado</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let ejercicio of ejerciciosAsignadosConModulo">
-                        <td>{{ejercicio.moduloTitulo}}</td>
+                        <a [routerLink]="['/paciente/vista-modulo',ejercicio.moduloId]"><td><span [class.tachado]="ejercicio.checkedModulo">{{ejercicio.moduloTitulo}}</span></td></a>
+                        <td>
+                            <input
+                              class="browser-default checkbox"
+                              type="checkbox"
+                              [(ngModel)]="ejercicio.checkedModulo"
+                              (change)="onCheckboxChange(ejercicio)"
+                            />
+                          </td>
                         <td ><span [class.tachado]="ejercicio.checked">{{ejercicio.nombre}}</span></td>
                         <td>
                           <input

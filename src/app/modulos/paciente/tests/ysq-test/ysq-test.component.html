@@ -1,0 +1,696 @@
+<div class="main-container">
+    <body>
+        <h1>Cuestionario de Esquemas de Young (YSQ-II)</h1>
+    <p>Por favor selecciona el grado en que crees cada una de las siguientes declaraciones:</p>
+
+    <form id="ysqForm"  class="radio" (submit)="onSubmit($event)" #pbqForm="ngForm">
+        <!-- Aquí van las 75 preguntas (omitidas por brevedad) -->
+        <!-- Pregunta 1 - Privación Emocional -->
+        <p>1. La mayor parte del tiempo, no he tenido a alguien que me cuide, comparta conmigo, o le importe lo que me pasa.</p>
+        <label><input type="radio" name="p1" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p1" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p1" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p1" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p1" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p1" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 2 - Privación Emocional -->
+        <p>2. En general, las personas no me han dado cariño y afecto.</p>
+        <label><input type="radio" name="p2" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p2" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p2" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p2" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p2" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p2" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 3 - Privación Emocional -->
+        <p>3. Gran parte de mi vida, no me he sentido especial para alguien.</p>
+        <label><input type="radio" name="p3" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p3" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p3" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p3" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p3" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p3" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 4 - Privación Emocional -->
+        <p>4. En su mayor parte, no he tenido a alguien que realmente me escuche, me entienda, o comprenda mis necesidades y sentimientos.</p>
+        <label><input type="radio" name="p4" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p4" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p4" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p4" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p4" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p4" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 5 - Privación Emocional -->
+        <p>5. Casi nunca he tenido a una persona fuerte para que me de consejos cuando no he sabido qué hacer.</p>
+        <label><input type="radio" name="p5" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p5" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p5" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p5" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p5" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p5" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 6 - Abandono -->
+        <p>6. Me aferro a la gente que siento cercana porque me da miedo que me dejarán.</p>
+        <label><input type="radio" name="p6" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p6" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p6" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p6" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p6" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p6" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 7 - Abandono -->
+        <p>7. Necesito tanto a otras personas que me preocupo que los perderé.</p>
+        <label><input type="radio" name="p7" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p7" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p7" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p7" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p7" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p7" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 8 - Abandono -->
+        <p>8. Me preocupo que la gente cercana a mí me dejarán o abandonarán.</p>
+        <label><input type="radio" name="p8" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p8" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p8" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p8" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p8" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p8" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 9 - Abandono -->
+        <p>9. Cuando siento que alguien que quiero se aleja de mí, me siento desesperado.</p>
+        <label><input type="radio" name="p9" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p9" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p9" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p9" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p9" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p9" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 10 - Abandono -->
+        <p>10. A veces me preocupo tanto que la gente me deje que los alejo.</p>
+        <label><input type="radio" name="p10" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p10" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p10" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p10" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p10" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p10" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 11 - Desconfianza y abuso -->
+        <p>11. Siento que la gente se va a aprovechar de mí.</p>
+        <label><input type="radio" name="p11" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p11" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p11" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p11" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p11" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p11" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 12 - Desconfianza y abuso -->
+        <p>12. Siento que no puedo bajar la guardia frente a otras personas, o ellas podrían lastimarme intencionalmente.</p>
+        <label><input type="radio" name="p12" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p12" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p12" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p12" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p12" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p12" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 13 - Desconfianza y abuso -->
+        <p>13. Es solo cuestión de tiempo antes de que alguien me traicione.</p>
+        <label><input type="radio" name="p13" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p13" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p13" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p13" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p13" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p13" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 14 - Desconfianza y abuso -->
+        <p>14. Sospecho de los motivos de otras personas.</p>
+        <label><input type="radio" name="p14" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p14" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p14" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p14" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p14" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p14" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 15 - Desconfianza y abuso -->
+        <p>15. Usualmente estoy al pendiente de los motivos escondidos de la gente.</p>
+        <label><input type="radio" name="p15" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p15" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p15" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p15" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p15" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p15" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 16 - Aislamiento social -->
+        <p>16. No encajo (socialmente).</p>
+        <label><input type="radio" name="p16" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p16" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p16" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p16" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p16" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p16" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 17 - Aislamiento social -->
+        <p>17. Soy fundamentalmente diferente a los demás.</p>
+        <label><input type="radio" name="p17" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p17" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p17" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p17" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p17" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p17" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 18 - Aislamiento social -->
+        <p>18. No pertenezco, soy solitario.</p>
+        <label><input type="radio" name="p18" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p18" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p18" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p18" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p18" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p18" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 19 - Aislamiento social -->
+        <p>19. Me siento alejado de otras personas.</p>
+        <label><input type="radio" name="p19" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p19" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p19" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p19" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p19" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p19" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 20 - Aislamiento social -->
+        <p>20. Siempre me siento externo a los grupos.</p>
+        <label><input type="radio" name="p20" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p20" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p20" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p20" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p20" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p20" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 21 - Defectuosidad -->
+        <p>21. Nadie que yo desee me podría amar cuando vea mis defectos.</p>
+        <label><input type="radio" name="p21" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p21" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p21" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p21" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p21" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p21" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 22 - Defectuosidad -->
+        <p>22. Nadie que yo desee quisiera estar cerca de mí si conociera mi verdadero yo.</p>
+        <label><input type="radio" name="p22" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p22" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p22" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p22" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p22" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p22" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 23 - Defectuosidad -->
+        <p>23. No merezco el amor, atención y respeto de otros.</p>
+        <label><input type="radio" name="p23" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p23" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p23" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p23" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p23" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p23" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 24 - Defectuosidad -->
+        <p>24. Siento que no soy digno de ser amado.</p>
+        <label><input type="radio" name="p24" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p24" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p24" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p24" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p24" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p24" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 25 - Defectuosidad -->
+        <p>25. Siento que soy inaceptable y no quiero que otros se den cuenta.</p>
+        <label><input type="radio" name="p25" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p25" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p25" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p25" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p25" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p25" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 26 - Fracaso -->
+        <p>26. Casi nada de lo que hago me sale tan bien que a los demás.</p>
+        <label><input type="radio" name="p26" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p26" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p26" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p26" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p26" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p26" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 27 - Fracaso -->
+        <p>27. Soy incompetente cuando se refiere a logros.</p>
+        <label><input type="radio" name="p27" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p27" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p27" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p27" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p27" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p27" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 28 - Fracaso -->
+        <p>28. La mayoría de las personas son más capaces que yo en áreas de trabajo y logros.</p>
+        <label><input type="radio" name="p28" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p28" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p28" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p28" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p28" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p28" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 29 - Fracaso -->
+        <p>29. No tengo tanto talento como la mayoría de las personas en sus trabajos.</p>
+        <label><input type="radio" name="p29" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p29" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p29" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p29" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p29" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p29" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 30 - Fracaso -->
+        <p>30. No soy tan inteligente como la mayoría de las personas cuando se refiere al trabajo.</p>
+        <label><input type="radio" name="p30" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p30" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p30" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p30" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p30" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p30" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 31 - Dependencia / Incompetencia -->
+        <p>31. No me siento capaz de arreglármelas solo en la vida diaria.</p>
+        <label><input type="radio" name="p31" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p31" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p31" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p31" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p31" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p31" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 32 - Dependencia / Incompetencia -->
+        <p>32. Me veo a mi mismo como dependiente cuando se refiere al funcionamiento de todos los días.</p>
+        <label><input type="radio" name="p32" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p32" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p32" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p32" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p32" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p32" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 33 - Dependencia / Incompetencia -->
+        <p>33. No tengo sentido común.</p>
+        <label><input type="radio" name="p33" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p33" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p33" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p33" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p33" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p33" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 34 - Dependencia / Incompetencia -->
+        <p>34. No puedo confiar en mi juicio para situaciones cotidianas.</p>
+        <label><input type="radio" name="p34" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p34" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p34" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p34" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p34" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p34" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 35 - Dependencia / Incompetencia -->
+        <p>35. No siento confianza en mi capacidad para resolver los problemas diarios que surgen.</p>
+        <label><input type="radio" name="p35" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p35" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p35" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p35" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p35" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p35" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 36 - Vulnerabilidad -->
+        <p>36. No puedo evitar sentir que algo malo está a punto de suceder.</p>
+        <label><input type="radio" name="p36" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p36" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p36" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p36" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p36" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p36" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 37 - Vulnerabilidad -->
+        <p>37. Siento que un desastre (natural, criminal, financiero, médico) puede suceder en cualquier momento.</p>
+        <label><input type="radio" name="p37" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p37" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p37" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p37" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p37" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p37" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 38 - Vulnerabilidad -->
+        <p>38. Me preocupa ser atacado.</p>
+        <label><input type="radio" name="p38" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p38" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p38" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p38" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p38" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p38" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 39 - Vulnerabilidad -->
+        <p>39. Me preocupa perder todo mi dinero y quedarme en quiebra.</p>
+        <label><input type="radio" name="p39" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p39" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p39" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p39" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p39" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p39" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 40 - Vulnerabilidad -->
+        <p>40. Me preocupa que puedo desarrollar una enfermedad grave, aunque el médico no me ha diagnosticado nada serio.</p>
+        <label><input type="radio" name="p40" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p40" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p40" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p40" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p40" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p40" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 41 - Simbiosis -->
+        <p>41. No me he podido separar de mis padres (o uno de ellos) de la misma manera que otras personas de mi edad lo han hecho.</p>
+        <label><input type="radio" name="p41" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p41" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p41" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p41" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p41" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p41" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 42 - Simbiosis -->
+        <p>42. Mis padres (o uno de ellos) y yo nos sobreinvolucramos en nuestras vidas y nuestros problemas.</p>
+        <label><input type="radio" name="p42" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p42" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p42" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p42" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p42" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p42" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 43 - Simbiosis -->
+        <p>43. Es muy difícil que mis padres (o uno de ellos) y yo nos guardemos detalles íntimos, sin sentirnos traicionados o culpables.</p>
+        <label><input type="radio" name="p43" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p43" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p43" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p43" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p43" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p43" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 44 - Simbiosis -->
+        <p>44. Seguido siento que mis padres (o uno de ellos) viven a través de mí; no tengo vida propia.</p>
+        <label><input type="radio" name="p44" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p44" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p44" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p44" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p44" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p44" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 45 - Simbiosis -->
+        <p>45. Seguido siento que no tengo identidad separada de mis padres (o uno de ellos) o de mi pareja.</p>
+        <label><input type="radio" name="p45" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p45" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p45" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p45" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p45" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p45" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 46 - Subyugación -->
+        <p>46. Pienso que si hago lo que quiero, solo me encontraré con problemas.</p>
+        <label><input type="radio" name="p46" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p46" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p46" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p46" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p46" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p46" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 47 - Subyugación -->
+        <p>47. Siento que no tengo opción más que acceder a los deseos de otros, o ellos se pueden vengar o rechazarme de alguna manera.</p>
+        <label><input type="radio" name="p47" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p47" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p47" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p47" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p47" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p47" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 48 - Subyugación -->
+        <p>48. En relaciones, permito que el otro tenga la ventaja.</p>
+        <label><input type="radio" name="p48" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p48" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p48" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p48" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p48" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p48" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 49 - Subyugación -->
+        <p>49. Siempre he permitido que otros tomen decisiones por mí, así que no sé realmente qué quiero para mí.</p>
+        <label><input type="radio" name="p49" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p49" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p49" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p49" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p49" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p49" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 50 - Subyugación -->
+        <p>50. Se me dificulta exigir que mis derechos se respeten y que mis sentimientos sean tomados en cuenta.</p>
+        <label><input type="radio" name="p50" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p50" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p50" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p50" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p50" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p50" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 51 - Sacrificio -->
+        <p>51. Usualmente soy el que termina cuidando a la gente cercana a mí.</p>
+        <label><input type="radio" name="p51" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p51" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p51" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p51" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p51" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p51" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 52 - Sacrificio -->
+        <p>52. Soy una buena persona porque pienso en otros más que en mí mismo.</p>
+        <label><input type="radio" name="p52" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p52" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p52" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p52" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p52" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p52" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 53 - Sacrificio -->
+        <p>53. Estoy tan ocupado haciendo cosas por otros, que casi no tengo tiempo para mí mismo.</p>
+        <label><input type="radio" name="p53" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p53" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p53" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p53" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p53" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p53" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 54 - Sacrificio -->
+        <p>54. Siempre he sido el que escucha los problemas de los demás.</p>
+        <label><input type="radio" name="p54" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p54" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p54" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p54" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p54" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p54" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 55 - Sacrificio -->
+        <p>55. Otras personas ven que hago demasiado por otros y no suficiente por mí.</p>
+        <label><input type="radio" name="p55" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p55" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p55" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p55" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p55" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p55" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 56 - Inhibición Emocional -->
+        <p>56. Me siento incómodo mostrando sentimientos positivos (Ej. afecto, preocupación).</p>
+        <label><input type="radio" name="p56" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p56" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p56" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p56" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p56" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p56" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 57 - Inhibición Emocional -->
+        <p>57. Me da pena expresar mis emociones a otros.</p>
+        <label><input type="radio" name="p57" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p57" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p57" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p57" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p57" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p57" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 58 - Inhibición Emocional -->
+        <p>58. Se me dificulta ser cálido y espontáneo.</p>
+        <label><input type="radio" name="p58" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p58" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p58" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p58" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p58" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p58" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 59 - Inhibición Emocional -->
+        <p>59. Me controlo tanto que mucha gente cree que no tengo emociones.</p>
+        <label><input type="radio" name="p59" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p59" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p59" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p59" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p59" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p59" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 60 - Inhibición Emocional -->
+        <p>60. La gente me ve como emocionalmente tenso / frío.</p>
+        <label><input type="radio" name="p60" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p60" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p60" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p60" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p60" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p60" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 61 - Estándares Inalcanzables -->
+        <p>61. Tengo que ser el mejor en lo que hago; no puedo aceptar ser segundo lugar.</p>
+        <label><input type="radio" name="p61" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p61" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p61" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p61" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p61" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p61" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 62 - Estándares Inalcanzables -->
+        <p>62. Intento hacer todo lo mejor posible; no me puedo conformar con “suficiente”.</p>
+        <label><input type="radio" name="p62" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p62" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p62" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p62" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p62" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p62" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 63 - Estándares Inalcanzables -->
+        <p>63. Tengo que cumplir todas mis responsabilidades a la perfección.</p>
+        <label><input type="radio" name="p63" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p63" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p63" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p63" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p63" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p63" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 64 - Estándares Inalcanzables -->
+        <p>64. Siento que hay presión constante para que tenga logros y termine las cosas.</p>
+        <label><input type="radio" name="p64" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p64" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p64" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p64" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p64" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p64" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 65 - Estándares Inalcanzables -->
+        <p>65. No me puedo disculpar fácilmente o hacer excusas por mis errores.</p>
+        <label><input type="radio" name="p65" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p65" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p65" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p65" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p65" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p65" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 66 - Grandiosidad -->
+        <p>66. Se me dificulta aceptar que me digan que “no” cuando quiero algo de otras personas.</p>
+        <label><input type="radio" name="p66" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p66" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p66" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p66" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p66" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p66" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 67 - Grandiosidad -->
+        <p>67. Soy especial y no debería de aceptar las restricciones que se le ponen a otras personas.</p>
+        <label><input type="radio" name="p67" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p67" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p67" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p67" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p67" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p67" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 68 - Grandiosidad -->
+        <p>68. Odio ser limitado o que no me permitan hacer lo que quiero.</p>
+        <label><input type="radio" name="p68" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p68" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p68" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p68" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p68" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p68" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 69 - Grandiosidad -->
+        <p>69. Siento que no debería tener que seguir las mismas reglas que otras personas.</p>
+        <label><input type="radio" name="p69" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p69" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p69" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p69" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p69" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p69" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 70 - Grandiosidad -->
+        <p>70. Siento que lo que tengo que ofrecer es de mayor valor que las contribuciones de otros.</p>
+        <label><input type="radio" name="p70" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p70" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p70" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p70" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p70" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p70" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 71 - Disciplina Insuficiente -->
+        <p>71. No me puedo disciplinar para terminar tareas o labores aburridas.</p>
+        <label><input type="radio" name="p71" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p71" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p71" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p71" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p71" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p71" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 72 - Disciplina Insuficiente -->
+        <p>72. Si no puedo alcanzar una meta, me frustro fácilmente y renuncio.</p>
+        <label><input type="radio" name="p72" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p72" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p72" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p72" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p72" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p72" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 73 - Disciplina Insuficiente -->
+        <p>73. Se me dificulta sacrificar gratificación inmediata para alcanzar una meta a largo plazo.</p>
+        <label><input type="radio" name="p73" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p73" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p73" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p73" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p73" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p73" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 74 - Disciplina Insuficiente -->
+        <p>74. No me puedo forzar a hacer algo que no disfrute, aunque sepa que es por mi bien.</p>
+        <label><input type="radio" name="p74" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p74" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p74" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p74" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p74" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p74" value="1"> Completamente falso en mí</label>
+
+        <!-- Pregunta 75 - Disciplina Insuficiente -->
+        <p>75. Raramente he podido mantener mis propósitos.</p>
+        <label><input type="radio" name="p75" value="6"> Me describe perfectamente</label>
+        <label><input type="radio" name="p75" value="5"> Mayormente cierto en mí</label>
+        <label><input type="radio" name="p75" value="4"> Bastante cierto en mí</label>
+        <label><input type="radio" name="p75" value="3"> Un poco más cierto que falso</label>
+        <label><input type="radio" name="p75" value="2"> Mayormente falso en mí</label>
+        <label><input type="radio" name="p75" value="1"> Completamente falso en mí</label>
+
+        <div *ngIf="errorMessage"  id="error" class="error">
+            <p>{{ errorMessage }}</p>
+        </div>
+        <button type="submit">Calcular resultado</button>
+    </form>
+
+    <div *ngIf="resultado"  id="resultado">
+        <h3>Resultados del Test YSQ</h3>
+        <p><strong>Puntaje total:</strong> {{ total }}</p>
+    </div>
+    </body>
+
+
+</div>

@@ -5,6 +5,8 @@ import { DatosGenerales } from '../config/datos.generales';
 import { SeguridadService } from './seguridad.service';
 import { ModuloPsicoeducativoModelo } from '../modelos/ModuloPsicoeducativo.modelo';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +39,7 @@ export class ModuloPsicoeducativoService {
       Titulo: model.Titulo,
       Descripcion: model.Descripcion,
       FechaCreacion: model.FechaCreacion,
-      terapeutaId: model.terapeutaId
+      UrlVideo : model.UrlVideo,
     },{
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`

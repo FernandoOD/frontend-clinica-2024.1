@@ -45,8 +45,11 @@ export class TestPsicometricoService {
     });
   }
   updateRecord(model : TestPsicometricoModelo): Observable<TestPsicometricoModelo>{
-    return this.http.put<TestPsicometricoModelo>(`${this.url}/tests-psicometricos/${model.id}`, model,{
-      headers: new HttpHeaders({
+    return this.http.put<TestPsicometricoModelo>(`${this.url}/tests-psicometricos/${model.id}`,{
+      Descripcion: model.Descripcion,
+      Nombre: model.Nombre,
+      id : model.id
+    },{headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })
     });

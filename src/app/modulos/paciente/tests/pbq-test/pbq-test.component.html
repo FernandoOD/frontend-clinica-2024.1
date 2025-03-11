@@ -3,7 +3,10 @@
         <h1>Cuestionario de Creencias (PBQ)</h1>
         <p>Por favor selecciona el grado en que crees cada una de las siguientes declaraciones:</p>
     
-        <form id="pbqForm" class="radio">
+        <form id="pbqForm" class="radio" (submit)="onSubmit($event)" #pbqForm="ngForm">
+            <p>Sexo:</p>
+            <label><input type="radio" name="sexo" value="masculino"> Hombre</label>
+            <label><input type="radio" name="sexo" value="femenino"> Mujer</label>
             <!-- Pregunta 1 -->
             <p>1. Soy socialmente inepto e indeseable en el trabajo y/o en situaciones sociales.</p>
             <label><input type="radio" name="p1" value="4"> Creo totalmente</label>
@@ -162,15 +165,15 @@
             <label><input type="radio" name="p20" value="3"> Creo mucho</label>
             <label><input type="radio" name="p20" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p20" value="1"> Creo poco</label>
-            <label><input type="radio" name="p20"0 value="0"> No lo creo</label>+
+            <label><input type="radio" name="p20" value="0"> No lo creo</label>
     
             <!-- Pregunta 21 -->
-            <p>21. Dado que soy tan superior tengo derecho a un trato especial y privilegios..</p>
+            <p>21. Dado que soy tan superior tengo derecho a un trato especial y privilegios.</p>
             <label><input type="radio" name="p21" value="4"> Creo totalmente</label>
             <label><input type="radio" name="p21" value="3"> Creo mucho</label>
             <label><input type="radio" name="p21" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p21" value="1"> Creo poco</label>
-            <label><input type="radio" name="p21"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p21" value="0"> No lo creo</label>
     
             <!-- Pregunta 22 -->
             <p>22. Es muy importante obtener reconocimiento, halagos y admiración.</p>
@@ -178,15 +181,15 @@
             <label><input type="radio" name="p22" value="3"> Creo mucho</label>
             <label><input type="radio" name="p22" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p22" value="1"> Creo poco</label>
-            <label><input type="radio" name="p22"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p22" value="0"> No lo creo</label>
     
             <!-- Pregunta 23 -->
-            <p>23. La gente debe reconocer lo especial que soy..</p>
+            <p>23. La gente debe reconocer lo especial que soy.</p>
             <label><input type="radio" name="p23" value="4"> Creo totalmente</label>
             <label><input type="radio" name="p23" value="3"> Creo mucho</label>
             <label><input type="radio" name="p23" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p23" value="1"> Creo poco</label>
-            <label><input type="radio" name="p23"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p23" value="0"> No lo creo</label>
     
             <!-- Pregunta 24 -->
             <p>24. Las necesidades de otras personas no deben interferir con las mías.</p>
@@ -194,7 +197,7 @@
             <label><input type="radio" name="p24" value="3"> Creo mucho</label>
             <label><input type="radio" name="p24" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p24" value="1"> Creo poco</label>
-            <label><input type="radio" name="p24"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p24" value="0"> No lo creo</label>
     
             <!-- Pregunta 25 -->
             <p>25. Trato de socializar únicamente con gente de mi estatus o nivel</p>
@@ -202,7 +205,7 @@
             <label><input type="radio" name="p25" value="3"> Creo mucho</label>
             <label><input type="radio" name="p25" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p25" value="1"> Creo poco</label>
-            <label><input type="radio" name="p25"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p25" value="0"> No lo creo</label>
     
             <!-- Pregunta 26 -->
             <p>26. Para ser feliz, necesito que otras personas me presten atención.</p>
@@ -210,7 +213,7 @@
             <label><input type="radio" name="p26" value="3"> Creo mucho</label>
             <label><input type="radio" name="p26" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p26" value="1"> Creo poco</label>
-            <label><input type="radio" name="p26"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p26" value="0"> No lo creo</label>
     
              <!-- Pregunta 27 -->
             <p>27. La manera de obtener lo que quiero es deslumbrar o divertir la gente.</p>
@@ -218,7 +221,7 @@
             <label><input type="radio" name="p27" value="3"> Creo mucho</label>
             <label><input type="radio" name="p27" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p27" value="1"> Creo poco</label>
-            <label><input type="radio" name="p27"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p27" value="0"> No lo creo</label>
     
              <!-- Pregunta 28 -->
             <p>28. Es terrible si la gente me ignora.</p>
@@ -226,7 +229,7 @@
             <label><input type="radio" name="p28" value="3"> Creo mucho</label>
             <label><input type="radio" name="p28" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p28" value="1"> Creo poco</label>
-            <label><input type="radio" name="p28"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p28" value="0"> No lo creo</label>
     
              <!-- Pregunta 29 -->
             <p>29. Me gusta ser el centro de atención.</p>
@@ -234,7 +237,7 @@
             <label><input type="radio" name="p29" value="3"> Creo mucho</label>
             <label><input type="radio" name="p29" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p29" value="1"> Creo poco</label>
-            <label><input type="radio" name="p29"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p29" value="0"> No lo creo</label>
     
     
             <!-- Pregunta 30 -->
@@ -243,7 +246,7 @@
             <label><input type="radio" name="p30" value="3"> Creo mucho</label>
             <label><input type="radio" name="p30" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p30" value="1"> Creo poco</label>
-            <label><input type="radio" name="p30"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p30" value="0"> No lo creo</label>
     
             <!-- Pregunta 31 -->
             <p>31. Disfruto más hacer las cosas por mí mismo que con otras personas.</p>
@@ -251,7 +254,7 @@
             <label><input type="radio" name="p31" value="3"> Creo mucho</label>
             <label><input type="radio" name="p31" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p31" value="1"> Creo poco</label>
-            <label><input type="radio" name="p31"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p31" value="0"> No lo creo</label>
     
             <!-- Pregunta 32 -->
             <p>32. En muchas situaciones, estoy mejor estando solo.</p>
@@ -259,7 +262,7 @@
             <label><input type="radio" name="p32" value="3"> Creo mucho</label>
             <label><input type="radio" name="p32" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p32" value="1"> Creo poco</label>
-            <label><input type="radio" name="p32"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p32" value="0"> No lo creo</label>
     
             <!-- Pregunta 33 -->
             <p>33. Mi privacidad es mucho más importante que la cercanía con la gente.</p>
@@ -267,7 +270,7 @@
             <label><input type="radio" name="p33" value="3"> Creo mucho</label>
             <label><input type="radio" name="p33" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p33" value="1"> Creo poco</label>
-            <label><input type="radio" name="p33"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p33" value="0"> No lo creo</label>
     
             <!-- Pregunta 34 -->
             <p>34. Puedo usar a la gente para mis propósitos, mientras no me involucre.</p>
@@ -275,7 +278,7 @@
             <label><input type="radio" name="p34" value="3"> Creo mucho</label>
             <label><input type="radio" name="p34" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p34" value="1"> Creo poco</label>
-            <label><input type="radio" name="p34"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p34" value="0"> No lo creo</label>
     
             <!-- Pregunta 35 -->
             <p>35. Puedo usar a la gente para mis propósitos, mientras no me involucre.</p>
@@ -283,7 +286,7 @@
             <label><input type="radio" name="p35" value="3"> Creo mucho</label>
             <label><input type="radio" name="p35" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p35" value="1"> Creo poco</label>
-            <label><input type="radio" name="p35"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p35" value="0"> No lo creo</label>
     
             <!-- Pregunta 36 -->
             <p>36. Tengo que estar con la guardia alta en todo momento.</p>
@@ -291,7 +294,7 @@
             <label><input type="radio" name="p36" value="3"> Creo mucho</label>
             <label><input type="radio" name="p36" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p36" value="1"> Creo poco</label>
-            <label><input type="radio" name="p36"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p36" value="0"> No lo creo</label>
     
             <!-- Pregunta 37 -->
             <p>37. No es seguro confiar en otras personas.</p>
@@ -299,7 +302,7 @@
             <label><input type="radio" name="p37" value="3"> Creo mucho</label>
             <label><input type="radio" name="p37" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p37" value="1"> Creo poco</label>
-            <label><input type="radio" name="p37"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p37" value="0"> No lo creo</label>
     
             <!-- Pregunta 38 -->
             <p>38. Si la gente actúa amigablemente, seguramente es porque quieren algo</p>
@@ -307,7 +310,7 @@
             <label><input type="radio" name="p38" value="3"> Creo mucho</label>
             <label><input type="radio" name="p38" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p38" value="1"> Creo poco</label>
-            <label><input type="radio" name="p38"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p38" value="0"> No lo creo</label>
     
             <!-- Pregunta 39 -->
             <p>39. La gente se aprovecharía de mí si se los permito.</p>
@@ -315,7 +318,7 @@
             <label><input type="radio" name="p39" value="3"> Creo mucho</label>
             <label><input type="radio" name="p39" value="2"> Creo moderadamente</label>
             <label><input type="radio" name="p39" value="1"> Creo poco</label>
-            <label><input type="radio" name="p39"0 value="0"> No lo creo</label>
+            <label><input type="radio" name="p39" value="0"> No lo creo</label>
     
             <!-- Pregunta 40 -->
             <p>40. Si las personas averiguan cosas de mí, van a utilizarlas en mi contra.</p>
@@ -365,54 +368,16 @@
             <label><input type="radio" name="p45" value="1"> Creo poco</label>
             <label><input type="radio" name="p45" value="0"> No lo creo</label>
     
-            <div id="error" class="error"></div>
+            <div *ngIf="errorMessage"  id="error" class="error">
+                <p>{{ errorMessage }}</p>
+            </div>
             <button type="submit">Calcular resultado</button>
         </form>
     
-        <div id="resultado"></div>
-    
-        <script>
-            document.getElementById("pbqForm").addEventListener("submit", function(event) {
-                event.preventDefault();
-                
-                // Limpiar mensajes anteriores
-                document.getElementById("error").textContent = "";
-                document.getElementById("resultado").style.display = "none";
-                
-                let total = 0;
-                let preguntasSinResponder = [];
-    
-                // Verificar respuestas y sumarlas
-                for (let i = 1; i <= 45; i++) {
-                    const respuesta = document.querySelector(`input[name="p${i}"]:checked`);
-                    if (respuesta) {
-                        total += parseInt(respuesta.value);
-                    } else {
-                        preguntasSinResponder.push(i);
-                    }
-                }
-    
-                // Verificar si hay preguntas sin responder
-                if (preguntasSinResponder.length > 0) {
-                    document.getElementById("error").textContent = 
-                        `Por favor, responde las siguientes preguntas: ${preguntasSinResponder.join(", ")}`;
-                    return;
-                }
-    
-                // Mostrar el resultado
-                const resultadoDiv = document.getElementById("resultado");
-                resultadoDiv.innerHTML = `
-                    <h3>Resultados del Cuestionario de Creencias (PBQ)</h3>
-                    <p><strong>Puntaje total:</strong> ${total}</p>
-                    <p><em>Nota: Este test es una herramienta de screening y no sustituye una evaluación profesional. 
-                    Si tienes preocupaciones sobre tus creencias o comportamiento, consulta con un profesional de la salud.</em></p>
-                `;
-                resultadoDiv.style.display = "block";
-    
-                // Scroll hasta el resultado
-                resultadoDiv.scrollIntoView({ behavior: 'smooth' });
-            });
-        </script>
+        <div *ngIf="resultado"  id="resultado">
+            <h3>Resultados del Test PBQ</h3>
+            <p><strong>Puntaje total:</strong> {{ total }}</p>
+        </div>
     
     </body>
     

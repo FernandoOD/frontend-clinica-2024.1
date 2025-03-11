@@ -1,5 +1,4 @@
 .main-container{
-    height: 100vh;
     background-color: #F0F3FB;
 }
 
@@ -58,6 +57,7 @@
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px #b7c0ce33;
+    padding: 20px 20px;
 }
 
 .card .body {
@@ -173,3 +173,19 @@ td{
     text-decoration-thickness: 2px;
     color: gray; /* Opcional: para un efecto más claro */
   }
+
+.currentScore{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    text-align: center;
+}
+
+.currentScore h2{
+    font-weight: 500;
+}
+
+.currentScore p{
+    margin-top: 70px;
+}

@@ -193,6 +193,7 @@ th{
 
 td{
     padding: 15px 15px;
+    white-space: pre-line;
 }
 
 th::after{

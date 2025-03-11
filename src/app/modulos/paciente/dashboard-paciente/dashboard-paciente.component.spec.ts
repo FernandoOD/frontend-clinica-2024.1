@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardPacienteComponent } from './dashboard-paciente.component';
+import it from '@angular/common/locales/it';
+import { describe, beforeEach } from 'node:test';
 
 describe('DashboardPacienteComponent', () => {
   let component: DashboardPacienteComponent;
