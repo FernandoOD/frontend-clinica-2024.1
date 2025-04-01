@@ -29,7 +29,7 @@ export class ListarNotaClinicaComponent {
 
   ngOnInit(): void {
 
-    this.servicio.listRecords().subscribe({
+    this.servicio.listRecordsPaciente(5).subscribe({
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaRegistros = data;

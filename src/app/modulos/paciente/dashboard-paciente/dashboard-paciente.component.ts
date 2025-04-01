@@ -24,6 +24,8 @@ import { forkJoin } from 'rxjs';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { ConsultaResultadoTestModelo } from '../../../modelos/ConsultaResultadoTest.modelo';
+import { PacienteModuloService } from '../../../servicios/paciente-modulo.service';
+import { PacienteModuloModelo } from '../../../modelos/PacienteModulo.modelo';
 
 Chart.register(DoughnutController,ArcElement,RadarController,RadialLinearScale,PointElement,LineElement,CategoryScale,BarElement, BarController, LinearScale, ChartDataLabels);
 
@@ -68,6 +70,8 @@ export class DashboardPacienteComponent {
   sintomasFisicos: number = 0;
   severidadGeneralETrA : String = "No hay Severidad";
 
+  consultasConEvaluacion : any [] = [];
+
   puntuacionPBQ : string = '';
   evitativo: number = 0;
   dependiente: number = 0;
@@ -106,9 +110,11 @@ export class DashboardPacienteComponent {
   listaConsultaTest: any[] = [];
   listaConjunta?: any[] = [];
   listaEjerciciosPracticos : any []  = [];
+  listaModulosPsicoeducativos: PacienteModuloModelo [] = [];
   listaModulos: ModuloPsicoeducativoModelo [] = [];
   listaEjercicios: EjercicioPracticoModelo [] = [];
-  ejerciciosAsignadosConModulo : any [] = [];
+  ejerciciosAsignados : any [] = [];
+  modulosAsignados: any [] = [];
   listaConsultaResultadoTest: ConsultaResultadoTestModelo [] = [];
   listaConsultaResultadoTest2: ConsultaResultadoTestModelo [] = [];
   listaConsultaResultadoTest3: ConsultaResultadoTestModelo [] = [];
@@ -131,6 +137,7 @@ export class DashboardPacienteComponent {
     private servicioConsultaTest: ConsultaTestService,
     private servicioConsultaResultadoTest: ConsultaResultadoTestService,
     private servicioPacienteEjercicio: PacienteEjercicioService,
+    private servicioPacienteModulo: PacienteModuloService,
     private servicioEjercicioPractico: EjercicioPracticoService,
     private servicioModuloPsicoeducativo: ModuloPsicoeducativoService,
     private router : Router,
@@ -148,7 +155,7 @@ export class DashboardPacienteComponent {
     
     this.buscarConsultas();
     this.toDoExcersises();
-
+    this.toDoModules();
     
 
     this.servicio.listRecords().subscribe({
@@ -231,13 +238,29 @@ export class DashboardPacienteComponent {
     });
   }
 
-  async buscarConsultas(){
+  consultasEnEvaluacion(){
+    this.consultasConEvaluacion = this.listaConsultas.map((consulta, index) => ({
+      ...consulta,
+      evaluacion: `Evaluación ${index + 1}`,
+      color: this.getRandomBlue()
+  }));
+  }
+
+  getRandomBlue(): string {
+    const r = 100; // Rojo bajo
+    const g = 150; // Verde medio
+    const b = Math.floor(Math.random() * 156) + 100; // Azul varía entre 100 y 255
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  buscarConsultas(){
     this.servicioConsultas.listRecordsPaciente(this.idPaciente).subscribe({
        next: (data) => {
         // Manejo de autenticación exitosa
         this.listaConsultas = data;
         console.log("Datos listados", data);
         this.buscarConsultaTest();
+        this.consultasEnEvaluacion();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
@@ -262,9 +285,6 @@ export class DashboardPacienteComponent {
         // Combinar todas las respuestas en `listaConsultaTest`
         this.listaConsultaTest = resultados.flat();
         console.log("Datos listados ConsultaTest", this.listaConsultaTest);
-  
-        // Llamar a `pintarGraficas()` solo cuando todas las consultas terminen
-        this.pintarGraficas();
       },
       error: (error) => {
         console.error("Error al listar las consultas", error);
@@ -275,18 +295,7 @@ export class DashboardPacienteComponent {
       }
     });
   }
-  
 
-  pintarGraficas(){
-          this.juntarListas();
-          this.graficarBDI();
-          //this.graficarDSM5();
-          this.graficarETrA();
-          this.graficarPBQ();
-          this.graficarYSQ();
-          this.graficarAutoestima();
-          this,this.graficarBAI();
-  }
 
   responderTest(id: number, nombre?: String, consultaId?: number, consultaTestId?: number){
     let obj = new TestPsicometricoModelo();
@@ -382,7 +391,29 @@ export class DashboardPacienteComponent {
         this.listaEjerciciosPracticos  = data;
         console.log("toDoExcersises",this.listaEjerciciosPracticos)
         this.obtenerModulos();
+        this.formarListaEjerciciosFinal();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+      },
+      error: (error: any) => {
+        // Manejo de error en autenticación
+        console.error("Error al obtener ejercicios", error);
+        alert("Error al obtener ejercicios");
+      },
+      complete: () => {
+        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+        console.log('Proceso de listado completo');
+      }
+    });
+  }
+
+  toDoModules(){
+    this.servicioPacienteModulo.findRecords(this.idPaciente).subscribe({
+      next: (data) => {
+        // Manejo de autenticación exitosa
+        this.listaModulosPsicoeducativos  = data;
+        console.log("toDoExcersises",this.listaModulosPsicoeducativos);
+        this.formarListaModulosFinal();
+        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxit
       },
       error: (error: any) => {
         // Manejo de error en autenticación
@@ -425,6 +456,7 @@ export class DashboardPacienteComponent {
           this.listaEjercicios.push(...data);
           console.log("lista Ejercicios", this.listaEjercicios);
           this.formarListaEjerciciosFinal();
+          this.formarListaModulosFinal();
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
@@ -441,168 +473,70 @@ export class DashboardPacienteComponent {
   }
 
   formarListaEjerciciosFinal(){
-    this.ejerciciosAsignadosConModulo = this.listaEjerciciosPracticos.map(ejercicioPractico => {
+    this.ejerciciosAsignados= this.listaEjerciciosPracticos.map(ejercicioPractico => {
       // Encontrar el ejercicio correspondiente
       const ejercicio = this.listaEjercicios.find(e => e.id === ejercicioPractico.ejercicioPracticoId);
     
       if (!ejercicio) return null; // Si no se encuentra, ignorarlo
-    
-      // Encontrar el módulo correspondiente
-      const modulo = this.listaModulos.find(m => m.id === ejercicio.moduloPsicoeducativoId);
+  
     
       return {
-        id: ejercicio.id,
+        id: ejercicioPractico.id,
+        ejercicioPracticoId: ejercicio.id,
         nombre: ejercicio.Titulo,
         moduloId: ejercicio.moduloPsicoeducativoId,
-        moduloTitulo: modulo ? modulo.Titulo : "Módulo no encontrado",
-        checked: false
+        contestado: ejercicioPractico.contestado
       };
-    }).filter(e => e !== null); // Eliminar posibles nulls
+    }).filter(e => e !== null && e.contestado !== true); // Eliminar posibles nulls
     
-    console.log(this.ejerciciosAsignadosConModulo);
+    console.log(this.ejerciciosAsignados);
   }
 
-  onCheckboxChange(ejercicio: any): void {
-    console.log(`${ejercicio.nombre} está ${ejercicio.checked ? 'seleccionado' : 'no seleccionado'}`);
+  formarListaModulosFinal(){
+    this.modulosAsignados= this.listaModulosPsicoeducativos.map(moduloPsicoeducativo => {
+      // Encontrar el ejercicio correspondiente
+      const modulo = this.listaModulos.find(m => m.id === moduloPsicoeducativo.moduloPsicoeducativoId);
+    
+      if (!modulo) return null; // Si no se encuentra, ignorarlo
+  
+    
+      return {
+        id: moduloPsicoeducativo.id,
+        moduloPsicoeducativoId: modulo.id,
+        nombre: modulo.Titulo,
+        descripcion: modulo.Descripcion,
+        contestado: moduloPsicoeducativo.contestado
+      };
+    }).filter(m => m !== null && m?.contestado !== true); // Eliminar posibles nulls
+    
+    console.log(this.ejerciciosAsignados);
   }
 
-  createDoughnutChart(id : string, data: number [], totalScore: number, currentScore: number, chartRef: { current: Chart | null }, labels: string [],colors: string[]): void {
-    const ctx = (document.getElementById(id) as HTMLCanvasElement).getContext('2d');
-    console.log("Puntuación: ",currentScore);
-    if (ctx) {
-      if (chartRef.current) chartRef.current.destroy(); // Destruye el gráfico anterior si existe
-      chartRef.current = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              data: data, // Rangos acumulados: [13, 19, 28, 63]
-              backgroundColor: colors,
-              borderWidth: 0,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false,
-            },
-            tooltip: {
-              enabled: false,
-            },
-            datalabels: {
-              display: false, // Solo en gráficos de barras
-              },
-          },
-          cutout: '70%', // Ajustar el corte para hacer un donut
-          rotation: -90, // Rotación inicial del gráfico
-          circumference: 180, // Circunferencia del gráfico (media dona)
-          animation: {
-            duration: 3000,
-            easing: 'easeOutCubic' as 'easeOutCubic' | 'linear' | 'easeInQuad' | 'easeOutQuad',
-            onProgress: (animation: any) => {
-              const chart = animation.chart;
-              const progress = animation.currentStep / animation.numSteps;
-              chart.config.options.animationValue = progress * currentScore;
-            },
-            onComplete: (animation: any) => {
-              const chart = animation.chart;
-              chart.config.options.animationValue = currentScore;
-              chart.config.options.animation = false;
-            },
-          },
-        },
-        plugins: [{
-          id: 'needle',
-          beforeDraw: (chart: any) => {
-            const ctx = chart.ctx;
-            const width = chart.width;
-            const height = chart.height;
-            const animationValue = chart.config.options.animationValue || 0;
-  
-            // Coordenadas del centro
-            const centerX = width / 2;
-            const centerY = chart.chartArea.bottom-115;
-  
-            // Calcular el ángulo animado
-            const needleValue = (animationValue / totalScore) * 180; // Convertir el puntaje a grados
-            const needleLength = height / 2.5;
-            const angle = ((needleValue - 180) * Math.PI) / 180;
-  
-            // Coordenadas del extremo de la aguja
-            const endX = centerX + needleLength * Math.cos(angle);
-            const endY = centerY + needleLength * Math.sin(angle);
-  
-            // Dibujar la aguja
-            ctx.save();
-            ctx.lineWidth = 3;
-            ctx.strokeStyle = '#000';
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
-            ctx.restore();
-  
-            // Dibujar el círculo del centro
-            ctx.save();
-            ctx.fillStyle = '#000';
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, 5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.restore();
-          }
-        }]
-      });
-    }
+  onCheckboxChangeEjercicio(ejercicio: any): void {
+    this.marcarEjercicioContestado(ejercicio);
   }
 
-  graficarBDI() {
-    // Filtrar listaConsultaTest para incluir solo registros con contestado === true
-    const consultasContestadas = this.listaConsultaTest.filter(
-        (test) => test.contestado === true && test.testPsicometricoId == 1
+  onCheckboxChangeModulo(modulo: any): void {
+    this.marcarModuloContestado(modulo);
+  }
 
-    );
-    console.log("ConsultasContestadas",consultasContestadas);
-    if (consultasContestadas.length === 0) {
-      console.warn("No hay consultas contestadas.");
-      return; // Termina la ejecución si no hay consultas contestadas
-    }
-  
-    // Encontrar la consultaTest con el mayor consultaId
-    let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-      if (current.consultaId != undefined && max.consultaId != undefined) {
-        return current.consultaId > max.consultaId ? current : max;
-      } else {
-        return new ConsultaTestModelo();
-      }
-    });
-  
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
-  
-    // Realizar la consulta para los resultados asociados
-    this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-      next: (data: any) => {
+  marcarEjercicioContestado(ejercicio: any){
+    let obj = new PacienteEjercicioModelo();
+
+    obj.id = ejercicio.id;
+    obj.pacienteId = this.idPaciente;
+    obj.ejercicioPracticoId = ejercicio.ejercicioPracticoId;
+    obj.contestado = true;
+
+    this.servicioPacienteEjercicio.updateRecord(obj).subscribe({
+      next: (data: PacienteEjercicioModelo) => {
         // Manejo de autenticación exitosa
-        this.listaConsultaResultadoTest = data;
-        this.listaConsultaResultadoTest = this.listaConsultaResultadoTest.filter(
-          (test) =>test.testPsicometricoId === 1
-        );
-  
-        // Establecer el currentScore si está definido
-        if (this.listaConsultaResultadoTest[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest[0]?.Interpretacion != undefined) {
-          this.currentScoreDepresion = parseInt(this.listaConsultaResultadoTest[0].Puntuacion);
-          this.interpretacion = this.listaConsultaResultadoTest[0].Interpretacion;
-        } else {
-          console.warn("Puntuación no definida en el primer registro de resultados.");
-        }
-        this.createDoughnutChart('depresion',[10, 10, 10, 33], 63, this.currentScoreDepresion, { current: this.chart1 },['Mínima', 'Leve', 'Moderada','Grave'],['#2ecc71', '#f7dc6f', '#f39c12','#e74c3c']);
+        console.log("Actualización del contestado correcta", data);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
         console.error("Error de autenticación", error);
-        alert("Error al listar los resultados");
+        alert("Error al marcar contestado en pacienteEjercicio");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
@@ -611,508 +545,28 @@ export class DashboardPacienteComponent {
     });
   }
 
-  graficarAutoestima() {
-    // Filtrar listaConsultaTest para incluir solo registros con contestado === true
-    const consultasContestadas = this.listaConsultaTest.filter(
-        (test) => test.contestado === true && test.testPsicometricoId == 5
+  marcarModuloContestado(modulo: any){
+    let obj = new PacienteModuloModelo();
 
-    );
-    console.log("ConsultasContestadas",consultasContestadas);
-    if (consultasContestadas.length === 0) {
-      console.warn("No hay consultas contestadas.");
-      return; // Termina la ejecución si no hay consultas contestadas
-    }
-  
-    // Encontrar la consultaTest con el mayor consultaId
-    let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-      if (current.consultaId != undefined && max.consultaId != undefined) {
-        return current.consultaId > max.consultaId ? current : max;
-      } else {
-        return new ConsultaTestModelo();
-      }
-    });
-  
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
-  
-    // Realizar la consulta para los resultados asociados
-    this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-      next: (data: any) => {
+    obj.id = modulo.id;
+    obj.pacienteId = this.idPaciente;
+    obj.moduloPsicoeducativoId = modulo.moduloPsicoeducativoId;
+    obj.contestado = true;
+
+    this.servicioPacienteModulo.updateRecord(obj).subscribe({
+      next: (data: PacienteModuloModelo) => {
         // Manejo de autenticación exitosa
-        this.listaConsultaResultadoTest5 = data;
-        this.listaConsultaResultadoTest5 = this.listaConsultaResultadoTest5.filter(
-          (test) =>test.testPsicometricoId === 5
-        );
-  
-        // Establecer el currentScore si está definido
-        if (this.listaConsultaResultadoTest5[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest5[0]?.Interpretacion != undefined) {
-          this.currentScoreAutoestima = parseInt(this.listaConsultaResultadoTest5[0].Puntuacion);
-          this.interpretacionAutoestima = this.listaConsultaResultadoTest5[0].Interpretacion;
-          console.log("currentScore", this.currentScoreAutoestima);
-        } else {
-          console.warn("Puntuación no definida en el primer registro de resultados.");
-        }
-
-        this.createDoughnutChart('autoestima',[25, 5, 10], 40, this.currentScoreAutoestima, { current: this.chart5 },['Baja', 'Media', 'Elevada'],['#8e44ad', '#345dea', '#fed728']);
+        console.log("Actualización del contestado correcta", data);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
         console.error("Error de autenticación", error);
-        alert("Error al listar los resultados");
+        alert("Error al marcar contestado en pacienteModulo");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
         console.log('Proceso de guardado completado');
       }
     });
-  }
-
-  graficarBAI() {
-    // Filtrar listaConsultaTest para incluir solo registros con contestado === true
-    const consultasContestadas = this.listaConsultaTest.filter(
-        (test) => test.contestado === true && test.testPsicometricoId == 7
-
-    );
-    console.log("ConsultasContestadas",consultasContestadas);
-    if (consultasContestadas.length === 0) {
-      console.warn("No hay consultas contestadas.");
-      return; // Termina la ejecución si no hay consultas contestadas
-    }
-  
-    // Encontrar la consultaTest con el mayor consultaId
-    let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-      if (current.consultaId != undefined && max.consultaId != undefined) {
-        return current.consultaId > max.consultaId ? current : max;
-      } else {
-        return new ConsultaTestModelo();
-      }
-    });
-  
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
-  
-    // Realizar la consulta para los resultados asociados
-    this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-      next: (data: any) => {
-        // Manejo de autenticación exitosa
-        this.listaConsultaResultadoTest7 = data;
-        this.listaConsultaResultadoTest7 = this.listaConsultaResultadoTest7.filter(
-          (test) =>test.testPsicometricoId === 7
-        );
-  
-        // Establecer el currentScore si está definido
-        if (this.listaConsultaResultadoTest7[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest7[0]?.Interpretacion != undefined) {
-          this.currentScoreBAI = parseInt(this.listaConsultaResultadoTest7[0].Puntuacion);
-          this.interpretacionBAI = this.listaConsultaResultadoTest7[0].Interpretacion;
-          console.log("currentScore", this.currentScoreBAI);
-        } else {
-          console.warn("Puntuación no definida en el primer registro de resultados.");
-        }
-
-        this.createDoughnutChart('BAI',[10, 10, 10, 33], 63, this.currentScoreBAI, { current: this.chart7 },['Mínima', 'Leve', 'Moderada','Grave'],['#2ecc71', '#f7dc6f', '#f39c12','#e74c3c']);
-      },
-      error: (error: any) => {
-        // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
-        alert("Error al listar los resultados");
-      },
-      complete: () => {
-        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
-      }
-    });
-  }
-
-
-  graficarDSM5(){
-    const consultasContestadas = this.listaConsultaTest.filter(
-      (test) => test.contestado === true && test.testPsicometricoId == 3
-
-  );
-  console.log("ConsultasContestadas",consultasContestadas);
-  if (consultasContestadas.length === 0) {
-    console.warn("No hay consultas contestadas.");
-    return; // Termina la ejecución si no hay consultas contestadas
-  }
-
-  // Encontrar la consultaTest con el mayor consultaId
-  let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-    if (current.consultaId != undefined && max.consultaId != undefined) {
-      return current.consultaId > max.consultaId ? current : max;
-    } else {
-      return new ConsultaTestModelo();
-    }
-  });
-
-  console.log("Consulta con mayor ID:", consultaTestConMayorId);
-
-  // Realizar la consulta para los resultados asociados
-  this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-    next: (data: any) => {
-      // Manejo de autenticación exitosa
-      this.listaConsultaResultadoTest3 = data;
-      this.listaConsultaResultadoTest3 = this.listaConsultaResultadoTest3.filter(
-        (test) =>test.testPsicometricoId === 3
-      );
-
-      // Establecer el currentScore si está definido
-      if (this.listaConsultaResultadoTest3[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest3[0]?.Interpretacion != undefined) {
-        this.puntuacionDSM5 = this.listaConsultaResultadoTest3[0].Puntuacion;
-        const valores = this.puntuacionDSM5.split(",").map(Number);
-        this.depresion = valores[1];
-        this.irritabilidad = valores[2];
-        this.ansiedad = valores[3];
-        this.autolesion = valores[4];
-        this.severidadGeneral = this.listaConsultaResultadoTest3[0].Interpretacion;
-        this.createSpiderChart('DSM5',[this.depresion,this.irritabilidad,this.ansiedad,this.autolesion],['Depresión', 'Irritabilidad', 'Ansiedad', 'Autolesión'],{current: this.chart3});
-      } else {
-        console.warn("Puntuación no definida en el primer registro de resultados.");
-      }
-    },
-    error: (error: any) => {
-      // Manejo de error en autenticación
-      console.error("Error de autenticación", error);
-      alert("Error al listar los resultados");
-    },
-    complete: () => {
-      // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-      console.log('Proceso de obtención completado');
-    }
-  });
-  }
-
-  graficarETrA(){
-    const consultasContestadas = this.listaConsultaTest.filter(
-      (test) => test.contestado === true && test.testPsicometricoId == 4
-
-  );
-  console.log("ConsultasContestadas",consultasContestadas);
-  if (consultasContestadas.length === 0) {
-    console.warn("No hay consultas contestadas.");
-    return; // Termina la ejecución si no hay consultas contestadas
-  }
-
-  // Encontrar la consultaTest con el mayor consultaId
-  let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-    if (current.consultaId != undefined && max.consultaId != undefined) {
-      return current.consultaId > max.consultaId ? current : max;
-    } else {
-      return new ConsultaTestModelo();
-    }
-  });
-
-  console.log("Consulta con mayor ID:", consultaTestConMayorId);
-
-  // Realizar la consulta para los resultados asociados
-  this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-    next: (data: any) => {
-      // Manejo de autenticación exitosa
-      this.listaConsultaResultadoTest4 = data;
-      this.listaConsultaResultadoTest4 = this.listaConsultaResultadoTest4.filter(
-        (test) =>test.testPsicometricoId === 4
-      );
-      console.log("ConsultaResultadoTest4", this.listaConsultaResultadoTest4);
-
-      // Establecer el currentScore si está definido
-      if (this.listaConsultaResultadoTest4[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest4[0]?.Interpretacion != undefined) {
-        this.puntuacionETrA = this.listaConsultaResultadoTest4[0].Puntuacion;
-        console.log("Puntuaciones de ETRA",this.puntuacionETrA);
-        const valores = this.puntuacionETrA.split(",").map(Number);
-        this.ansiedadGeneralizada = valores[1];
-        this.ansiedadSocial = valores[2];
-        this.sintomasFisicos = valores[3];
-        this.severidadGeneralETrA = this.listaConsultaResultadoTest4[0].Interpretacion;
-        //this.createSpiderChart('ETRA',[this.ansiedadGeneralizada,this.ansiedadSocial,this.sintomasFisicos],['Ansiedad Generalizada', 'Ansiedad Social', 'Síntomas Físicos'],{current: this.chart4});
-        this.createBarChart('ETRABar',[this.ansiedadGeneralizada, this.ansiedadSocial, this.sintomasFisicos],['Ansiedad Generalizada','Ansiedad Social','Síntomas Físicos'],[17,17,14],{current: this.chart4});
-      } else {
-        console.warn("Puntuación no definida en el primer registro de resultados.");
-      }
-    },
-    error: (error: any) => {
-      // Manejo de error en autenticación
-      console.error("Error de autenticación", error);
-      alert("Error al listar los resultados");
-    },
-    complete: () => {
-      // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-      console.log('Proceso de obtención completado');
-    }
-  });
-  }
-
-  createSpiderChart(id: string,data: number[],labels: string[], chartRef: { current: Chart | null }): void {
-    const ctx = (document.getElementById(id) as HTMLCanvasElement).getContext('2d');
-    if (ctx) {
-      if (chartRef.current) chartRef.current.destroy();
-      chartRef.current = new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: labels, // Etiquetas
-          datasets: [
-            {
-              label: 'DSM-5',
-              data: data, // Puntuaciones dinámicas
-              backgroundColor: 'rgba(54, 162, 235, 0.2)',
-              borderColor: 'rgba(54, 162, 235, 1)',
-              borderWidth: 2,
-              pointBackgroundColor: 'rgba(54, 162, 235, 1)',
-              pointBorderColor: '#fff',
-              pointHoverBackgroundColor: '#fff',
-              pointHoverBorderColor: 'rgba(54, 162, 235, 1)',
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            r: { // Configuración del radio
-              suggestedMin: 0,
-              suggestedMax: 12, // Ajusta según el puntaje máximo
-              ticks: {
-                //beginAtZero: true
-              }
-            }
-          },
-          plugins: {
-            legend: {
-              position: 'top'
-            }
-          }
-        }
-      });
-    }
-  }
-
-
-
-  graficarPBQ(){
-    const consultasContestadas = this.listaConsultaTest.filter(
-      (test) => test.contestado === true && test.testPsicometricoId == 2
-
-  );
-  console.log("ConsultasContestadas",consultasContestadas);
-  if (consultasContestadas.length === 0) {
-    console.warn("No hay consultas contestadas.");
-    return; // Termina la ejecución si no hay consultas contestadas
-  }
-
-  // Encontrar la consultaTest con el mayor consultaId
-  let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-    if (current.consultaId != undefined && max.consultaId != undefined) {
-      return current.consultaId > max.consultaId ? current : max;
-    } else {
-      return new ConsultaTestModelo();
-    }
-  });
-
-  console.log("Consulta con mayor ID:", consultaTestConMayorId);
-
-  // Realizar la consulta para los resultados asociados
-  this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-    next: (data: any) => {
-      // Manejo de autenticación exitosa
-      this.listaConsultaResultadoTest2 = data;
-      this.listaConsultaResultadoTest2 = this.listaConsultaResultadoTest2.filter(
-        (test) =>test.testPsicometricoId === 2
-      );
-      console.log("ConsultaResultadoTest2", this.listaConsultaResultadoTest2);
-
-      // Establecer el currentScore si está definido
-      if (this.listaConsultaResultadoTest2[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest2[0]?.Interpretacion != undefined) {
-        this.puntuacionPBQ = this.listaConsultaResultadoTest2[0].Puntuacion;
-        console.log("Puntuaciones de PBQ",this.puntuacionPBQ);
-        const valores = this.puntuacionPBQ.split(",").map(Number);
-        this.evitativo = valores[1];
-        this.dependiente = valores[2];
-        this.obsesivo = valores[3];
-        this.antisocial = valores[4];
-        this.narcisista = valores[5];
-        this.histrionica = valores[6];
-        this.esquizoide = valores[7];
-        this.paranoide = valores[8];
-        this.limite = valores[9];
-        this.clasificacionesPBQ = this.listaConsultaResultadoTest2[0].Interpretacion;
-        this.createBarChart('PBQ',[this.evitativo, this.dependiente, this.obsesivo,this.antisocial, this.narcisista, this.histrionica,this.esquizoide, this.paranoide, this.limite],['Evitativo','Dependiente','Obsesivo','Antisocial','Narcisista','Histrionica','Esquizoide','Paranoide','Limite'],[9,8,10,7,9,10,11,8,9],{current : this.chart2})
-      } else {
-        console.warn("Puntuación no definida en el primer registro de resultados.");
-      }
-    },
-    error: (error: any) => {
-      // Manejo de error en autenticación
-      console.error("Error de autenticación", error);
-      alert("Error al listar los resultados");
-    },
-    complete: () => {
-      // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-      console.log('Proceso de obtención completado');
-    }
-  });
-  }
-
-  graficarYSQ(){
-    const consultasContestadas = this.listaConsultaTest.filter(
-      (test) => test.contestado === true && test.testPsicometricoId == 6
-
-  );
-  console.log("ConsultasContestadas",consultasContestadas);
-  if (consultasContestadas.length === 0) {
-    console.warn("No hay consultas contestadas.");
-    return; // Termina la ejecución si no hay consultas contestadas
-  }
-
-  // Encontrar la consultaTest con el mayor consultaId
-  let consultaTestConMayorId = consultasContestadas.reduce((max, current) => {
-    if (current.consultaId != undefined && max.consultaId != undefined) {
-      return current.consultaId > max.consultaId ? current : max;
-    } else {
-      return new ConsultaTestModelo();
-    }
-  });
-
-  console.log("Consulta con mayor ID:", consultaTestConMayorId);
-
-  // Realizar la consulta para los resultados asociados
-  this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
-    next: (data: any) => {
-      // Manejo de autenticación exitosa
-      this.listaConsultaResultadoTest6 = data;
-      this.listaConsultaResultadoTest6 = this.listaConsultaResultadoTest6.filter(
-        (test) =>test.testPsicometricoId === 6
-      );
-      console.log("ConsultaResultadoTest6", this.listaConsultaResultadoTest6);
-
-      // Establecer el currentScore si está definido
-      if (this.listaConsultaResultadoTest6[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest6[0]?.Interpretacion != undefined) {
-        this.puntuacionYSQ = this.listaConsultaResultadoTest6[0].Puntuacion;
-        console.log("Puntuaciones de YSQ",this.puntuacionYSQ);
-        const valores = this.puntuacionYSQ.split(",").map(Number);
-        this.privacionEmocional = valores[1];
-        this.abandono = valores[2];
-        this.desconfianzaAbuso = valores[3];
-        this.aislamientoSocial = valores[4];
-        this.defectuosidad = valores[5];
-        this.fracaso = valores[6];
-        this.incompetencia = valores[7];
-        this.vulnerabilidad = valores[8];
-        this.simbiosis = valores[9];
-        this.subyugacion = valores[10];
-        this.sacrificio = valores[11];
-        this.inhibicionEmocional = valores[12];
-        this.estandaresInalcanzables = valores[13];
-        this.grandiosidad = valores[14];
-        this.disciplinaInsuficiente = valores[15];
-        this.clasificacionesYSQ = this.listaConsultaResultadoTest6[0].Interpretacion;
-        this.createBarChart('YSQ',[this.privacionEmocional,this.abandono,this.desconfianzaAbuso,this.aislamientoSocial,this.defectuosidad,this.fracaso,this.incompetencia,this.vulnerabilidad,this.simbiosis,this.subyugacion,this.sacrificio,this.inhibicionEmocional,this.estandaresInalcanzables,this.grandiosidad,this.disciplinaInsuficiente],['Privación Emocional','Abandono','Desconfianza y Abuso','Aislamiento Social','Defectuosidad','Fracaso','Dependencia','Vulnerabilidad','Simbiosis','Subyugación','Sacrificio','Inhibición emocional','Estándares inalcanzables','Grandiosidad','Disciplina insuficiente'],[18,21,19,19,17,18,16,20,19,18,23,20,23,20,20],{current : this.chart6})
-      } else {
-        console.warn("Puntuación no definida en el primer registro de resultados.");
-      }
-    },
-    error: (error: any) => {
-      // Manejo de error en autenticación
-      console.error("Error de autenticación", error);
-      alert("Error al listar los resultados");
-    },
-    complete: () => {
-      // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-      console.log('Proceso de obtención completado');
-    }
-  });
-  }
-
-
-  createBarChart(id: string,data: number[],labels: string[],referenceValues: number[], chartRef: { current: Chart | null }): void {
-
-    const beforeReference = data.map((value, index) => Math.min(value, referenceValues[index]));
-    const afterReference = data.map((value, index) => Math.max(value - referenceValues[index], 0));
-
-    const ctx = (document.getElementById(id) as HTMLCanvasElement).getContext('2d');
-    if (ctx) {
-      if (chartRef.current)chartRef.current.destroy();
-      chartRef.current = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels, // Etiquetas de los niveles
-          datasets: [
-            {
-              label: 'Puntuación',
-              data: data, // Valores de ejemplo
-              backgroundColor: '#2ecc71',
-              borderColor: '#ffffff', // Opcional: borde de las barras
-              borderWidth: 0,
-            }
-          ],
-        },
-        options: {
-          responsive: true,
-          indexAxis: 'y', // Esto hace que las barras sean horizontales
-          plugins: {
-            legend: {
-              display: true,
-              position: 'right',
-            },
-            datalabels: {
-              anchor: 'end',
-              align: 'right',
-              color: 'black',
-              font: {
-                weight: 'bold',
-                size: 14,
-              },
-              formatter: (value) => `${value}`,
-            }
-          },
-          layout :{
-            padding: {
-              right : 30,
-            }
-          },
-          scales: {
-            x: {
-              beginAtZero: true, // Inicia el eje X desde 0
-            },
-          },
-        },
-        plugins: [{
-          id: 'linePlugin',
-          afterDatasetsDraw: (chart: any) => {
-            const { ctx, chartArea, scales: { x, y } } = chart;
-             
-        
-            /*ctx.save();
-            chart.data.datasets[0].data.forEach((value: number, index: number) => {
-              // Coordenadas de la barra
-              const referenceValue = referenceValues[index]; // Valor de referencia donde se dibuja la línea dentro de cada barra
-              const yPosition = y.getPixelForValue(index); // Posición vertical de la barra
-              const xPosition = x.getPixelForValue(referenceValue); // Posición de la línea en X
-        
-              // Dibujar la línea dentro de la barra
-              ctx.beginPath();
-              ctx.moveTo(xPosition, yPosition - y.height / chart.data.labels.length / 2 + 5);
-              ctx.lineTo(xPosition, yPosition + y.height / chart.data.labels.length / 2 - 5);
-              ctx.lineWidth = 2;
-              ctx.strokeStyle = 'black'; // Color de la línea dentro de la barra
-              ctx.stroke(); 
-            });
-            ctx.restore();*/
-            ctx.save();
-
-            chart.data.datasets[0].data.forEach((value: number, index: number) => {
-            const referenceValue = referenceValues[index]; // Valor de referencia para la barra
-            const xReference = x.getPixelForValue(referenceValue); // Posición X de la línea de referencia
-            const xValue = x.getPixelForValue(value); // Posición X del final de la barra
-            const yPosition = y.getPixelForValue(index); // Posición Y de la barra
-
-            const barHeight = y.height / chart.data.labels.length * 0.72; // Ajusta el grosor de la barra
-
-            // Dibujar la parte después de la referencia (Verde)
-            if (value > referenceValue) {
-                ctx.fillStyle = '#e74c3c';
-                ctx.fillRect(xReference, yPosition - barHeight / 2, xValue - xReference, barHeight);
-            }
-          });
-
-            ctx.restore();
-          }
-        }]
-      });
-    }
   }
 }

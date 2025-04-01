@@ -2,3 +2,117 @@
     height: 100vh;
     background-color: #F0F3FB;
 }
+
+.breadcrumb{
+    font-size: 15px;
+    margin: 20px 0;
+    padding: 0;
+    color:#555 ;
+}
+.breadcrumb i{
+    font-size: 24px;
+    color: #555;
+}
+.breadcrumb .page-title{
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #444 ;
+    margin: 0;
+}
+
+.breadcrumb .page-title::after{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.row{
+    margin-bottom: 0;
+}
+
+.breadcrumb-item::before{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 15px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.card {
+    background: #fff;
+    min-height: 320px;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b7c0ce33;
+    padding: 20px 40px 20px 0;
+}
+
+.card-add{
+    border-radius: 20px;
+    height: 280px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-add:hover {
+    transform: scale(1.1);
+}
+
+.card-add h4{
+    font-size: 26px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.greenBorder{
+    border: 3px solid #239452;
+    background: #2ecc71;
+}
+
+.blueBorder{
+    border: 3px solid #256fa3;
+    background: #2e89cc;
+}
+
+.orangeBorder{
+    border: 3px solid #b97910;
+    background: #f39c12;
+}
+
+.pinkBorder{
+    border: 3px solid #8e2497;
+    background: #c02ecc;
+}
+
+.yellowBorder{
+    border: 3px solid #a8964d;
+    background: #f7dc6f;
+}
+
+
+.card-add i{
+    font-size: 50px;
+    color: #fff;
+}
+
+.atajos{
+    display: flex;
+}

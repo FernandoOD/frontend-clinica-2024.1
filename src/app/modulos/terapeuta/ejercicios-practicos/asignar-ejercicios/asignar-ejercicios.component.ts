@@ -21,7 +21,7 @@ export class AsignarEjerciciosComponent {
   selectedModules : string [] = [];
   resumenAsignacion: {nombre: string, ejercicios: any[]}[] = [];
 
-  id : number = 0;
+  pacienteId : number = 0;
 
   constructor (private servicio: ModuloPsicoeducativoService,
               private servicioSeguridad: SeguridadService,
@@ -35,7 +35,7 @@ export class AsignarEjerciciosComponent {
 
 
   ngOnInit(): void {
-    this.id = parseInt(this.route.snapshot.params["id"]);
+    this.pacienteId = parseInt(this.route.snapshot.params["id"]);
 
     this.servicio.listRecords().subscribe({
       next: (data) => {
@@ -116,7 +116,7 @@ export class AsignarEjerciciosComponent {
       modulo.ejercicios.map(ejercicio => ejercicio.id)
     );
     const obj = {
-      pacienteId: this.id,  // ID de la consulta
+      pacienteId: this.pacienteId,  // ID de la consulta
       ejercicioPracticoId: idsEjercicios// Array de IDs de tests seleccionados
     };
     console.log("idsEjercicios",idsEjercicios); 

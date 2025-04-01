@@ -1,3 +1,47 @@
 <div class="main-container">
-    
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Dashboard</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Dashboard
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col l12">
+            <div class="card">
+                <div class="body">
+                    <div class="row atajos">
+                        <div class="col l2 m2 s12 card-add greenBorder" (click)="router.navigate(['/admin/agregar-paciente'])">
+                            <i class="material-symbols-outlined">person_add</i>
+                            <h4>Nuevo Paciente</h4>
+                        </div>
+                        <div class="col l2 m2 s12 card-add blueBorder" (click)="router.navigate(['/admin/agregar-terapeuta'])">
+                            <i class="material-symbols-outlined">person_add</i>
+                            <h4>Nuevo Terapeuta</h4>
+                        </div>
+                        <div class="col l2 m2 s12 card-add orangeBorder" (click)="router.navigate(['/admin/agregar-test-psicometrico'])">
+                            <i class="material-symbols-outlined">post_add</i>
+                            <h4>Nuevo Test Psicometrico</h4>
+                        </div>
+                        <div class="col l2 m2 s12 card-add pinkBorder" (click)="router.navigate(['/admin/agregar-modulo-psicoeducativo'])">
+                            <i class="material-symbols-outlined">docs_add_on</i>
+                            <h4>Nuevo Modulo Psiceducativo</h4>
+                        </div>
+                        <div class="col l2 m2 s12 card-add yellowBorder" (click)="router.navigate(['/admin/agregar-ejercicio-practico'])">
+                            <i class="material-symbols-outlined">add_task</i>
+                            <h4>Nuevo Ejercicio Práctico</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

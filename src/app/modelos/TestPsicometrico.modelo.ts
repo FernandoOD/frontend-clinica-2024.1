@@ -1,7 +1,7 @@
 import { ConsultaModelo } from "./Consulta.modelo";
 
 export class TestPsicometricoModelo{
-    id?: number;
+    id: number = 0 ;
     Nombre?:String;
     Descripcion?: String;
     Consultas: ConsultaModelo = new ConsultaModelo();

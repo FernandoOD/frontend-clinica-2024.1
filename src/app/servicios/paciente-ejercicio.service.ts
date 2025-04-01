@@ -44,7 +44,7 @@ export class PacienteEjercicioService {
     });
   }
   updateRecord(model : PacienteEjercicioModelo): Observable<PacienteEjercicioModelo>{
-    return this.http.put<PacienteEjercicioModelo>(`${this.url}/paciente-ejercicios-practicos/${model.id}`, model,{
+    return this.http.patch<PacienteEjercicioModelo>(`${this.url}/paciente-ejercicios-practicos/${model.id}`, model,{
       headers: new HttpHeaders({
         "Authorization": `Bearer ${this.token}`
       })

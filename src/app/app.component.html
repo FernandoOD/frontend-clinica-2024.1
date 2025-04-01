@@ -1,9 +1,9 @@
 <div [ngClass]="{'full-width': isIndexRoute(), 'content-width': !isLoginRoute()}">
-  <app-barra-navegacion-superior *ngIf="!isLoginRoute()">
+  <app-barra-navegacion-superior *ngIf="!isIndexRoute()">
     <!--Aqui se importa el codigo de la barra de navegacion lateral-->
  </app-barra-navegacion-superior>
  
- <app-barra-navegacion-lateral *ngIf="!isLoginRoute() && !isIndexRoute()" >
+ <app-barra-navegacion-lateral *ngIf="!isIndexRoute()" >
  
  </app-barra-navegacion-lateral>
  

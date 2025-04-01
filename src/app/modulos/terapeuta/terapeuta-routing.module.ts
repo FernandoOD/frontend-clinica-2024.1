@@ -9,43 +9,65 @@ import { EditarNotaClinicaComponent } from './notas-clinicas/editar-nota-clinica
 import { ListarNotaClinicaComponent } from './notas-clinicas/listar-nota-clinica/listar-nota-clinica.component';
 import { ListarPacientesTerapeutaComponent } from './pacientes/listar-pacientes-terapeuta/listar-pacientes-terapeuta.component';
 import { AsignarEjerciciosComponent } from './ejercicios-practicos/asignar-ejercicios/asignar-ejercicios.component';
+import { PerfilPacienteTerapeutaComponent } from './pacientes/perfil-paciente-terapeuta/perfil-paciente-terapeuta.component';
+import { AsignarModulosComponent } from './modulos-psicoeducativos/asignar-modulos/asignar-modulos.component';
+import { verificadorSesionGuard } from '../../guardianes/verificador-sesion.guard';
 
 const routes: Routes = [
   {
     path : 'dashboard',
-    component : DashboardTerapeutaComponent
+    component : DashboardTerapeutaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'mis-pacientes',
-    component : ListarPacientesTerapeutaComponent
+    component : ListarPacientesTerapeutaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'agregar-consulta/:id',
-    component : AgregarConsultaComponent
+    component : AgregarConsultaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'editar-consulta/:id',
-    component : EditarConsultaComponent
+    component : EditarConsultaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'listar-consulta',
-    component : ListarConsultaComponent
+    component : ListarConsultaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'agregar-nota-clinica/:id',
-    component : AgregarNotaClinicaComponent
+    component : AgregarNotaClinicaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'editar-nota-clinica/:id',
-    component : EditarNotaClinicaComponent
+    component : EditarNotaClinicaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'listar-nota-clinica',
-    component : ListarNotaClinicaComponent
+    component : ListarNotaClinicaComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path : 'asignar-ejercicios/:id',
-    component : AsignarEjerciciosComponent
+    component : AsignarEjerciciosComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path : 'asignar-modulos/:id',
+    component : AsignarModulosComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path : 'perfil-paciente/:id',
+    component : PerfilPacienteTerapeutaComponent,
+    canActivate: [verificadorSesionGuard]
   }
 ];
 

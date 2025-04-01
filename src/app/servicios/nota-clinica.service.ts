@@ -12,17 +12,19 @@ export class NotaClinicaService {
   url: String = DatosGenerales.urlBackend;
   token?:String ="";
 
+  filter = encodeURIComponent(`{"include":[{"relation":"pacienteNota"}]}`);
+
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
     this.token = servicioSeguridad.getToken();
    }
 
-   listRecords(): Observable<NotaClinicaModelo[]>{
-    return this.http.get<NotaClinicaModelo[]>(`${this.url}/notas-clinicas`,{
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
-      })
-    });
-  }
+   listRecordsPaciente(id:number): Observable<NotaClinicaModelo[]>{
+       return this.http.get<NotaClinicaModelo[]>(`${this.url}/pacientes/${id}/notas-clinicas/?filter=${this.filter}`,{
+         headers: new HttpHeaders({
+           "Authorization": `Bearer ${this.token}`
+         })
+       });
+     }
 
   findRecord(id : number): Observable<NotaClinicaModelo>{
     return this.http.get<NotaClinicaModelo>(`${this.url}/notas-clinicas/${id}`,{
@@ -38,7 +40,7 @@ export class NotaClinicaService {
       PlanTratamiento : model.PlanTratamiento,
       Objetivos : model.Objetivos,
       Conceptualizacion : model.Conceptualizacion,
-      consultaId : model.consultaId,
+      pacienteId : model.pacienteId,
       FechaCreacion : model.FechaCreacion
     },{
       headers: new HttpHeaders({

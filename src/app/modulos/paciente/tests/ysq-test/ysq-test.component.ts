@@ -126,7 +126,7 @@ export class YsqTestComponent {
         1: "Completamente falso en mí",
         2: "Mayormente falso en mí",
         3: "Un poco más cierto que falso",
-        4: "Bastante cierto en m",
+        4: "Bastante cierto en mí",
         5: "Mayormente cierto en mí",
         6: "Me describe perfectamente"
       };
@@ -253,7 +253,7 @@ export class YsqTestComponent {
   
       const clasificar = (valor: number, categoria: keyof typeof rangos) => {
         return valor < rangos[categoria].bajo ? 'Bajo' :
-               valor > rangos[categoria].alto ? 'Alto' : 'Medio';
+               valor > rangos[categoria].alto ? 'Alto' : '  Normal';
     };
   
       // Aplicar clasificación según los rangos de cada categoría

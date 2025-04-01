@@ -51,13 +51,21 @@
 
 .card {
     background: #fff;
-    min-height: 50px;
+    min-height: 300px;
     position: relative;
     margin-bottom: 24px;
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 10px #b7c0ce33;
     padding: 20px 20px;
+}
+
+.emptyList{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 120px;
 }
 
 .card .body {
@@ -189,3 +197,58 @@ td{
 .currentScore p{
     margin-top: 70px;
 }
+
+.evaluacionesContainer{
+    margin-top: 80px;
+    overflow: scroll;
+    height: 500px;
+}
+
+
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .timeline-event {
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 30px;
+  }
+  
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #2196F3;
+  }
+  
+  .timeline-icon {
+    position: absolute;
+    left: 0px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    z-index: 1;
+  }
+
+  .timeline-content {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .timeline-content a {
+    color: #000;
+  }

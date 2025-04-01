@@ -51,7 +51,7 @@ export class EditarNotaClinicaComponent {
         this.getFGV['objetivos'].setValue(data.Objetivos);
         this.getFGV['conceptualizacion'].setValue(data.Conceptualizacion);
         this.getFGV['fechaCreacion'].setValue(data.FechaCreacion);
-        this.getFGV['consultaId'].setValue(data.consultaId);
+        this.getFGV['pacienteId'].setValue(data.pacienteId);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
@@ -77,7 +77,7 @@ export class EditarNotaClinicaComponent {
     let objetivos = this.getFGV['objetivos'].value;
     let conceptualizacion = this.getFGV['conceptualizacion'].value;
     let fechaCreacion = this.getFGV['fechaCreacion'].value;
-    let consultaId = this.getFGV['consultaId'].value;
+    let pacienteId = this.getFGV['pacienteId'].value;
     let obj = new NotaClinicaModelo();
 
     obj.id = id;
@@ -86,7 +86,7 @@ export class EditarNotaClinicaComponent {
     obj.Objetivos = objetivos;
     obj.Conceptualizacion = conceptualizacion;
     obj.FechaCreacion = fechaCreacion;
-    obj.consultaId = parseInt(consultaId);
+    obj.pacienteId = parseInt(pacienteId);
 
     this.servicio.updateRecord(obj).subscribe({
       next: (data: NotaClinicaModelo) => {

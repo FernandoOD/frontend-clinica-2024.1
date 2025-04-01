@@ -1,0 +1,87 @@
+<div class="main-container">
+
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <ul class="breadcrumb">
+                <li>
+                    <h4 class="page-title">Resultados de la Evaluación</h4>
+                </li>
+                <li class=" bcrum-1">
+                    <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    Dashboard
+                </li>
+                <li class="breadcrumb-item">
+                    Resultados de la Evaluación
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col l4 m6 s12" *ngIf="currentScoreDepresion!==0">
+            <div class="card"  >
+                <div>
+                    <canvas #depresionCanvas></canvas>
+                    <div class="currentScore">
+                      <h2>{{ currentScoreDepresion }}</h2>
+                      <p>{{interpretacion}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col l4 m6 s12" *ngIf="currentScoreAutoestima!==0">
+            <div class="card" >
+                <div>
+                    <canvas #autoestimaCanvas></canvas>
+                    <div class="currentScore">
+                        <h2>{{ currentScoreAutoestima }}</h2>
+                        <p>{{interpretacionAutoestima}}</p>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="col l4 m6 s12" *ngIf="currentScoreBAI!==0">
+            <div class="card" >
+                <div>
+                    <canvas #BAICanvas></canvas>
+                    <div class="currentScore">
+                        <h2>{{ currentScoreBAI }}</h2>
+                        <p>{{interpretacionBAI}}</p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="existeETRA!==0">
+        <div class="col l4 m6 s12">
+            <div class="card" >
+                <div >
+                    <canvas #ETRABarCanvas></canvas>
+                    
+                  </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" *ngIf="existePBQ!==0">
+    <div class="col l9 m6 s12">
+        <div class="card" >
+            <div>
+                <canvas #PBQBarCanvas></canvas>
+              </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row" *ngIf="existeYSQ!==0">
+    <div class="col l9 m6 s12">
+        <div class="card" >
+            <div>
+                <canvas #YSQBarCanvas></canvas>
+              </div>
+        </div>
+    </div>
+    </div>
+</div>

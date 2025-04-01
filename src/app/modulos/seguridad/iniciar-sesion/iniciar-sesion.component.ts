@@ -43,10 +43,8 @@ export class IniciarSesionComponent implements OnInit {
     this.servicioSeguridad.userAuthentication(model).subscribe({
       next: (data: UsuarioModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.servicioSeguridad.dataSaveInLocal(data);
         this.router.navigate(["/"+data.rol+"/dashboard"]);
-        console.log(data.rol);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {

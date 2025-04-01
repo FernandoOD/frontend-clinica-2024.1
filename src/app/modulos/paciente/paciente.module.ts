@@ -14,6 +14,7 @@ import { VistaModuloComponent } from './vista-modulo/vista-modulo.component';
 import { AutoestimaTestComponent } from './tests/autoestima-test/autoestima-test.component';
 import { YsqTestComponent } from './tests/ysq-test/ysq-test.component';
 import { BaiTestComponent } from './tests/bai-test/bai-test.component';
+import { VistaEvaluacionComponent } from './vista-evaluacion/vista-evaluacion.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { BaiTestComponent } from './tests/bai-test/bai-test.component';
     YsqTestComponent,
     BaiTestComponent,
     AutoestimaTestComponent,
-    VistaModuloComponent
+    VistaModuloComponent,
+    VistaEvaluacionComponent
   ],
   imports: [
     CommonModule,

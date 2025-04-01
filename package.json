@@ -24,6 +24,8 @@
     "crypto-browserify": "^3.12.1",
     "crypto-js": "^4.2.0",
     "crypto.js": "^3.2.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.0",
     "materialize-css": "^1.0.0-rc.2",
     "ng2-charts": "^7.0.0",
     "ngx-pagination": "^6.0.3",

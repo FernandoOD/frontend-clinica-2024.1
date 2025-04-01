@@ -5,5 +5,5 @@ export class NotaClinicaModelo{
     PlanTratamiento?:String;
     Objetivos?:String;
     Conceptualizacion?:String;
-    consultaId?:number;
+    pacienteId?:number;
 }

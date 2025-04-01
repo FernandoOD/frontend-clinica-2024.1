@@ -14,6 +14,8 @@ import { EditarNotaClinicaComponent } from './notas-clinicas/editar-nota-clinica
 import { ListarNotaClinicaComponent } from './notas-clinicas/listar-nota-clinica/listar-nota-clinica.component';
 import { ListarPacientesTerapeutaComponent } from './pacientes/listar-pacientes-terapeuta/listar-pacientes-terapeuta.component';
 import { AsignarEjerciciosComponent } from './ejercicios-practicos/asignar-ejercicios/asignar-ejercicios.component';
+import { PerfilPacienteTerapeutaComponent } from './pacientes/perfil-paciente-terapeuta/perfil-paciente-terapeuta.component';
+import { AsignarModulosComponent } from './modulos-psicoeducativos/asignar-modulos/asignar-modulos.component';
 
 
 
@@ -27,7 +29,9 @@ import { AsignarEjerciciosComponent } from './ejercicios-practicos/asignar-ejerc
     EditarNotaClinicaComponent,
     ListarNotaClinicaComponent,
     ListarPacientesTerapeutaComponent,
-    AsignarEjerciciosComponent
+    PerfilPacienteTerapeutaComponent,
+    AsignarEjerciciosComponent,
+    AsignarModulosComponent
   ],
   imports: [
     CommonModule,

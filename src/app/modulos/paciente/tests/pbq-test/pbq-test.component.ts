@@ -215,7 +215,7 @@ export class PbqTestComponent {
 
     const clasificar = (valor: number, categoria: keyof typeof rangos["masculino"], sexo: "masculino" | "femenino") => {
       return valor < rangos[sexo][categoria].bajo ? 'Bajo' :
-             valor > rangos[sexo][categoria].alto ? 'Alto' : 'Medio';
+             valor > rangos[sexo][categoria].alto ? 'Alto' : 'Normal';
   };
 
     // Aplicar clasificación según los rangos de cada categoría

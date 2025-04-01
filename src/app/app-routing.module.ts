@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { verificadorSesionGuard } from './guardianes/verificador-sesion.guard';
+import { IniciarSesionComponent } from './modulos/seguridad/iniciar-sesion/iniciar-sesion.component';
 
 const routes: Routes = [
   {
     path: 'inicio',
-    component: InicioComponent
+    component: IniciarSesionComponent
   },
   {
     path: '',

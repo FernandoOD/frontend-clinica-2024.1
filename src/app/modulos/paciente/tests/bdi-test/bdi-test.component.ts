@@ -8,6 +8,11 @@ import { ConsultaTestModelo } from '../../../../modelos/ConsultaTest.modelo';
 import { Route, Router } from '@angular/router';
 import { RespuestaRelevanteModelo} from '../../../../modelos/RespuestaRelevante.modelo';
 import { RespuestasRelevantesService } from '../../../../servicios/respuestas-relevantes.service';
+import { ElementRef, ViewChild } from '@angular/core';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { ArchivoPDFModelo} from '../../../../modelos/ArchivoPDF.modelo';
+import { UploadPdfService } from '../../../../servicios/upload-pdf.service';
 
 @Component({
     selector: 'app-bdi-test',
@@ -26,7 +31,10 @@ export class BDITestComponent {
   testPsicometricoId? = 0;
   consultaTestId? = 0;
 
+  @ViewChild('formularioTest', { static: false }) formularioTest!: ElementRef;
+
   respuestasRelevantes: RespuestaRelevanteModelo[] = [];
+  respuestasReporte: any[] = [];
 
   preguntas: { [key: number]: string } = {
     1: "Tristeza",
@@ -53,46 +61,88 @@ export class BDITestComponent {
   };
 
   respuestas: { [key: number]: string } = {
+    10: "No me siento triste",
+    11: "Me siento triste la mayor parte del tiempo",
     12: "Me siento triste todo el tiempo",
     13: "Me siento tan triste o infeliz que no lo puedo soportar",
+    20: "No me siento desalentado sobre mi futuro",
+    21: "Me siento más desalentado de lo que solía estar",
     22: "No espero que las cosas me salgan bien",
     23: "Siento que mi futuro no tiene esperanza",
+    30: "No me siento como un fracasado",
+    31: "He fallado más de lo que debería",
     32: "Cuando reflexiono en mi pasado, veo demasiados fracasos",
     33: "Siento que soy un completo fracaso como persona",
+    40: "Me causan tanto placer las cosas que me gustaban como antes",
+    41: "No disfruto tanto de las cosas como antes",
     42: "Obtengo muy poco placer de las cosas que antes disfrutaba",
     43: "No puedo obtener placer de las cosas que antes disfrutaba",
+    50: "No me siento particularmente culpable",
+    51: "Me siento culpable sobre cosas que hice o debí haber hecho",
     52: "Me siento culpable la mayor parte del tiempo",
     53: "Me siento culpable todo el tiempo",
+    60: "No siento que me estén castigando",
+    61: "Siento que puedo estar siendo castigado",
     62: "Siento que me van a castigar",
     63: "Siento que estoy siendo castigado",
+    70: "Me siento igual conmigo mismo que siempre",
+    71: "He perdido confianza en mí mismo",
     72: "Estoy decepcionado de mí mismo",
     73: "Me desagrado",
+    80: "No me critico ni me culpo más de lo usual",
+    81: "Soy más crítico conmigo mismo de lo usual",
     82: "Me critico por todos mis errores o faltas",
     83: "Me culpo de todo lo malo que pasa",
+    90: "No tengo ningún pensamiento sobre suicidarme",
+    91: "He tenido pensamientos suicidas pero no los llevaría a cabo",
     92: "Quisiera suicidarme",
     93: "Si tuviese la oportunidad, me suicidaría",
+    100: "No lloro más de lo usual",
+    101: "Lloro más de lo que solía",
     102: "Lloro por cosas insignificantes",
     103: "Me siento como si quisiera llorar pero no puedo",
+    110: "No me encuentro más agitado de lo usual",
+    111: "Me siento más agitado de lo usual",
     112: "Me siento tan agitado que me es difícil mantenerme quieto",
     113: "Me siento tan agitado que tengo que estar moviéndome o haciendo algo",
+    120: "No he perdido el interés en otras personas o actividades",
+    121: "Estoy menos interesado en otras personas o actividades que antes",
     122: "He perdido la mayoría del interés en otras personas o actividades",
     123: "Es difícil el interesarme en algo",
+    130: "Tomo decisiones tan bien como siempre",
+    131: "Encuentro más difícil tomar decisiones que antes",
     132: "Tengo mucha mayor dificultad en tomar decisiones que antes",
     133: "Tengo problemas en tomar cualquier decisión",
+    140: "No me siento como una persona sin valía",
+    141: "No me considero tan útil o con tanta valía como solía hacerlo",
     142: "Siento que valgo menos comparado con otras personas",
     143: "Me siento completamente devaluado y sin valía alguna como persona",
+    150: "Tengo tanta energía como siempre",
+    151: "Tengo menos energía de lo usual",
     152: "No tengo suficiente energía para hacer demasiado",
     153: "No tengo suficiente energía para hacer cualquier cosa",
+    160: "No he experimentado ningún cambio en mis patrones de sueño",
+    161: "Duermo algo más o algo menos de lo usual",
     162: "Duermo mucho más o mucho menos de lo usual",
     163: "Duermo la mayor parte del día o me despierto 1-2 horas más temprano de lo usual y no puedo volver a dormir",
+    170: "No me encuentro más irritable de lo usual",
+    171: "Estoy más irritable de lo usual",
     172: "Estoy mucho más irritable de lo usual",
     173: "Estoy irritable todo el tiempo",
+    180: "No he tenido cambios en mi apetito",
+    181: "Mi apetito es algo menos o algo más de lo usual",
     182: "Mi apetito es mucho menos o mucho más de lo usual",
     183: "No tengo apetito o pienso en comida todo el tiempo",
+    190: "Me puedo concentrar tan bien como siempre",
+    191: "No me puedo concentrar tan bien como antes",
     192: "Me es difícil mantener mi atención en algo por mucho tiempo",
     193: "No me puedo concentrar en nada",
+    200: "No me siento más cansado o fatigado de lo normal",
+    201: "Me he cansado o fatigado más fácilmente de lo usual",
     202: "Estoy muy cansado o fatigado como para hacer muchas de las cosas que antes hacía",
     203: "Estoy muy cansado o fatigado como para hacer todo lo que hacía antes",
+    210: "No he notado cambios recientes en mi interés por el sexo",
+    211: " Estoy menos interesado en el sexo de lo que solía estar",
     212: "Estoy mucho menos interesado en el sexo ahora",
     213: "He perdido el interés en el sexo por completo",
   };
@@ -102,6 +152,7 @@ export class BDITestComponent {
     private servicioSeguridad: SeguridadService,
     private servicioConsultaTest: ConsultaTestService,
     private servicioRespuestasRelevantes: RespuestasRelevantesService,
+    private servicioUploadPDF: UploadPdfService,
     private router: Router
   ){
 
@@ -136,6 +187,10 @@ export class BDITestComponent {
             respuestaValor: valor,
           });
         }
+        this.respuestasReporte.push({
+          pregunta: this.obtenerTextoPregunta(i), // Método para obtener el texto
+          respuesta :  this.obtenerTextoRespuesta((i*10)+valor),
+        });
         this.total += valor;
       } else {
         preguntasSinResponder.push(i);
@@ -145,11 +200,15 @@ export class BDITestComponent {
     // Verificar si hay preguntas sin responder
     if (preguntasSinResponder.length > 0) {
       this.error = `Por favor, responde las siguientes preguntas: ${preguntasSinResponder.join(", ")}`;
+      this.respuestasReporte.splice(0)
       return;
     }
 
     // Interpretar la puntuación
     this.interpretarResultados();
+    // Generar Reportez|  
+    this.generarPDF(this.respuestasReporte);
+    
 
     // Mostrar el resultado con scroll suave
     const resultadoDiv = document.getElementById('resultado');
@@ -284,4 +343,71 @@ export class BDITestComponent {
       }
     });
   }
+
+  generarPDF(respuestas: { pregunta: string; respuesta: string}[]){
+    const pdf = new jsPDF();
+  
+    pdf.setFont('helvetica', 'normal');
+    pdf.setFontSize(12);
+  
+    let y = 20; // Posición inicial en Y
+  
+    pdf.text('Resultados del Test BDI', 105, y, { align: 'center' });
+    y += 10;
+  
+    pdf.text('Fecha: ' + new Date().toLocaleDateString(), 10, y);
+    y += 10;
+  
+    let puntajeTotal = 0;
+  
+    // Agregar resultados del test
+    respuestas.forEach(({ pregunta, respuesta}, index) => {
+      pdf.text(`\n ${index + 1}. ${pregunta} \n Respuesta: ${respuesta}`, 10, y);
+      y += 14;
+  
+      // Control de página
+      if (y > 270) {
+        pdf.addPage();
+        y = 20;
+      }
+    });
+  
+    y += 10;
+    pdf.setFont('helvetica', 'bold');
+    pdf.text(`Puntaje total: ${this.total}`, 10, y);
+  
+  
+    y += 10;
+    pdf.setFont('helvetica', 'normal');
+    pdf.text(`Interpretación: ${this.clasificacion}`, 10, y);
+  
+    // Guardar el archivo
+    pdf.save('Resultados_BDI.pdf');
+
+    // Convertir el PDF en un Blob
+    const pdfBlob = pdf.output('blob');
+
+    // Crear un FormData para enviarlo
+    const formData = new FormData();
+    formData.append('file', pdfBlob, 'ResultadosBDI.pdf');
+
+
+    this.servicioUploadPDF.saveRecord(formData).subscribe({
+      next: (data: ArchivoPDFModelo) => {
+        // Manejo de autenticación exitosa
+        console.log("Guardado Correcto del archivo", data);
+      },
+      error: (error: any) => {
+        // Manejo de error en autenticación
+        console.error("Error de autenticación", error);
+        alert("Error al guardar el archivo");
+      },
+      complete: () => {
+        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+        console.log('Proceso de guardado completado');
+      }
+    });
+
+  }
+
 }

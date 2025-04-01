@@ -74,7 +74,7 @@ const routes: Routes = [
     canActivate: [verificadorSesionGuard]
   },
   {
-    path: 'editar-modulo-psicoeducativo',
+    path: 'editar-modulo-psicoeducativo/:id',
     component: EditarModuloPsicoeducativoComponent,
     canActivate: [verificadorSesionGuard]
   },

@@ -17,7 +17,7 @@ import { NotaClinicaService } from '../../../../servicios/nota-clinica.service';
 })
 export class AgregarNotaClinicaComponent {
   suscripcion: Subscription = new Subscription;
-  idConsulta : number = 0;
+  idPaciente : number = 0;
   fgValidation: FormGroup = new FormGroup({});
 
   constructor(
@@ -40,7 +40,7 @@ export class AgregarNotaClinicaComponent {
 
   ngOnInit(): void {
     this.construirFormulario();
-    this.idConsulta = parseInt(this.route.snapshot.params["id"]);
+    this.idPaciente = parseInt(this.route.snapshot.params["id"]);
   }
 
   get getFGV(){
@@ -60,14 +60,14 @@ export class AgregarNotaClinicaComponent {
     obj.PlanTratamiento = planTratamiento;
     obj.Objetivos = objetivos;
     obj.Conceptualizacion = conceptualizacion;
-    obj.consultaId = this.idConsulta;
+    obj.pacienteId = this.idPaciente;
     obj.FechaCreacion = fechaRegistro;
 
     this.servicio.saveRecord(obj).subscribe({
       next: (data: NotaClinicaModelo) => {
         // Manejo de autenticación exitosa
         console.log("Datos Correctos", data);
-        this.router.navigate(["/terapeuta/listar-nota-clinica"]);
+        this.router.navigate(["/terapeuta/perfil-paciente",this.idPaciente]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {

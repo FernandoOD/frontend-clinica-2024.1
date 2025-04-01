@@ -138,7 +138,7 @@ export class AgregarConsultaComponent {
       next: (data: ConsultaTestModelo) => {
         // Manejo de autenticación exitosa
         console.log("Datos Correctos", data);
-        this.router.navigate(["/terapeuta/listar-consulta"]);
+        this.router.navigate(["/terapeuta/perfil-paciente",this.id]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {

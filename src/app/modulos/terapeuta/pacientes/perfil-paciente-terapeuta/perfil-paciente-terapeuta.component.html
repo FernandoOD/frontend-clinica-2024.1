@@ -1,0 +1,168 @@
+  <div class="main-container">
+
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <section class="content">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <ul class="breadcrumb">
+                            <li>
+                                <h4 class="page-title">Perfíl del paciente</h4>
+                            </li>
+                            <li class=" bcrum-1">
+                                <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                Mis Pacientes
+                            </li>
+                            <li class="breadcrumb-item">
+                                Perfíl del Paciente
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l12 m12 s12">
+                        <div class="card">
+                            <div class="tabs-container">
+                                <ul id="tabs-swipe-demo" class="tabs">
+                                    <li class="tab tabPruebas col s2"><a class="active" href="#pruebas">Pruebas psicométricas</a></li>
+                                    <li class="tab tabTareas col s2"><a href="#tareas">Tareas</a></li>
+                                    <li class="tab tabPsicoeducacion col s2"><a href="#psicoeducacion">Psicoeducación</a></li>
+                                    <li class="tab tabConsulta col s2"><a href="#consultas">Consultas</a></li>
+                                    <li class="tab tabPlanTratamiento col s2"><a href="#planTratamiento">Plan de Tratamiento</a></li>
+                                </ul>
+                            </div>
+                                <!-- Sección de Pruebas Psicométricas -->
+                                <section id="pruebas" class="tab-content active">
+                                    <div class="col l6 m6 s12 ">
+                                        <h2>Pruebas Psicométricas</h2>
+                                        <!-- Evaluaciones y gráficas -->
+                                        <div class="evaluation" *ngFor="let r of testsConConsultasActualizados">
+                                            <h3>{{r.evaluacion}} | {{r.FechaConsulta | date:'longDate'}}</h3>  
+                                            <div class="pruebas" *ngFor="let t of r.tests">
+                                                <i class="material-symbols-outlined">arrow_forward_ios</i><p (click)="visualizarResultados(t)">Resultados de la prueba {{t.nombreTest}}: 
+                                                <strong>{{t.Puntuacion}}</strong></p>
+                                            </div>
+                                            <!--<p><strong>Notas:</strong></p>
+                                            Cuadro de texto para notas
+                                            <textarea id="nota1" rows="4" cols="50" placeholder="Escriba sus comentarios..."></textarea>
+                                            <button class="btn" onclick="guardarNota('nota1')">Guardar Nota</button> -->
+                                        </div>
+                                    </div>
+                                    <div class="col l6 m6 s12">
+                                        <h2>Resultados del test</h2>
+                                        <div class="evaluationResults" *ngIf="testSeleccionado">
+                                            <h3>Detalles de {{testSeleccionado.nombreTest}}</h3>  
+                                            <div class="cardGrafica"  >
+                                                <div>
+                                                    <canvas #velocimetroCanvas></canvas>
+                                                    <div *ngIf="testSeleccionado.nombreTest === 'BDI' || testSeleccionado.nombreTest === 'Autoestima'
+                                                    || testSeleccionado.nombreTest === 'BAI' " class="currentScore">
+                                                      <h1>{{testSeleccionado.Puntuacion}}</h1>
+                                                      <p>{{testSeleccionado.Interpretacion}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <p><strong>Items Relevantes:</strong></p>
+                                            <div *ngFor="let respuesta of testSeleccionado.respuesta">
+                                                <p><strong>{{respuesta[0]}}: </strong>"{{respuesta[1]}}",
+                                                 "{{respuesta[2]}}" (Valor: {{respuesta[3]}})</p>
+                                                <hr>
+                                            </div>
+
+                                            <p><strong>Cuadro Patológico:</strong></p>
+                                            <div *ngFor="let p of cuadroPatologico">
+                                                <p>{{p.patologia}} : <strong>{{p.puntuacion}}</strong></p>
+                                            </div>
+
+
+                                            <!--<p><strong>Notas:</strong></p>
+                                            Cuadro de texto para notas
+                                            <textarea id="nota1" rows="4" cols="50" placeholder="Escriba sus comentarios..."></textarea>
+                                            <button class="btn" onclick="guardarNota('nota1')">Guardar Nota</button> -->
+                                        </div>
+                                    </div>
+                                </section>
+
+                            <!-- Sección de Tareas -->
+                            <section id="tareas" class="tab-content">
+                                <h2>Tareas</h2>
+
+                                <!-- Lista de tareas asignadas -->
+                                <div class="tasks" *ngFor="let e of ejerciciosAsignados">
+                                    <i class="material-symbols-outlined">arrow_forward_ios</i>
+                                    <p>{{e.nombre}}</p>
+                                    <div [ngClass]="e.contestado ? 'contestado' : 'nocontestado'"></div>
+                                </div>
+
+                                <!-- Botón para asignar nuevas tareas -->
+                                <div class="buttonTareas"><a [routerLink]="['/terapeuta/asignar-ejercicios', idPaciente]">Asignar nuevas tareas</a></div>
+
+                            </section>
+
+                            <section id="psicoeducacion" class="tab-content">
+                                <h2>Psicoeducación</h2>
+                                <p>Material educativo asignado al paciente para mejorar su comprensión y bienestar. Aquí encontrarás lecciones diseñadas para abordar diversos temas importantes relacionados con la salud mental.</p>
+                            
+                                <!-- Lecciones existentes -->
+                                <div [ngClass]="m.contestado ? 'lessonV' : 'lessonR'" class="lesson" *ngFor="let m of modulosAsignados">
+                                    <h3>{{m.nombre}}</h3>
+                                    <p>{{m.descripcion}}</p>
+                                    <div [ngClass]="m.contestado ? 'contestado' : 'nocontestado'"></div>
+                                </div>
+                            
+                                <!-- Botón para asignar nueva lección -->
+                                <div class="buttonModulos"><a [routerLink]="['/terapeuta/asignar-modulos', idPaciente]">Asignar nuevas lecciones</a></div>
+
+                            </section>
+
+                            <section id="consultas" class="tab-content">
+                                <div class="header">
+                                    <h2>Consultas</h2>
+                                    <div class="agregarConsulta">
+                                        <a class="btn-floating green darken-1" [routerLink]="['/terapeuta/agregar-consulta',idPaciente]"><i class="material-symbols-outlined">add</i></a>
+                                    </div>
+                                </div>
+                                <div class="consultas" *ngFor="let c of sesiones">
+                                    <div class="sesion">
+                                        <h3>{{c.sesion}}</h3>
+                                    </div>
+                                
+                                    <div class="contenidoConsulta">
+                                        <p>{{c.FechaConsulta}}</p>
+                                        <p>{{c.NotasConsulta}}</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="planTratamiento" class="tab-content">
+                                <div class="header">
+                                    <h2>Plan de Tratamiento</h2>
+                                    <div class="agregarNotaClinica">
+                                        <a class="btn-floating green darken-1" [routerLink]="['/terapeuta/agregar-nota-clinica',idPaciente]"><i class="material-symbols-outlined">add</i></a>
+                                    </div>
+                                </div>
+                                <div class="notas" *ngFor="let c of notasConTratamiento">
+                                    <div class="tratamiento">
+                                        <h3>{{c.tratamiento}}</h3>
+                                    </div>
+                                
+                                    <div class="contenidoTratamiento">
+                                        <p><strong>Fecha de Creación :</strong> {{c.FechaCreacion | date:'longDate'}}</p>
+                                        <p><strong>Contenido :</strong> {{c.Contenido}}</p>
+                                        <p><strong>Plan de Tratamiento :</strong> {{c.PlanTratamiento}}</p>
+                                        <p><strong>Objetivos :</strong> {{c.Objetivos}}</p>
+                                        <p><strong>Conceptualización :</strong> {{c.Conceptualizacion}}</p>                                   
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+        </main>
+</div>  
+
+

@@ -1,0 +1,67 @@
+<div class="main-container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+          <ul class="breadcrumb">
+              <li>
+                  <h4 class="page-title">Asignar Modulos</h4>
+              </li>
+              <li class=" bcrum-1">
+                  <a routerLink="admin/dashboard"><i class="material-symbols-outlined">home</i></a>
+              </li>
+              <li class="breadcrumb-item">
+                  Mis Pacientes
+              </li>
+              <li class="breadcrumb-item">
+                  Asignar Modulos Psicoeducativos
+              </li>
+          </ul>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col s12 m12 l5">
+        
+        <div class="card">
+          <table class="mat-mdc-table" role="table" id="grid">
+            <thead>
+              <tr>
+                <th>Modulo</th>
+                <th>Seleccionar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let modulo of listaModulos">
+                <td>{{modulo.Titulo}}</td>
+                <td>
+                  <input *ngIf="modulo.id"
+                    class="browser-default checkbox"
+                    type="checkbox"
+                    value="{{modulo.id}}"
+                    (change)="toggleModuloSeleccionado(modulo.id,$event)"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col l1"></div>
+      <div class="col s12 m5 l5">
+        <div class="card">
+          <p class="title">Resumen de Ejercicios Seleccionados:</p>
+          <div *ngFor="let modulo of resumenAsignacion">
+            <p class="modulo">{{modulo.nombre}}</p>
+          </div>
+          <div class="row btn-container">
+            <div class="col l3 m3 s6">
+                <button  
+                class="btn col l12 s12 m12 btnLogin blue accent-3" (click)="asignarModulos()">Guardar</button>
+            </div>
+            <div class="col l3 m3 s6">
+                <button  
+                class="btn col l12 s12 m12 btnLogin red accent-4" [routerLink]="['/terapeuta/perfil-paciente/',pacienteId]">Cancelar</button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,10 @@ import { FooterComponent } from './publico/paginaMaestra/footer/footer.component
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { HttpClient, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEs, 'es');
 
 
 @NgModule({
@@ -25,7 +29,8 @@ import { HttpClient, HttpClientModule, provideHttpClient, withInterceptorsFromDi
     AppRoutingModule,
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi()),],
+    provideHttpClient(withInterceptorsFromDi()),
+    { provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,374 @@
+.main-container{
+    height: 93vh;
+    background-color: #F0F3FB;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    display: flex;
+}
+
+
+/* Contenido principal */
+
+
+.breadcrumb{
+    font-size: 15px;
+    margin: 20px 0;
+    padding: 0;
+    color:#555 ;
+}
+.breadcrumb i{
+    font-size: 24px;
+    color: #555;
+}
+.breadcrumb .page-title{
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #444 ;
+    margin: 0;
+}
+
+.breadcrumb .page-title::after{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.row{
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item::before{
+    font-family: 'Material Symbols Outlined';
+    content: "chevron_right";
+    font-weight: normal;
+    font-size: 15px;
+    vertical-align: middle;
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.card {
+    background: #fff;
+    min-height: 50px;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #b7c0ce33;
+}
+
+/* Estilos para las pestañas */
+.tabs {
+    margin-bottom: 10px; 
+    border-top-left-radius:10px;
+}
+
+::ng-deep .tabs .indicator {
+    background-color: #184cb4; /* Cambia 'red' por el color deseado */
+  }
+
+.tabs .tab a {
+    color: #333;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Estilo para la pestaña activa */
+.tabs .tabPruebas a.active {
+    background: #37A8D5; 
+    color: white; 
+}
+
+.tabs .tabTareas a.active {
+    background: #3759d5; 
+    color: white; 
+}
+
+.tabs .tabPsicoeducacion a.active {
+    background: #6437d5; 
+    color: white; 
+}
+
+.tabs .tabConsulta a.active {
+    background: #b337d5; 
+    color: white; 
+}
+
+.tabs .tabPlanTratamiento a.active {
+    background: #d537a8; 
+    color: white; 
+}
+
+
+/* Contenido de las pestañas */
+.tab-content {
+    padding-left: 50px;
+
+}
+
+::ng-deep .carousel{
+    height: 70vh !important;
+    overflow: scroll;
+}
+
+.tab-content h2 {
+    font-size: 23px;
+}
+
+/* Estilo para la sección de evaluación */
+.evaluation {
+    border-radius: 5px;
+    padding-left: 25px; 
+}
+
+.evaluation h3 {
+    font-size: 20px; 
+}
+
+.evaluation p {
+    font-size: 17px; 
+}
+
+.pruebas{
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.pruebas i{
+    color: #37A8D5;
+    margin-right: 10px;
+}
+
+.evaluationResults h3{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.currentScore{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    text-align: center;
+}
+
+.currentScore h1{
+    font-weight: 500;
+}
+
+.currentScore p{
+    margin-top: 70px;
+}
+
+.cardGrafica{
+    background: #fff;
+    width: 65%;
+    position: relative;
+    margin-bottom: 24px;
+    border: none;
+    border-radius: 10px;
+    padding:0 20px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+/* Estilo para las tareas asignadas */
+.tasks{
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.tasks i{
+    color: #3759d5;
+}
+
+.tasks .nocontestado{
+    border: 2px solid #e74c3c;
+    background: #e74c3c ;
+    border-radius: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    width: 50px;
+}
+
+.tasks .contestado{
+    border: 2px solid #2ecc71;
+    background: #2ecc71 ;
+    border-radius: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    width: 50px;
+}
+
+.buttonTareas{
+    background: #3759d5;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    font-weight:600;  
+}
+
+.buttonTareas a{
+    color: #fff;
+}
+
+/* Estilo para las lecciones */
+.lessonR {
+    background-color: #fff;  
+    border: 1px solid #e74c3c;     
+    border-radius: 8px;     
+    padding: 20px;  
+    margin-bottom: 20px;    
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.5);  
+    width: 98%; 
+}
+
+.lessonV {
+    background-color: #fff;  
+    border: 1px solid #2ecc71;     
+    border-radius: 8px;     
+    padding: 20px;  
+    margin-bottom: 20px;    
+    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.5);   
+    width: 98%;
+}
+
+/* Título de cada lección */
+.lesson h3 {
+    font-size: 20px;
+    color: #333;    
+    margin-bottom: 10px;    
+}
+
+/* Descripción de la lección */
+.lesson p {
+    font-size: 16px;
+    color: #555;    
+    margin-bottom: 20px;    
+}
+
+.lesson .nocontestado{
+    border: 2px solid #e74c3c;
+    background: #e74c3c ;
+    border-radius: 10px;
+    padding: 5px;
+    width: 50px;
+}
+
+.lesson .contestado{
+    border: 2px solid #2ecc71;
+    background: #2ecc71 ;
+    border-radius: 10px;
+    padding: 5px;
+    width: 50px;
+}
+
+.buttonModulos {
+    background: #6437d5;
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    font-weight:600;
+}
+
+.buttonModulos a{
+    color: #fff;
+}
+/* Estilos para el plan de tratamiento */
+.consultas{
+    display: flex;
+    align-items: center;
+}
+
+.consultas .sesion{
+    width: 5%;
+    border-radius: 10px;
+}
+
+.consultas .sesion h3 {
+    font-size: 20px;
+}
+
+.consultas .contenidoConsulta{
+    width: 80%;
+    margin-left: 20px;
+    border: 1px solid #b337d5;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.agregarConsulta{
+    border-radius: 50%;
+    margin-left: 20px;  
+}
+
+.agregarConsulta a {
+    color: #fff;
+    background: #b337d5 !important;
+}
+
+.header{
+    display: flex;
+    align-items: center ;
+}
+
+.agregarNotaClinica{
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+.agregarNotaClinica a{
+    color: #fff;
+    background: #d537a8 !important;
+}
+
+.notas{
+    display: flex;
+    align-items: center;
+}
+
+.notas .tratamiento{
+    width: 10%;
+    border-radius: 10px;
+}
+
+.notas .tratamiento h3 {
+    font-size: 20px;
+}
+
+.notas .contenidoTratamiento{
+    width: 80%;
+    margin-left: 20px;
+    border: 1px solid #d537a8;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+
+
+

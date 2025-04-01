@@ -35,40 +35,8 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col l4 m6 s12">
-            <div class="card">
-                <div>
-                    <canvas id="depresion"></canvas>
-                    <div class="currentScore">
-                      <h2>{{ currentScoreDepresion }}</h2>
-                      <p>{{interpretacion}}</p>
-                    </div>
-                  </div>
-            </div>
-        </div>
-        <div class="col l4 m6 s12">
-            <div class="card">
-                <div>
-                    <canvas id="autoestima"></canvas>
-                    <div class="currentScore">
-                        <h2>{{ currentScoreAutoestima }}</h2>
-                        <p>{{interpretacionAutoestima}}</p>
-                      </div>
-                </div>
-            </div>
-        </div>
-        <div class="col l4 m6 s12">
-            <div class="card">
-                <div>
-                    <canvas id="BAI"></canvas>
-                    <div class="currentScore">
-                        <h2>{{ currentScoreBAI }}</h2>
-                        <p>{{interpretacionBAI}}</p>
-                      </div>
-                </div>
-            </div>
-        </div>
+<!--  
+     -->
     <!--
         <div class="col l4 m6 s12">
             <div class="card">
@@ -79,39 +47,10 @@
         </div>  
         
     -->
-    </div>
-        <div class="row">
-            <div class="col l4 m6 s12">
-                <div class="card">
-                    <div>
-                        <canvas id="ETRABar"></canvas>
-                        
-                      </div>
-                </div>
-            </div>
-        </div>
+    <!--
     
-    <div class="row">
-        <div class="col l9 m6 s12">
-            <div class="card">
-                <div style=>
-                    <canvas id="PBQ"></canvas>
-                  </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col l9 m6 s12">
-            <div class="card">
-                <div style=>
-                    <canvas id="YSQ"></canvas>
-                  </div>
-            </div>
-        </div>
-    </div>
-
-
+-->
     <div class="row">
         <div class="col l4 m6 s12">
             <div class="card">
@@ -119,8 +58,8 @@
                     <div class="left">
                         <p class="text-muted">Tests pendientes</p>
                     </div>
-                    <div class="">
-                        <div class="responsive-table">
+                    <div >
+                        <div *ngIf="listaConjunta?.length !== 0" class="responsive-table">
                             <table class="mat-mdc-table" role="table" id="grid">
                                 <thead role="rowgroup" class="mat-mdc-header-row">
                                     <tr>
@@ -138,56 +77,120 @@
 
                                               </button>
                                             </ul>
-                                          </td>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="emptyList" *ngIf="listaConjunta?.length===0">
+                        <p>No hay Tests Pendientes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="left">
+                        <p class="text-muted">Ejercicios por hacer</p>
+                    </div>
+                    <div *ngIf="ejerciciosAsignados?.length !== 0" class="responsive-table">
+                        <table class="mat-mdc-table" role="table" id="grid">
+                            <thead>
+                            <tr>
+                                <th>Ejercicio</th>
+                                <th>Realizado</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let ejercicio of ejerciciosAsignados">
+                                <td ><span [class.tachado]="ejercicio.contestado">{{ejercicio.nombre}}</span></td>
+                                <td>
+                                <input
+                                    class="browser-default checkbox"
+                                    type="checkbox"
+                                    [(ngModel)]="ejercicio.contestado"
+                                    (change)="onCheckboxChangeEjercicio(ejercicio)"
+                                />
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="emptyList" *ngIf="ejerciciosAsignados?.length===0">
+                    <p>No hay Ejercicios Pendientes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col l4 m6 s12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="left">
+                        <p class="text-muted">Psicoeducación</p>
+                    </div>
+                    <div *ngIf="modulosAsignados?.length !== 0" class="responsive-table">
+                        <table class="mat-mdc-table" role="table" id="grid">
+                            <thead>
+                            <tr>
+                                <th>Modulo</th>
+                                <th>Realizado</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let modulo of modulosAsignados">
+                                <td ><span [class.tachado]="modulo.contestado">{{modulo.nombre}}</span></td>
+                                <td>
+                                <input
+                                    class="browser-default checkbox"
+                                    type="checkbox"
+                                    [(ngModel)]="modulo.contestado"
+                                    (change)="onCheckboxChangeModulo(modulo)"
+                                />
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="emptyList" *ngIf="modulosAsignados?.length===0">
+                    <p>No hay Modulos Pendientes</p>
                 </div>
             </div>
         </div>
     </div>
-<div class="col l4 m6 s12">
-    <div class="card">
-        <div class="card-body">
-            <div class="left">
-                <p class="text-muted">Ejercicios por hacer</p>
-            </div>
-            <div class="responsive-table">
-                <table class="mat-mdc-table" role="table" id="grid">
-                    <thead>
-                      <tr>
-                        <th>Modulo</th>
-                        <th>Visto</th>
-                        <th>Ejercicio</th>
-                        <th>Realizado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let ejercicio of ejerciciosAsignadosConModulo">
-                        <a [routerLink]="['/paciente/vista-modulo',ejercicio.moduloId]"><td><span [class.tachado]="ejercicio.checkedModulo">{{ejercicio.moduloTitulo}}</span></td></a>
-                        <td>
-                            <input
-                              class="browser-default checkbox"
-                              type="checkbox"
-                              [(ngModel)]="ejercicio.checkedModulo"
-                              (change)="onCheckboxChange(ejercicio)"
-                            />
-                          </td>
-                        <td ><span [class.tachado]="ejercicio.checked">{{ejercicio.nombre}}</span></td>
-                        <td>
-                          <input
-                            class="browser-default checkbox"
-                            type="checkbox"
-                            [(ngModel)]="ejercicio.checked"
-                            (change)="onCheckboxChange(ejercicio)"
-                          />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+
+    <div class="row">
+        <div class="col l6 m6 s12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="left">
+                        <p class="text-muted">Evaluaciones</p>
+                    </div>
+                    <div class="evaluacionesContainer">
+                        <div class="timeline">
+                            <div class="timeline-event" *ngFor="let ce of consultasConEvaluacion">
+                              <!-- Ícono según estado -->
+                              <div class="timeline-icon" [ngStyle]="{'background-color': ce.color}">
+                                <i class="material-symbols-outlined">
+                                    done_outline
+                                </i>
+                              </div>
+                          
+                              <!-- Contenido del evento -->
+                              <div class="timeline-content">
+                                <a [routerLink]="['/paciente/vista-evaluacion',ce.id]"><h5>{{ ce.evaluacion }}</h5></a>
+                                <p><strong>Fecha:</strong> {{ ce.FechaConsulta | date:'longDate' }}</p>
+                                <!--
+                                <a (click)="verDetalle(ce)" class="btn-small blue">Ver más</a> -->
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-

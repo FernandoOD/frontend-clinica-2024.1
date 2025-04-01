@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { map, Observable, of, Subscription } from 'rxjs';
 import { SeguridadService } from '../../../servicios/seguridad.service';
 import { UsuarioModelo } from '../../../modelos/Usuario.modelo';
 
@@ -11,23 +11,18 @@ import { UsuarioModelo } from '../../../modelos/Usuario.modelo';
 })
 export class BarraNavegacionSuperiorComponent implements OnInit {
 
-  isLoggedIn: boolean = false;
+  isLoggedIn$!: Observable<boolean>;
 
-  suscripcion: Subscription = new Subscription;
-
-  constructor(private servicioSeguridad: SeguridadService) {
+  constructor(private servicioSeguridad: SeguridadService,
+  ) {
 
   }
 
   ngOnInit(): void {
-    
-  }
+    this.isLoggedIn$ = this.servicioSeguridad.getSessionData().pipe(
+      map(datos => datos.isLoggedIn)
+    );
 
-  isLoggedInFn(){
-    this.suscripcion = this.servicioSeguridad.getSessionData().subscribe((datos: UsuarioModelo)=>{
-      this.isLoggedIn = datos.isLoggedIn;
-    });
-    return this.isLoggedIn
   }
 
 }

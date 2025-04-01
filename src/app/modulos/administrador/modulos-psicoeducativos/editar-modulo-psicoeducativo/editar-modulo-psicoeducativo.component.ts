@@ -93,7 +93,7 @@ export class EditarModuloPsicoeducativoComponent {
       next: (data: ModuloPsicoeducativoModelo) => {
         // Manejo de autenticación exitosa
         console.log("Registro actualizado correctamente", data);
-        this.router.navigate(["/terapeuta/listar-modulo-psicoeducativo"]);
+        this.router.navigate(["/admin/listar-modulo-psicoeducativo"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {

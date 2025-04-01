@@ -9,44 +9,60 @@ import { VistaModuloComponent } from './vista-modulo/vista-modulo.component';
 import { AutoestimaTestComponent } from './tests/autoestima-test/autoestima-test.component';
 import { YsqTestComponent } from './tests/ysq-test/ysq-test.component';
 import { BaiTestComponent } from './tests/bai-test/bai-test.component';
+import { VistaEvaluacionComponent } from './vista-evaluacion/vista-evaluacion.component';
+import { verificadorSesionGuard } from '../../guardianes/verificador-sesion.guard';
 
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPacienteComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'BDI-test',
     component: BDITestComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'ETrA-test',
     component: EtraTestComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'PBQ-test',
     component: PbqTestComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'YSQ-test',
     component: YsqTestComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'BAI-test',
     component: BaiTestComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'DSM5-test',
     component: Dsm5TestComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'vista-modulo/:id',
     component: VistaModuloComponent,
+    canActivate: [verificadorSesionGuard]
+  },
+  {
+    path: 'vista-evaluacion/:id',
+    component: VistaEvaluacionComponent,
+    canActivate: [verificadorSesionGuard]
   },
   {
     path: 'Autoestima-test',
     component: AutoestimaTestComponent,
+    canActivate: [verificadorSesionGuard]
   },
 ];
 
