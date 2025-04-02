@@ -75,17 +75,14 @@ export class EditarConsultaComponent {
           this.agregarTest();
           this.tests.at(i).setValue(this.testActuales[i].testPsicometricoId);
         }          
-        console.log("Tests", this.testActuales);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
 
@@ -127,19 +124,16 @@ export class EditarConsultaComponent {
     this.servicio.updateRecord(obj).subscribe({
       next: (data: ConsultaModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Registro actualizado correctamente", data);
         this.updateTest(data);
         this.router.navigate(["/terapeuta/listar-consulta"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al actualizar", error);
         alert("Error al actualizar el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de actualizado completado');
       }
     });
   }
@@ -149,17 +143,14 @@ export class EditarConsultaComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.testsDisponibles = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -173,12 +164,10 @@ export class EditarConsultaComponent {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
   }
@@ -188,18 +177,13 @@ export class EditarConsultaComponent {
      let agregar = testsSeleccionados.filter((id: ConsultaTestModelo) => !this.testActuales.includes(id));
      let eliminar = this.testActuales.filter((id: ConsultaTestModelo) => !testsSeleccionados.includes(id));
 
-     console.log("agregar",agregar);
-     console.log("eliminar",eliminar);
-
      if(eliminar != null){
       for(let  consultaTest of eliminar){
         this.servicioConsultaTest.deleteRecord(consultaTest.id).subscribe({
           next: (data) => {
-            console.log("Test eliminado correctamente");
           },
           error: (error: any) => {
             // Manejo de error en autenticación
-            console.error("No pudimos eliminar el test", error);
             alert("No se pudo eliminar el test");
           }
         });
@@ -214,11 +198,9 @@ export class EditarConsultaComponent {
       };
       this.servicioConsultaTest.saveRecord(obj).subscribe({
         next: (data) => {
-          console.log("Test agregado correctamente",data);
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("No pudimos agregar el test", error);
           alert("No se pudo agregar el test");
         }
       });

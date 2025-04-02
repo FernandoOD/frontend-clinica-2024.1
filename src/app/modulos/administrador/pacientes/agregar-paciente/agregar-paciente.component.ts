@@ -59,12 +59,10 @@ export class AgregarPacienteComponent implements OnInit{
       next: (data) => {
         // Manejo de autenticación exitosa
         this.terapeutaList = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
@@ -101,7 +99,6 @@ export class AgregarPacienteComponent implements OnInit{
     this.servicio.saveRecord(obj).subscribe({
       next: (data: PacienteModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.crearUsuario(data);
         this.asignarTerapeuta(data);
         this.crearHistorial(data);
@@ -110,12 +107,10 @@ export class AgregarPacienteComponent implements OnInit{
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -128,17 +123,14 @@ export class AgregarPacienteComponent implements OnInit{
     this.servicioUser.saveUser(obj).subscribe({
       next: (data: UsuarioModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al crear Usuario");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -153,18 +145,15 @@ export class AgregarPacienteComponent implements OnInit{
     this.servicioPacienteTerapeuta.saveRecord(obj).subscribe({
       next: (data: PacienteTerapeutaModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.router.navigate(["/admin/listar-paciente"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al asignar terapeuta");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -181,18 +170,15 @@ export class AgregarPacienteComponent implements OnInit{
     this.servicioHistoriaClinica.saveRecord(obj).subscribe({
       next: (data: HistoriaClinicaModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.router.navigate(["/admin/listar-paciente"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al asignar terapeuta");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado de historia completado');
       }
     });
   }

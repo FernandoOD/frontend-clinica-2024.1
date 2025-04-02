@@ -63,7 +63,6 @@ export class AgregarModuloPsicoeducativoComponent {
     this.servicio.saveRecord(obj).subscribe({
       next:(data: ModuloPsicoeducativoModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.router.navigate(["/admin/listar-modulo-psicoeducativo"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },

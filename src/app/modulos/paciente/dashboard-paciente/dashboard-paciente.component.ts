@@ -162,17 +162,14 @@ export class DashboardPacienteComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaRegistros = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
 
@@ -258,19 +255,16 @@ export class DashboardPacienteComponent {
        next: (data) => {
         // Manejo de autenticación exitosa
         this.listaConsultas = data;
-        console.log("Datos listados", data);
         this.buscarConsultaTest();
         this.consultasEnEvaluacion();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar las consultas");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -284,14 +278,11 @@ export class DashboardPacienteComponent {
       next: (resultados) => {
         // Combinar todas las respuestas en `listaConsultaTest`
         this.listaConsultaTest = resultados.flat();
-        console.log("Datos listados ConsultaTest", this.listaConsultaTest);
       },
       error: (error) => {
-        console.error("Error al listar las consultas", error);
         alert("Error al listar las consultas");
       },
       complete: () => {
-        console.log('Todas las consultas han sido procesadas');
       }
     });
   }
@@ -312,27 +303,20 @@ export class DashboardPacienteComponent {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al obtener token");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
 
   juntarListas() {
-    console.log("Lista Consultas", this.listaConsultas);
-    console.log("Lista ConsultasTest", this.listaConsultaTest);
-    console.log("Lista Registros", this.listaRegistros);
   
     // Filtrar consultasTest donde contestado sea igual a false
     const consultasTestNoContestadas = this.listaConsultaTest.filter(
       (rel) => rel.contestado === false
     );
-  
-    console.log("ConsultasTest no contestadas:", consultasTestNoContestadas);
   
     // Filtrar consultas con al menos un test sin responder
     this.listaConjunta = this.listaConsultas
@@ -352,7 +336,6 @@ export class DashboardPacienteComponent {
         const relaciones = consultasTestNoContestadas.filter(
           (rel) => rel.consultaId === consulta.id
         );
-        console.log(`Relaciones para Consulta ${consulta.id}:`, relaciones);
   
         // Mapear los tests relacionados con sus datos
         const testsRelacionados = relaciones
@@ -380,8 +363,6 @@ export class DashboardPacienteComponent {
           tests: testsRelacionados,
         };
       });
-  
-    console.log("Lista Conjunta", this.listaConjunta);
   }
 
   toDoExcersises(){
@@ -389,19 +370,16 @@ export class DashboardPacienteComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaEjerciciosPracticos  = data;
-        console.log("toDoExcersises",this.listaEjerciciosPracticos)
         this.obtenerModulos();
         this.formarListaEjerciciosFinal();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al obtener ejercicios", error);
         alert("Error al obtener ejercicios");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de listado completo');
       }
     });
   }
@@ -411,18 +389,15 @@ export class DashboardPacienteComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaModulosPsicoeducativos  = data;
-        console.log("toDoExcersises",this.listaModulosPsicoeducativos);
         this.formarListaModulosFinal();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxit
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al obtener ejercicios", error);
         alert("Error al obtener ejercicios");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de listado completo');
       }
     });
   }
@@ -432,18 +407,15 @@ export class DashboardPacienteComponent {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaModulos = data;
-          console.log("listaModulos",this.listaModulos);
           this.listarEjercicios();
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error al obtener ejercicios", error);
-          alert("Error al obtener ejercicios");
+          alert("Error al obtener modulos");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de listado completo');
         }
       });
   }
@@ -454,19 +426,16 @@ export class DashboardPacienteComponent {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaEjercicios.push(...data);
-          console.log("lista Ejercicios", this.listaEjercicios);
           this.formarListaEjerciciosFinal();
           this.formarListaModulosFinal();
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los datos");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -488,8 +457,6 @@ export class DashboardPacienteComponent {
         contestado: ejercicioPractico.contestado
       };
     }).filter(e => e !== null && e.contestado !== true); // Eliminar posibles nulls
-    
-    console.log(this.ejerciciosAsignados);
   }
 
   formarListaModulosFinal(){
@@ -508,8 +475,6 @@ export class DashboardPacienteComponent {
         contestado: moduloPsicoeducativo.contestado
       };
     }).filter(m => m !== null && m?.contestado !== true); // Eliminar posibles nulls
-    
-    console.log(this.ejerciciosAsignados);
   }
 
   onCheckboxChangeEjercicio(ejercicio: any): void {
@@ -531,16 +496,13 @@ export class DashboardPacienteComponent {
     this.servicioPacienteEjercicio.updateRecord(obj).subscribe({
       next: (data: PacienteEjercicioModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Actualización del contestado correcta", data);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al marcar contestado en pacienteEjercicio");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -556,16 +518,13 @@ export class DashboardPacienteComponent {
     this.servicioPacienteModulo.updateRecord(obj).subscribe({
       next: (data: PacienteModuloModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Actualización del contestado correcta", data);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al marcar contestado en pacienteModulo");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }

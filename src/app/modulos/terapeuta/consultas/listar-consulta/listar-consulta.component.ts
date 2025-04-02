@@ -32,22 +32,18 @@ export class ListarConsultaComponent {
       let info = JSON.parse(datos);
       this.IdPersona = info.idPersona;
     }
-    console.log(this.IdPersona);
     this.servicio.listRecordsTerapeuta(this.IdPersona).subscribe({
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaRegistros = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }

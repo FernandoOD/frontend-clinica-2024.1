@@ -35,12 +35,10 @@ export class ListarModuloPsicoeducativoComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaRegistros = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {

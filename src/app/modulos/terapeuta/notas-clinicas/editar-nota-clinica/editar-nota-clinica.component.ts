@@ -4,7 +4,6 @@ import { NotaClinicaModelo } from '../../../../modelos/NotaClinica.modelo';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
     selector: 'app-editar-nota-clinica',
@@ -21,7 +20,6 @@ export class EditarNotaClinicaComponent {
 
   constructor(
     private fb:FormBuilder,
-    private servicioSeguridad: SeguridadService,
     private servicio: NotaClinicaService,
     private router:Router,
     private route: ActivatedRoute
@@ -56,12 +54,10 @@ export class EditarNotaClinicaComponent {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("No se encontro el registro", error);
         alert("ENo se encuentra el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
   }
@@ -91,18 +87,15 @@ export class EditarNotaClinicaComponent {
     this.servicio.updateRecord(obj).subscribe({
       next: (data: NotaClinicaModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Registro actualizado correctamente", data);
         this.router.navigate(["/terapeuta/listar-nota-clinica"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al actualizar", error);
         alert("Error al actualizar el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de actualizado completado');
       }
     });
   }

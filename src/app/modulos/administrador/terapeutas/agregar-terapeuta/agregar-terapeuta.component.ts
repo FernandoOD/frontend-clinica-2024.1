@@ -76,14 +76,12 @@ export class AgregarTerapeutaComponent implements OnInit{
     this.servicio.saveRecord(obj).subscribe({
       next: (data: TerapeutaModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.crearUsuario(data);
         this.router.navigate(["/admin/listar-terapeuta"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar el registro");
       },
       complete: () => {
@@ -101,17 +99,14 @@ export class AgregarTerapeutaComponent implements OnInit{
     this.servicioUser.saveUser(obj).subscribe({
       next: (data: UsuarioModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al crear Usuario");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }

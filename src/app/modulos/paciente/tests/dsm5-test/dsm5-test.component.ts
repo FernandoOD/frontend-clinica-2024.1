@@ -109,8 +109,6 @@ export class Dsm5TestComponent {
             Si presentas síntomas significativos o tienes preocupaciones sobre tu salud mental, 
             es importante que consultes con un profesional de la salud mental calificado.</em></p>
         `;
-
-        console.log("Puntuaciones",this.puntuaciones);
         resultadoDiv.style.display = "block";
     
         // Scroll hasta el resultado
@@ -131,17 +129,14 @@ export class Dsm5TestComponent {
             this.servicioResultadoTest.saveRecord(obj).subscribe({
               next: (data: ConsultaResultadoTestModelo) => {
                 // Manejo de autenticación exitosa
-                console.log("Resultados del test guardados", data);
                 this.router.navigate(['paciente/dashboard']);
               },
               error: (error: any) => {
                 // Manejo de error en autenticación
-                console.error("Error de autenticación", error);
                 alert("Error al guardar los resultados del test");
               },
               complete: () => {
                 // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-                console.log('Proceso de guardado completado');
               }
             });
         
@@ -152,7 +147,6 @@ export class Dsm5TestComponent {
 
     obtenerDatosTest(){
         let datos = this.servicioSeguridad.getDataTestLocal();
-        console.log("Datos Test",datos);
         let objetoDatos : TestPsicometricoModelo;
         if(datos){
           objetoDatos = JSON.parse(datos);
@@ -174,16 +168,13 @@ export class Dsm5TestComponent {
         this.servicioConsultaTest.updateRecord(obj).subscribe({
           next: (data: ConsultaTestModelo) => {
             // Manejo de autenticación exitosa
-            console.log("Actualización del contestado correcta", data);
           },
           error: (error: any) => {
             // Manejo de error en autenticación
-            console.error("Error de autenticación", error);
             alert("Error al guardar los resultados del test");
           },
           complete: () => {
             // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-            console.log('Proceso de guardado completado');
           }
         });
       }

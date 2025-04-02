@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ModuloPsicoeducativoService } from '../../../servicios/modulo-psicoeducativo.service';
-import { SeguridadService } from '../../../servicios/seguridad.service';
 import { ModuloPsicoeducativoModelo } from '../../../modelos/ModuloPsicoeducativo.modelo';
 
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -23,10 +21,7 @@ export class VistaModuloComponent {
   safeUrl?: SafeResourceUrl;
 
   constructor(
-      private fb:FormBuilder,
-      private servicioSeguridad: SeguridadService,
       private servicio: ModuloPsicoeducativoService,
-      private router:Router,
       private route: ActivatedRoute,
       private sanitizer: DomSanitizer
     ){
@@ -45,18 +40,15 @@ export class VistaModuloComponent {
               this.urlVideo = data.UrlVideo;
             }
             this.safeUrl = this.getSafeUrl(this.urlVideo);
-            console.log("Información Modulo",data);
             //this.getFGV['terapeutaId'].setValue(data.terapeutaId);
             // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
           },
           error: (error: any) => {
             // Manejo de error en autenticación
-            console.error("No se encontro el registro", error);
             alert("ENo se encuentra el registro");
           },
           complete: () => {
             // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-            console.log('Proceso de obtención completado');
           }
         });
   }

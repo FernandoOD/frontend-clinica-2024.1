@@ -47,12 +47,10 @@ export class EditarTestPsicometricoComponent {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("No se encontro el registro", error);
         alert("ENo se encuentra el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
   }
@@ -74,18 +72,15 @@ export class EditarTestPsicometricoComponent {
     this.servicio.updateRecord(obj).subscribe({
       next: (data: TestPsicometricoModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Registro actualizado correctamente", data);
         this.router.navigate(["/admin/listar-test-psicometrico"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al actualizar", error);
         alert("Error al actualizar el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de actualizado completado');
       }
     });
   }

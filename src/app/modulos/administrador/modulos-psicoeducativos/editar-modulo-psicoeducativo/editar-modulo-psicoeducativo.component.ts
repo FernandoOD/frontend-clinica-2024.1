@@ -59,7 +59,6 @@ export class EditarModuloPsicoeducativoComponent {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("No se encontro el registro", error);
         alert("ENo se encuentra el registro");
       },
       complete: () => {
@@ -92,13 +91,11 @@ export class EditarModuloPsicoeducativoComponent {
     this.servicio.updateRecord(obj).subscribe({
       next: (data: ModuloPsicoeducativoModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Registro actualizado correctamente", data);
         this.router.navigate(["/admin/listar-modulo-psicoeducativo"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al actualizar", error);
         alert("Error al actualizar el registro");
       },
       complete: () => {

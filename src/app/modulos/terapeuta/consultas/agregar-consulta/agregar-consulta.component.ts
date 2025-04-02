@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PacienteModelo } from '../../../../modelos/Paciente.modelo';
-import { PacienteService } from '../../../../servicios/paciente.service';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
-import { UsuarioService } from '../../../../servicios/usuario.service';
 import { ConsultaModelo } from '../../../../modelos/Consulta.modelo';
 import { ConsultaService } from '../../../../servicios/consulta.service';
 import { TestPsicometricoModelo } from '../../../../modelos/TestPsicometrico.modelo';
@@ -62,12 +59,10 @@ export class AgregarConsultaComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.testsDisponibles = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
@@ -95,19 +90,16 @@ export class AgregarConsultaComponent {
     this.servicio.saveRecord(obj).subscribe({
       next: (data: ConsultaModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.asignarTest(data);
         this.router.navigate(["/terapeuta/listar-consulta"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar la consulta");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -128,7 +120,6 @@ export class AgregarConsultaComponent {
 
   asignarTest(data: ConsultaModelo){
     const testsSeleccionados =this.fgValidation.value.tests.map(Number);
-    console.log("IDs",testsSeleccionados);
     const obj = {
       consultaId: data.id,  // ID de la consulta
       testPsicometricoId: testsSeleccionados,
@@ -137,18 +128,15 @@ export class AgregarConsultaComponent {
     this.servicioConsultaTest.saveRecord(obj).subscribe({
       next: (data: ConsultaTestModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.router.navigate(["/terapeuta/perfil-paciente",this.id]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar la consulta");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }

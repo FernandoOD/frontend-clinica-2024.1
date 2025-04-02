@@ -99,17 +99,14 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaTests = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -121,17 +118,14 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         this.listaConsultas = data;
         this.buscarConsultaTest();
         this.consultasEnSesiones();
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar las consultas");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -145,15 +139,12 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
       next: (resultados) => {
         // Combinar todas las respuestas en `listaConsultaTest`
         this.listaConsultaTest = resultados.flat();
-        console.log("Datos listados ConsultaTest", this.listaConsultaTest);
         this.buscarRespuestasRelevantes();
       },
       error: (error) => {
-        console.error("Error al listar las consultas", error);
         alert("Error al listar las consultas");
       },
       complete: () => {
-        console.log('Todas las consultas han sido procesadas');
       }
     }); 
   }
@@ -167,17 +158,14 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         ...nota,
         tratamiento: `Tratamiento ${index + 1}`
     }));
-       console.log("Notas listadas", data);
        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
      },
      error: (error: any) => {
        // Manejo de error en autenticación
-       console.error("Error de autenticación", error);
        alert("Error al listar las consultas");
      },
      complete: () => {
        // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-       console.log('Proceso de guardado completado');
      }
    });
   }
@@ -195,7 +183,6 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
       ...consulta,
       evaluacion: `Evaluación ${index + 1}`
   }));
-    console.log(this.testsConConsultas);
 
     const peticiones: Observable<any>[]  = this.testsConConsultas.flatMap(consulta =>
       consulta.tests.map((test: TestPsicometricoModelo) => 
@@ -208,7 +195,6 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         next: (resultados) => {
           // Combinar todas las respuestas en `listaConsultaTest`
           this.listaRespuestasRelevantes = resultados.flat();
-          console.log("Datos listados ConsultaTest", this.listaRespuestasRelevantes);
           const respuestasMap = this.listaRespuestasRelevantes.reduce((map, resp) => {
             if (!map[resp.resultadoTestId]) {
                 map[resp.resultadoTestId] = []; // Si no existe el array, lo inicializa
@@ -229,15 +215,11 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
             }))
         }));
 
-        console.log('RespuestasMap',respuestasMap);
-
         },
         error: (error) => {
-          console.error("Error al listar las consultas", error);
           alert("Error al listar las consultas");
         },
         complete: () => {
-          console.log('Todas las consultas han sido procesadas');
         }
       });
     }
@@ -248,18 +230,15 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaEjerciciosPracticos  = data;
-        console.log("toDoExcersises",this.listaEjerciciosPracticos)
         this.obtenerModulos();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al obtener ejercicios", error);
         alert("Error al obtener ejercicios");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de listado completo');
       }
     });
   }
@@ -269,17 +248,14 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaModulosPsicoeducativos  = data;
-        console.log("toDoExcersises",this.listaModulosPsicoeducativos);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxit
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al obtener ejercicios", error);
         alert("Error al obtener ejercicios");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de listado completo');
       }
     });
   }
@@ -289,18 +265,15 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaModulos = data;
-          console.log("listaModulos",this.listaModulos);
           this.listarEjercicios();
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error al obtener ejercicios", error);
           alert("Error al obtener ejercicios");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de listado completo');
         }
       });
   }
@@ -311,19 +284,16 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaEjercicios.push(...data);
-          console.log("lista Ejercicios", this.listaEjercicios);
           this.formarListaEjerciciosFinal();
           this.formarListaModulosFinal();
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los datos");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -343,8 +313,6 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         contestado: ejercicioPractico.contestado
       };
     }).filter(e => e !== null); // Eliminar posibles nulls
-    
-    console.log(this.ejerciciosAsignados);
   }
 
   formarListaModulosFinal(){
@@ -361,8 +329,6 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
         contestado: moduloPsicoeducativo.contestado
       };
     }).filter(e => e !== null); // Eliminar posibles nulls
-    
-    console.log(this.modulosAsignados);
   }
 
   consultasEnSesiones(){
@@ -374,7 +340,6 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
 
   visualizarResultados(test: any) {
     this.testSeleccionado = test;
-    console.log('Tests Seleccionado', this.testSeleccionado);
   
     // 🔹 Asegurar que el gráfico anterior se destruye antes de crear uno nuevo
     if (this.chart1) {

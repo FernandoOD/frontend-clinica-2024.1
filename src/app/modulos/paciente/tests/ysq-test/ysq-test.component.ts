@@ -8,6 +8,9 @@ import { ConsultaTestService } from '../../../../servicios/consulta-test.service
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { RespuestaRelevanteModelo } from '../../../../modelos/RespuestaRelevante.modelo';
 import { RespuestasRelevantesService } from '../../../../servicios/respuestas-relevantes.service';
+import jsPDF from 'jspdf';
+import { ArchivoPDFModelo } from '../../../../modelos/ArchivoPDF.modelo';
+import { UploadPdfService } from '../../../../servicios/upload-pdf.service';
 
 @Component({
   selector: 'app-ysq-test',
@@ -43,6 +46,8 @@ export class YsqTestComponent {
 
 
       respuestasRelevantes: RespuestaRelevanteModelo[] = [];
+      respuestasReporte: any[] = [];
+
           
       preguntas: { [key: number]: string } = {
         1: "La mayor parte del tiempo, no he tenido a alguien que me cuide, comparta conmigo, o le importe lo que me pasa",
@@ -158,6 +163,7 @@ export class YsqTestComponent {
           private servicioSeguridad: SeguridadService,
           private servicioConsultaTest: ConsultaTestService,
           private servicioRespuestasRelevantes: RespuestasRelevantesService,
+          private servicioUploadPDF: UploadPdfService,
           private router: Router
         ){
       
@@ -224,7 +230,10 @@ export class YsqTestComponent {
                   respuestaValor: valor,
                 });
               }
-
+              this.respuestasReporte.push({
+                pregunta: this.obtenerTextoPregunta(i), // Método para obtener el texto
+                respuesta :  this.obtenerTextoRespuesta((i*10)+valor),
+              });
               this.total += valor;
               if (i <= 5) this.privacionEmocional += valor;
               if (i >= 6 && i <= 10) this.abandono += valor;
@@ -248,6 +257,7 @@ export class YsqTestComponent {
   
       if (preguntasSinResponder.length > 0) {
           this.errorMessage = `Por favor, responde las siguientes preguntas: ${preguntasSinResponder.join(", ")}`;
+          this.respuestasReporte.splice(0);
           return;
       }
   
@@ -284,6 +294,8 @@ export class YsqTestComponent {
           this.puntuaciones = `${this.total},${this.privacionEmocional},${this.abandono},${this.desconfianzaAbuso},${this.aislamientoSocial},${this.defectuosidad},${this.fracaso},${this.incompetencia},${this.vulnerabilidad},${this.simbiosis},${this.subyugacion},${this.sacrificio},${this.inhibicionEmocional},${this.estandaresInalcanzables},${this.grandiosidad},${this.disciplinaInsuficiente}`;
           this.clasificaciones = `${this.clasificacionPrivacionEmocional},${this.clasificacionAbandono},${this.clasificacionDesconfianzaAbuso},${this.clasificacionAislamientoSocial},${this.clasificacionDefectuosidad},${this.clasificacionFracaso},${this.clasificacionIncompetencia},${this.clasificacionVulnerabilidad},${this.clasificacionSimbiosis},${this.clasificacionSubyugacion},${this.clasificacionSacrificio},${this.clasificacionInhibicionEmocional},${this.clasificacionEstandaresInalcanzables},${this.clasificacionGrandiosidad},${this.clasificacionDisciplinaInsuficiente}`;
   
+          // Generar Reporte
+          this.generarPDF(this.respuestasReporte);
   
            this.obtenerDatosTest();
           
@@ -385,4 +397,64 @@ export class YsqTestComponent {
               }
             });
           }
+  generarPDF(respuestas: { pregunta: string; respuesta: string}[]){
+        const pdf = new jsPDF();
+      
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(12);
+      
+        let y = 20; // Posición inicial en Y
+      
+        pdf.text('Resultados del Test YSQ', 105, y, { align: 'center' });
+        y += 10;
+      
+        pdf.text('Fecha: ' + new Date().toLocaleDateString(), 10, y);
+        y += 10;
+      
+        // Agregar resultados del test
+        respuestas.forEach(({ pregunta, respuesta}, index) => {
+          pdf.text(`\n ${index + 1}. ${pregunta} \n Respuesta: ${respuesta}`, 10, y);
+          y += 14;
+      
+          // Control de página
+          if (y > 270) {
+            pdf.addPage();
+            y = 20;
+          }
+        });
+      
+        y += 10;
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(`Puntaje total: ${this.total}`, 10, y);
+      
+      
+        y += 10;
+        pdf.setFont('helvetica', 'normal');
+        pdf.text(`Interpretación: ${this.clasificaciones}`, 10, y);
+      
+        // Guardar el archivo
+        pdf.save('Resultados_YSQ.pdf');
+    
+        // Convertir el PDF en un Blob
+        const pdfBlob = pdf.output('blob');
+    
+        // Crear un FormData para enviarlo
+        const formData = new FormData();
+        formData.append('file', pdfBlob, 'ResultadosYSQ.pdf');
+    
+    
+        this.servicioUploadPDF.saveRecord(formData).subscribe({
+          next: (data: ArchivoPDFModelo) => {
+            // Manejo de autenticación exitosa
+          },
+          error: (error: any) => {
+            // Manejo de error en autenticación
+            alert("Error al guardar el archivo");
+          },
+          complete: () => {
+            // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+          }
+        });
+    
+      }
 }

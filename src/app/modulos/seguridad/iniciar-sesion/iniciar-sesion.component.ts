@@ -49,12 +49,10 @@ export class IniciarSesionComponent implements OnInit {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Datos Incorrectos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de autenticación completado');
       }
     });
   }

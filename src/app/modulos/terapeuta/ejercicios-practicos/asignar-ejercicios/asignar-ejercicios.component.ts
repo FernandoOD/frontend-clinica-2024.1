@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { ModuloPsicoeducativoModelo } from '../../../../modelos/ModuloPsicoeducativo.modelo';
 import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoeducativo.service';
-import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { EjercicioPracticoModelo } from '../../../../modelos/EjercicioPractico.modelo';
 import { EjercicioPracticoService } from '../../../../servicios/ejercicio-practico.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TestPsicometricoModelo } from '../../../../modelos/TestPsicometrico.modelo';
 import { PacienteEjercicioService } from '../../../../servicios/paciente-ejercicio.service';
 import { PacienteEjercicioModelo } from '../../../../modelos/PacienteEjercicio.modelo';
 
@@ -24,7 +22,6 @@ export class AsignarEjerciciosComponent {
   pacienteId : number = 0;
 
   constructor (private servicio: ModuloPsicoeducativoService,
-              private servicioSeguridad: SeguridadService,
               private servicioEjercicio: EjercicioPracticoService,
               private route: ActivatedRoute,
               private servicioPacienteEjercicio: PacienteEjercicioService,
@@ -41,18 +38,15 @@ export class AsignarEjerciciosComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaModulos = data;
-        console.log("Datos listados", data);
         this.listarEjercicios();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -73,17 +67,14 @@ export class AsignarEjerciciosComponent {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaEjercicios.push(...data);
-          console.log("Datos listados", this.listaEjercicios);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los datos");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -119,23 +110,19 @@ export class AsignarEjerciciosComponent {
       pacienteId: this.pacienteId,  // ID de la consulta
       ejercicioPracticoId: idsEjercicios// Array de IDs de tests seleccionados
     };
-    console.log("idsEjercicios",idsEjercicios); 
 
     this.servicioPacienteEjercicio.saveRecord(obj).subscribe({
       next: (data: PacienteEjercicioModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Datos Correctos", data);
         this.router.navigate(["/terapeuta/mis-pacientes"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar la consulta");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }

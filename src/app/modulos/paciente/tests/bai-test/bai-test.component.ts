@@ -8,6 +8,9 @@ import { ConsultaResultadoTestService } from '../../../../servicios/consulta-res
 import { ConsultaTestService } from '../../../../servicios/consulta-test.service';
 import { RespuestasRelevantesService } from '../../../../servicios/respuestas-relevantes.service';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
+import jsPDF from 'jspdf';
+import { ArchivoPDFModelo } from '../../../../modelos/ArchivoPDF.modelo';
+import { UploadPdfService } from '../../../../servicios/upload-pdf.service';
 
 @Component({
   selector: 'app-bai-test',
@@ -27,6 +30,8 @@ export class BaiTestComponent {
     consultaTestId? = 0;
   
     respuestasRelevantes: RespuestaRelevanteModelo[] = [];
+    respuestasReporte: any[] = [];
+
   
     preguntas: { [key: number]: string } = {
       1: "Entumecimiento / Hormigueo",
@@ -64,6 +69,7 @@ export class BaiTestComponent {
       private servicioSeguridad: SeguridadService,
       private servicioConsultaTest: ConsultaTestService,
       private servicioRespuestasRelevantes: RespuestasRelevantesService,
+      private servicioUploadPDF: UploadPdfService,
       private router: Router
     ){
   
@@ -98,6 +104,10 @@ export class BaiTestComponent {
               respuestaValor: valor,
             });
           }
+          this.respuestasReporte.push({
+            pregunta: this.obtenerTextoPregunta(i), // Método para obtener el texto
+            respuesta :  this.obtenerTextoRespuesta((i*10)+valor),
+          });
           this.total += valor;
         } else {
           preguntasSinResponder.push(i);
@@ -107,11 +117,14 @@ export class BaiTestComponent {
       // Verificar si hay preguntas sin responder
       if (preguntasSinResponder.length > 0) {
         this.error = `Por favor, responde las siguientes preguntas: ${preguntasSinResponder.join(", ")}`;
+        this.respuestasReporte.splice(0)
         return;
       }
   
       // Interpretar la puntuación
       this.interpretarResultados();
+      // Generar Reporte
+      this.generarPDF(this.respuestasReporte);
   
       // Mostrar el resultado con scroll suave
       const resultadoDiv = document.getElementById('resultado');
@@ -167,18 +180,15 @@ export class BaiTestComponent {
       this.servicioResultadoTest.saveRecord(obj).subscribe({
         next: (data: ConsultaResultadoTestModelo) => {
           // Manejo de autenticación exitosa
-          console.log("Resultados del test guardados", data);
           this.guardarRespuestasRelevantes(data);
           this.router.navigate(['paciente/dashboard']);
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al guardar los resultados del test");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
   
@@ -210,16 +220,13 @@ export class BaiTestComponent {
       this.servicioConsultaTest.updateRecord(obj).subscribe({
         next: (data: ConsultaTestModelo) => {
           // Manejo de autenticación exitosa
-          console.log("Actualización del contestado correcta", data);
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al guardar los resultados del test");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -233,17 +240,75 @@ export class BaiTestComponent {
       this.servicioRespuestasRelevantes.saveRecord(obj).subscribe({
         next: (data: RespuestaRelevanteModelo) => {
           // Manejo de autenticación exitosa
-          console.log("Respuestas Relevantes guardadas correctamente", data);
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al guardar las respuestas relevantes");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
+
+    generarPDF(respuestas: { pregunta: string; respuesta: string}[]){
+        const pdf = new jsPDF();
+      
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(12);
+      
+        let y = 20; // Posición inicial en Y
+      
+        pdf.text('Resultados del Test BAI', 105, y, { align: 'center' });
+        y += 10;
+      
+        pdf.text('Fecha: ' + new Date().toLocaleDateString(), 10, y);
+        y += 10;
+      
+        // Agregar resultados del test
+        respuestas.forEach(({ pregunta, respuesta}, index) => {
+          pdf.text(`\n ${index + 1}. ${pregunta} \n Respuesta: ${respuesta}`, 10, y);
+          y += 14;
+      
+          // Control de página
+          if (y > 270) {
+            pdf.addPage();
+            y = 20;
+          }
+        });
+      
+        y += 10;
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(`Puntaje total: ${this.total}`, 10, y);
+      
+      
+        y += 10;
+        pdf.setFont('helvetica', 'normal');
+        pdf.text(`Interpretación: ${this.clasificacion}`, 10, y);
+      
+        // Guardar el archivo
+        pdf.save('Resultados_BAI.pdf');
+    
+        // Convertir el PDF en un Blob
+        const pdfBlob = pdf.output('blob');
+    
+        // Crear un FormData para enviarlo
+        const formData = new FormData();
+        formData.append('file', pdfBlob, 'ResultadosBAI.pdf');
+    
+    
+        this.servicioUploadPDF.saveRecord(formData).subscribe({
+          next: (data: ArchivoPDFModelo) => {
+            // Manejo de autenticación exitosa
+          },
+          error: (error: any) => {
+            // Manejo de error en autenticación
+            alert("Error al guardar el archivo");
+          },
+          complete: () => {
+            // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
+          }
+        });
+    
+      }
 }

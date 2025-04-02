@@ -75,12 +75,10 @@ export class EditarPacienteComponent {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("No se encontro el registro", error);
         alert("ENo se encuentra el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
   }
@@ -114,19 +112,16 @@ export class EditarPacienteComponent {
     this.servicio.updateRecord(obj).subscribe({
       next: (data: PacienteModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Registro actualizado correctamente", data);
         this.actualizarTerapeuta(data);
         this.router.navigate(["/admin/listar-paciente"]);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al actualizar", error);
         alert("Error al actualizar el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de actualizado completado');
       }
     });
   }
@@ -145,11 +140,9 @@ export class EditarPacienteComponent {
 
       this.servicioPacienteTerapeuta.updateRecord(obj).subscribe({
         next: (data: PacienteTerapeutaModelo) => {
-          console.log('Registro Actulizado',data);
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error al obtener terapeuta", error);
           alert("Error al actualizar el registro de la relacion");
         }
       });
@@ -161,12 +154,10 @@ export class EditarPacienteComponent {
       this.servicioPacienteTerapeuta.saveRecord(obj).subscribe({
         next: (data: PacienteTerapeutaModelo) => {
           // Manejo de autenticación exitosa
-          console.log("Terapeuta modificado correctamente", data);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al asignar terapeuta");
         }
       })
@@ -179,16 +170,13 @@ export class EditarPacienteComponent {
         this.terapeutaId = data.terapeutaId;
         this.fechaRegistro = data.FechaInicio;
         this.idRelacion = data.id;
-        console.log('terapeutaId: ',this.terapeutaId);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error al obtener terapeuta", error);
         alert("Error al obtener terapeuta el registro");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
 
@@ -199,17 +187,14 @@ export class EditarPacienteComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.terapeutaList = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }

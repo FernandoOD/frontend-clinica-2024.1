@@ -206,7 +206,7 @@ export class BDITestComponent {
 
     // Interpretar la puntuación
     this.interpretarResultados();
-    // Generar Reportez|  
+    // Generar Reporte
     this.generarPDF(this.respuestasReporte);
     
 
@@ -264,18 +264,15 @@ export class BDITestComponent {
     this.servicioResultadoTest.saveRecord(obj).subscribe({
       next: (data: ConsultaResultadoTestModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Resultados del test guardados", data);
         this.guardarRespuestasRelevantes(data);
         this.router.navigate(['paciente/dashboard']);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar los resultados del test");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
 
@@ -285,7 +282,6 @@ export class BDITestComponent {
 
   obtenerDatosTest(){
     let datos = this.servicioSeguridad.getDataTestLocal();
-    console.log("Datos Test",datos);
     let objetoDatos : TestPsicometricoModelo;
     if(datos){
       objetoDatos = JSON.parse(datos);
@@ -307,16 +303,13 @@ export class BDITestComponent {
     this.servicioConsultaTest.updateRecord(obj).subscribe({
       next: (data: ConsultaTestModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Actualización del contestado correcta", data);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar los resultados del test");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -330,16 +323,14 @@ export class BDITestComponent {
     this.servicioRespuestasRelevantes.saveRecord(obj).subscribe({
       next: (data: RespuestaRelevanteModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Respuestas Relevantes guardadas correctamente", data);
+
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar las respuestas relevantes");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -357,8 +348,6 @@ export class BDITestComponent {
   
     pdf.text('Fecha: ' + new Date().toLocaleDateString(), 10, y);
     y += 10;
-  
-    let puntajeTotal = 0;
   
     // Agregar resultados del test
     respuestas.forEach(({ pregunta, respuesta}, index) => {
@@ -395,16 +384,13 @@ export class BDITestComponent {
     this.servicioUploadPDF.saveRecord(formData).subscribe({
       next: (data: ArchivoPDFModelo) => {
         // Manejo de autenticación exitosa
-        console.log("Guardado Correcto del archivo", data);
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al guardar el archivo");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
 

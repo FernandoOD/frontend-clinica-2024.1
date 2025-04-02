@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { PacienteModuloService } from '../../../../servicios/paciente-modulo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModuloPsicoeducativoModelo } from '../../../../modelos/ModuloPsicoeducativo.modelo';
-import { PacienteEjercicioModelo } from '../../../../modelos/PacienteEjercicio.modelo';
 import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoeducativo.service';
-import { SeguridadService } from '../../../../servicios/seguridad.service';
 
 @Component({
   selector: 'app-asignar-modulos',
@@ -19,7 +17,6 @@ export class AsignarModulosComponent {
     pacienteId : number = 0;
   
     constructor (private servicio: ModuloPsicoeducativoService,
-                private servicioSeguridad: SeguridadService,
                 private route: ActivatedRoute,
                 private servicioPacienteModulo: PacienteModuloService,
                 private router:Router 
@@ -35,17 +32,14 @@ export class AsignarModulosComponent {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaModulos = data;
-          console.log("Datos listados", data);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los datos");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -68,7 +62,6 @@ export class AsignarModulosComponent {
         // Remover módulo si se deselecciona
         this.resumenAsignacion = this.resumenAsignacion.filter(mod => mod.id !== moduleId);
       }
-      console.log('resumenAsignacion',this.resumenAsignacion);
     }
     
     asignarModulos() {
@@ -78,20 +71,16 @@ export class AsignarModulosComponent {
         pacienteId: this.pacienteId,  // ID del paciente
         moduloPsicoeducativoId: idsModulos // Array de IDs de módulos seleccionados
       };
-    
-      console.log("IDs de Módulos asignados:", idsModulos);
+  
     
       this.servicioPacienteModulo.saveRecord(obj).subscribe({
         next: (data) => {
-          console.log("Módulos asignados correctamente", data);
           this.router.navigate(["/terapeuta/perfil-paciente",this.pacienteId]);
         },
         error: (error: any) => {
-          console.error("Error al asignar los módulos", error);
           alert("Error al guardar la asignación");
         },
         complete: () => {
-          console.log('Proceso de asignación completado');
         }
       });
     }

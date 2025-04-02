@@ -17,9 +17,7 @@ export class ConsultaResultadoTestService {
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
     this.tokenTest = servicioSeguridad.getTokenTest();
-    console.log(this.tokenTest);
     this.token = servicioSeguridad.getToken();
-    console.log(this.token);
    }
 
    listRecords(): Observable<ConsultaResultadoTestModelo[]>{

@@ -36,17 +36,14 @@ export class ListarPacienteComponent implements OnInit {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaRegistros = data;
-        console.log("Datos listados", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los datos");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de guardado completado');
       }
     });
   }
@@ -98,18 +95,15 @@ export class ListarPacienteComponent implements OnInit {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.deleteUsuario(id!);
-          console.log("Registro eliminado", data);
           this.listaRegistros = this.listaRegistros.filter(x => x.id != id);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al eliminar el registro");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -119,12 +113,10 @@ export class ListarPacienteComponent implements OnInit {
     this.servicioUsuario.deleteUser(idPersona).subscribe({
       next: (data) => {
         // Manejo de autenticación exitosa
-        console.log("Usuario eliminado", data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al eliminar el Usuario");
       }
     })

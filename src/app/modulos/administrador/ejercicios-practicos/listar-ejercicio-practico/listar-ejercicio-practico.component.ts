@@ -82,8 +82,6 @@ export class ListarEjercicioPracticoComponent {
     if(window.confirm("Realmente desea eliminar el registro de  " + nombre)){
       this.servicio.deleteRecord(id!).subscribe({
         next: (data) => {
-          // Manejo de autenticación exitoso
-          console.log("Registro eliminado", data);
           this.listaEjercicios = this.listaEjercicios.filter(x => x.id != id);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
@@ -103,9 +101,6 @@ export class ListarEjercicioPracticoComponent {
   deleteUsuario(idPersona: number){
     this.servicio.deleteRecord(idPersona).subscribe({
       next: (data) => {
-        // Manejo de autenticación exitosa
-        console.log("Usuario eliminado", data);
-        // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
         // Manejo de error en autenticación
@@ -120,7 +115,6 @@ export class ListarEjercicioPracticoComponent {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaModulos = data;
-        console.log("Datos listados", data);
         this.listarEjercicios();
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
@@ -142,7 +136,6 @@ export class ListarEjercicioPracticoComponent {
         next: (data) => {
           // Manejo de autenticación exitosa
           this.listaEjercicios.push(...data);
-          console.log("Datos listados", data);
           // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
         },
         error: (error: any) => {

@@ -136,18 +136,9 @@ export class VistaEvaluacionComponent implements AfterViewInit {
     interpretacionBAI : String = "No Hay Interpretación";
     
     constructor (
-      private servicio: TestPsicometricoService,
-      private servicioSeguridad: SeguridadService,
-      private servicioConsultas: ConsultaService,
       private servicioConsultaTest: ConsultaTestService,
       private servicioConsultaResultadoTest: ConsultaResultadoTestService,
-      private servicioPacienteEjercicio: PacienteEjercicioService,
-      private servicioPacienteModulo: PacienteModuloService,
-      private servicioEjercicioPractico: EjercicioPracticoService,
-      private servicioModuloPsicoeducativo: ModuloPsicoeducativoService,
-      private router : Router,
       private route: ActivatedRoute,
-      private servicioPaciente: PacienteService
      ){
   
     }
@@ -165,15 +156,12 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         next: (resultados) => {
           // Combinar todas las respuestas en `listaConsultaTest`
           this.listaConsultaTest = resultados.flat();
-          console.log("Datos listados ConsultaTest", this.listaConsultaTest);
           this.pintarGraficas();
         },
         error: (error) => {
-          console.error("Error al listar las consultas", error);
           alert("Error al listar las consultas");
         },
         complete: () => {
-          console.log('Todas las consultas han sido procesadas');
         }
       });
     }
@@ -284,7 +272,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           (test) => test.contestado === true && test.testPsicometricoId == 1
   
       );
-      console.log("ConsultasContestadas",consultasContestadas);
       if (consultasContestadas.length === 0) {
         console.warn("No hay consultas contestadas.");
         return; // Termina la ejecución si no hay consultas contestadas
@@ -299,7 +286,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         }
       });
     
-      console.log("Consulta con mayor ID:", consultaTestConMayorId);
     
       // Realizar la consulta para los resultados asociados
       this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
@@ -324,12 +310,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los resultados");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -340,7 +324,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           (test) => test.contestado === true && test.testPsicometricoId == 5
   
       );
-      console.log("ConsultasContestadas",consultasContestadas);
       if (consultasContestadas.length === 0) {
         console.warn("No hay consultas contestadas.");
         return; // Termina la ejecución si no hay consultas contestadas
@@ -354,8 +337,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           return new ConsultaTestModelo();
         }
       });
-    
-      console.log("Consulta con mayor ID:", consultaTestConMayorId);
     
       // Realizar la consulta para los resultados asociados
       this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
@@ -370,7 +351,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           if (this.listaConsultaResultadoTest5[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest5[0]?.Interpretacion != undefined) {
             this.currentScoreAutoestima = parseInt(this.listaConsultaResultadoTest5[0].Puntuacion);
             this.interpretacionAutoestima = this.listaConsultaResultadoTest5[0].Interpretacion;
-            console.log("currentScore", this.currentScoreAutoestima);
           } else {
             console.warn("Puntuación no definida en el primer registro de resultados.");
           }
@@ -381,12 +361,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los resultados");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -397,7 +375,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           (test) => test.contestado === true && test.testPsicometricoId == 7
   
       );
-      console.log("ConsultasContestadas",consultasContestadas);
       if (consultasContestadas.length === 0) {
         console.warn("No hay consultas contestadas.");
         return; // Termina la ejecución si no hay consultas contestadas
@@ -412,8 +389,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         }
       });
     
-      console.log("Consulta con mayor ID:", consultaTestConMayorId);
-    
       // Realizar la consulta para los resultados asociados
       this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
         next: (data: any) => {
@@ -427,7 +402,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           if (this.listaConsultaResultadoTest7[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest7[0]?.Interpretacion != undefined) {
             this.currentScoreBAI = parseInt(this.listaConsultaResultadoTest7[0].Puntuacion);
             this.interpretacionBAI = this.listaConsultaResultadoTest7[0].Interpretacion;
-            console.log("currentScore", this.currentScoreBAI);
           } else {
             console.warn("Puntuación no definida en el primer registro de resultados.");
           }
@@ -438,12 +412,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         },
         error: (error: any) => {
           // Manejo de error en autenticación
-          console.error("Error de autenticación", error);
           alert("Error al listar los resultados");
         },
         complete: () => {
           // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-          console.log('Proceso de guardado completado');
         }
       });
     }
@@ -454,7 +426,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         (test) => test.contestado === true && test.testPsicometricoId == 3
   
     );
-    console.log("ConsultasContestadas",consultasContestadas);
     if (consultasContestadas.length === 0) {
       console.warn("No hay consultas contestadas.");
       return; // Termina la ejecución si no hay consultas contestadas
@@ -468,8 +439,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         return new ConsultaTestModelo();
       }
     });
-  
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
   
     // Realizar la consulta para los resultados asociados
     this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
@@ -496,12 +465,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los resultados");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
     }
@@ -509,9 +476,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
     graficarETrA(){
       const consultasContestadas = this.listaConsultaTest.filter(
         (test) => test.contestado === true && test.testPsicometricoId == 4
-  
     );
-    console.log("ConsultasContestadas",consultasContestadas);
     if (consultasContestadas.length === 0) {
       console.warn("No hay consultas contestadas.");
       return; // Termina la ejecución si no hay consultas contestadas
@@ -526,8 +491,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       }
     });
   
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
-  
     // Realizar la consulta para los resultados asociados
     this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
       next: (data: any) => {
@@ -536,12 +499,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         this.listaConsultaResultadoTest4 = this.listaConsultaResultadoTest4.filter(
           (test) =>test.testPsicometricoId === 4
         );
-        console.log("ConsultaResultadoTest4", this.listaConsultaResultadoTest4);
   
         // Establecer el currentScore si está definido
         if (this.listaConsultaResultadoTest4[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest4[0]?.Interpretacion != undefined) {
           this.puntuacionETrA = this.listaConsultaResultadoTest4[0].Puntuacion;
-          console.log("Puntuaciones de ETRA",this.puntuacionETrA);
           this.existeETRA = 1;
           const valores = this.puntuacionETrA.split(",").map(Number);
           this.ansiedadGeneralizada = valores[1];
@@ -559,12 +520,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los resultados");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
     }
@@ -619,7 +578,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         (test) => test.contestado === true && test.testPsicometricoId == 2
   
     );
-    console.log("ConsultasContestadas",consultasContestadas);
     if (consultasContestadas.length === 0) {
       console.warn("No hay consultas contestadas.");
       return; // Termina la ejecución si no hay consultas contestadas
@@ -634,8 +592,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       }
     });
   
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
-  
     // Realizar la consulta para los resultados asociados
     this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
       next: (data: any) => {
@@ -644,12 +600,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         this.listaConsultaResultadoTest2 = this.listaConsultaResultadoTest2.filter(
           (test) =>test.testPsicometricoId === 2
         );
-        console.log("ConsultaResultadoTest2", this.listaConsultaResultadoTest2);
   
         // Establecer el currentScore si está definido
         if (this.listaConsultaResultadoTest2[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest2[0]?.Interpretacion != undefined) {
           this.puntuacionPBQ = this.listaConsultaResultadoTest2[0].Puntuacion;
-          console.log("Puntuaciones de PBQ",this.puntuacionPBQ);
           this.existePBQ=1;
           const valores = this.puntuacionPBQ.split(",").map(Number);
           this.evitativo = valores[1];
@@ -673,12 +627,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los resultados");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
     }
@@ -688,7 +640,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         (test) => test.contestado === true && test.testPsicometricoId == 6
   
     );
-    console.log("ConsultasContestadas",consultasContestadas);
     if (consultasContestadas.length === 0) {
       console.warn("No hay consultas contestadas.");
       return; // Termina la ejecución si no hay consultas contestadas
@@ -703,8 +654,6 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       }
     });
   
-    console.log("Consulta con mayor ID:", consultaTestConMayorId);
-  
     // Realizar la consulta para los resultados asociados
     this.servicioConsultaResultadoTest.findRecord(consultaTestConMayorId.consultaId).subscribe({
       next: (data: any) => {
@@ -713,12 +662,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         this.listaConsultaResultadoTest6 = this.listaConsultaResultadoTest6.filter(
           (test) =>test.testPsicometricoId === 6
         );
-        console.log("ConsultaResultadoTest6", this.listaConsultaResultadoTest6);
   
         // Establecer el currentScore si está definido
         if (this.listaConsultaResultadoTest6[0]?.Puntuacion != undefined && this.listaConsultaResultadoTest6[0]?.Interpretacion != undefined) {
           this.puntuacionYSQ = this.listaConsultaResultadoTest6[0].Puntuacion;
-          console.log("Puntuaciones de YSQ",this.puntuacionYSQ);
           this.existeYSQ=1;
           const valores = this.puntuacionYSQ.split(",").map(Number);
           this.privacionEmocional = valores[1];
@@ -747,12 +694,10 @@ export class VistaEvaluacionComponent implements AfterViewInit {
       },
       error: (error: any) => {
         // Manejo de error en autenticación
-        console.error("Error de autenticación", error);
         alert("Error al listar los resultados");
       },
       complete: () => {
         // Opcional: Puedes manejar alguna acción cuando el observable termine, si es necesario
-        console.log('Proceso de obtención completado');
       }
     });
     }
