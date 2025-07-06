@@ -14,7 +14,6 @@ export class PacienteTerapeutaService {
   token?:String ="";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(idPersona : number): Observable<PacienteTerapeutaModelo[]>{
@@ -27,7 +26,7 @@ export class PacienteTerapeutaService {
   findRecord(id : number): Observable<PacienteTerapeutaModelo>{
     return this.http.get<PacienteTerapeutaModelo>(`${this.url}/pacientes/${id}/terapeuta`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -39,21 +38,21 @@ export class PacienteTerapeutaService {
       terapeutaId : model.terapeutaId,
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : PacienteTerapeutaModelo): Observable<PacienteTerapeutaModelo>{
     return this.http.put<PacienteTerapeutaModelo>(`${this.url}/paciente-terapeutas/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/paciente-terapeutas/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

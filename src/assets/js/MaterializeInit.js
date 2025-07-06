@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const collapse = document.querySelectorAll('.collapsible');
     M.Collapsible.init(collapse, {
-      accordion: false // Cambia a true si quieres que solo se abra un submenú a la vez
+      accordion: true // Cambia a true si quieres que solo se abra un submenú a la vez
     });
 
     const modals = document.querySelectorAll('.modal');

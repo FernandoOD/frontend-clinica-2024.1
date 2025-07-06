@@ -15,13 +15,12 @@ export class ConsultaService {
 
   filter = encodeURIComponent(`{"include":[{"relation":"pacienteConsulta"}]}`);
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecordsTerapeuta(id:number): Observable<ConsultaModelo[]>{
     return this.http.get<ConsultaModelo[]>(`${this.url}/terapeutas/${id}/consultas/?filter=${this.filter}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -29,7 +28,7 @@ export class ConsultaService {
   listRecordsPaciente(id:number): Observable<ConsultaModelo[]>{
     return this.http.get<ConsultaModelo[]>(`${this.url}/pacientes/${id}/consultas/?filter=${this.filter}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -37,7 +36,7 @@ export class ConsultaService {
   findRecord(id : number): Observable<ConsultaModelo>{
     return this.http.get<ConsultaModelo>(`${this.url}/consulta/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -50,7 +49,7 @@ export class ConsultaService {
       pacienteId: model.pacienteId
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -63,14 +62,14 @@ export class ConsultaService {
       pacienteId: model.pacienteId
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/pacientes/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

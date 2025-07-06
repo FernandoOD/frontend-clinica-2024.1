@@ -5,6 +5,7 @@ import { EjercicioPracticoModelo } from '../../../../modelos/EjercicioPractico.m
 import { Subscription } from 'rxjs';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { ModuloPsicoeducativoModelo } from '../../../../modelos/ModuloPsicoeducativo.modelo';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listar-ejercicio-practico',
@@ -28,7 +29,8 @@ export class ListarEjercicioPracticoComponent {
   constructor (
     private servicio: EjercicioPracticoService,
     private servicioSeguridad: SeguridadService,
-    private servicioModelo: ModuloPsicoeducativoService
+    private servicioModelo: ModuloPsicoeducativoService,
+    public router : Router
    ){
 
   }

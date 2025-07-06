@@ -321,7 +321,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
     graficarAutoestima() {
       // Filtrar listaConsultaTest para incluir solo registros con contestado === true
       const consultasContestadas = this.listaConsultaTest.filter(
-          (test) => test.contestado === true && test.testPsicometricoId == 5
+          (test) => test.contestado === true && test.testPsicometricoId == 2
   
       );
       if (consultasContestadas.length === 0) {
@@ -344,7 +344,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           // Manejo de autenticación exitosa
           this.listaConsultaResultadoTest5 = data;
           this.listaConsultaResultadoTest5 = this.listaConsultaResultadoTest5.filter(
-            (test) =>test.testPsicometricoId === 5
+            (test) =>test.testPsicometricoId === 2
           );
     
           // Establecer el currentScore si está definido
@@ -372,7 +372,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
     graficarBAI() {
       // Filtrar listaConsultaTest para incluir solo registros con contestado === true
       const consultasContestadas = this.listaConsultaTest.filter(
-          (test) => test.contestado === true && test.testPsicometricoId == 7
+          (test) => test.contestado === true && test.testPsicometricoId == 3
   
       );
       if (consultasContestadas.length === 0) {
@@ -395,7 +395,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
           // Manejo de autenticación exitosa
           this.listaConsultaResultadoTest7 = data;
           this.listaConsultaResultadoTest7 = this.listaConsultaResultadoTest7.filter(
-            (test) =>test.testPsicometricoId === 7
+            (test) =>test.testPsicometricoId === 3
           );
     
           // Establecer el currentScore si está definido
@@ -423,7 +423,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
   
     graficarDSM5(){
       const consultasContestadas = this.listaConsultaTest.filter(
-        (test) => test.contestado === true && test.testPsicometricoId == 3
+        (test) => test.contestado === true && test.testPsicometricoId == 7
   
     );
     if (consultasContestadas.length === 0) {
@@ -446,7 +446,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         // Manejo de autenticación exitosa
         this.listaConsultaResultadoTest3 = data;
         this.listaConsultaResultadoTest3 = this.listaConsultaResultadoTest3.filter(
-          (test) =>test.testPsicometricoId === 3
+          (test) =>test.testPsicometricoId === 7
         );
   
         // Establecer el currentScore si está definido
@@ -575,7 +575,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
   
     graficarPBQ(){
       const consultasContestadas = this.listaConsultaTest.filter(
-        (test) => test.contestado === true && test.testPsicometricoId == 2
+        (test) => test.contestado === true && test.testPsicometricoId == 5
   
     );
     if (consultasContestadas.length === 0) {
@@ -598,7 +598,7 @@ export class VistaEvaluacionComponent implements AfterViewInit {
         // Manejo de autenticación exitosa
         this.listaConsultaResultadoTest2 = data;
         this.listaConsultaResultadoTest2 = this.listaConsultaResultadoTest2.filter(
-          (test) =>test.testPsicometricoId === 2
+          (test) =>test.testPsicometricoId === 5
         );
   
         // Establecer el currentScore si está definido

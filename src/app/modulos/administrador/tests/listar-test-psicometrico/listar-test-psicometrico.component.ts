@@ -3,6 +3,7 @@ import { TestPsicometricoService } from '../../../../servicios/test-psicometrico
 import { TestPsicometricoModelo } from '../../../../modelos/TestPsicometrico.modelo';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listar-test-psicometrico',
@@ -20,7 +21,7 @@ export class ListarTestPsicometricoComponent {
   ordenActual: string = '';  // Columna que está ordenada
 
   listaRegistros: TestPsicometricoModelo[] = [];
-  constructor (private servicio: TestPsicometricoService, private servicioSeguridad: SeguridadService, ){
+  constructor (private servicio: TestPsicometricoService, private servicioSeguridad: SeguridadService, public router:Router ){
 
   }
 

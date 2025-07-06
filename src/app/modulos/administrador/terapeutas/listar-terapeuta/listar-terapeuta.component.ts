@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { TerapeutaModelo } from '../../../../modelos/Terapeuta.modelo';
 import { TerapeutaService } from '../../../../servicios/terapeuta.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listar-terapeuta',
@@ -22,7 +23,7 @@ export class ListarTerapeutaComponent implements OnInit {
   ordenActual: string = '';  // Columna que está ordenada
 
   listaRegistros: TerapeutaModelo[] = [];
-  constructor (private servicio: TerapeutaService, private servicioSeguridad: SeguridadService, ){
+  constructor (private servicio: TerapeutaService, private servicioSeguridad: SeguridadService, public router : Router ){
 
   }
 

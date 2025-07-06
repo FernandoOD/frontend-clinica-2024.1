@@ -278,6 +278,7 @@ export class DashboardPacienteComponent {
       next: (resultados) => {
         // Combinar todas las respuestas en `listaConsultaTest`
         this.listaConsultaTest = resultados.flat();
+        this.juntarListas();
       },
       error: (error) => {
         alert("Error al listar las consultas");

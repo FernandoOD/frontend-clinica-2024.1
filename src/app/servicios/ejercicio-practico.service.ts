@@ -14,13 +14,12 @@ export class EjercicioPracticoService {
   token?:String ="";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(idModulo?:number): Observable<EjercicioPracticoModelo[]>{
     return this.http.get<EjercicioPracticoModelo[]>(`${this.url}/modulo-psicoeducativos/${idModulo}/ejercicio-practicos`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -28,7 +27,7 @@ export class EjercicioPracticoService {
   findRecord(id : number): Observable<EjercicioPracticoModelo>{
     return this.http.get<EjercicioPracticoModelo>(`${this.url}/modulos-psicoeducativos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -36,7 +35,7 @@ export class EjercicioPracticoService {
   findModule(id?: number) : Observable<ModuloPsicoeducativoModelo>{
     return this.http.get<ModuloPsicoeducativoModelo>(`${this.url}/ejercicio-practicos/${id}/modulo-psicoeducativo`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -50,21 +49,21 @@ export class EjercicioPracticoService {
       moduloPsicoeducativoId: model.moduloPsicoeducativoId
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : EjercicioPracticoModelo): Observable<EjercicioPracticoModelo>{
     return this.http.put<EjercicioPracticoModelo>(`${this.url}/modulos-psicoeducativos/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/ejercicios-practicos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

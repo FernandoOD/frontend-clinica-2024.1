@@ -6,7 +6,7 @@
       </a>
       <ul class="right hide-on-med-and-down">
         <li *ngIf="isLoggedIn$ | async"><a [routerLink]="['seguridad/cerrar-sesion']">Cerrar sesión</a></li>
-        <li *ngIf="isLoggedIn$ | async"><a [routerLink]="['seguridad/cambiar-clave']">Cambiar contraseña</a></li>
+        <!--<li *ngIf="isLoggedIn$ | async"><a [routerLink]="['seguridad/cambiar-clave']">Cambiar contraseña</a></li>-->
         
         <li *ngIf="!(isLoggedIn$ | async)"><a [routerLink]="['seguridad/iniciar-sesion']">Iniciar Sesión</a></li>
       </ul>

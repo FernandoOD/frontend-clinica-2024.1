@@ -15,7 +15,6 @@ export class PacienteEjercicioService {
   filter = encodeURIComponent(`{"include":[{"relation":"consultas"}]}`);
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<PacienteEjercicioModelo[]>{
@@ -28,7 +27,7 @@ export class PacienteEjercicioService {
   findRecords(id?: number): Observable<PacienteEjercicioModelo[]>{
     return this.http.get<PacienteEjercicioModelo[]>(`${this.url}/paciente-ejercicios-practicos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -39,21 +38,21 @@ export class PacienteEjercicioService {
       ejercicioPracticoId: model.ejercicioPracticoId,
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : PacienteEjercicioModelo): Observable<PacienteEjercicioModelo>{
     return this.http.patch<PacienteEjercicioModelo>(`${this.url}/paciente-ejercicios-practicos/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id?:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/paciente-ejercicios-practicos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

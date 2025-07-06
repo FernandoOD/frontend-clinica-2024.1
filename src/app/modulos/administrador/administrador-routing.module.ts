@@ -16,82 +16,83 @@ import { EditarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/e
 import { ListarModuloPsicoeducativoComponent } from './modulos-psicoeducativos/listar-modulo-psicoeducativo/listar-modulo-psicoeducativo.component';
 import { AgregarEjercicioPracticoComponent } from './ejercicios-practicos/agregar-ejercicio-practico/agregar-ejercicio-practico.component';
 import { ListarEjercicioPracticoComponent } from './ejercicios-practicos/listar-ejercicio-practico/listar-ejercicio-practico.component';
+import { verificadorAdministradorGuard } from '../../guardianes/verificador-administrador.guard';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardVistaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'agregar-paciente',
     component: AgregarPacienteComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'editar-paciente/:id',
     component: EditarPacienteComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'listar-paciente',
     component: ListarPacienteComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'agregar-terapeuta',
     component: AgregarTerapeutaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'editar-terapeuta/:id',
     component: EditarTerapeutaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'listar-terapeuta',
     component: ListarTerapeutaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'agregar-test-psicometrico',
     component: AgregarTestPsicometricoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'editar-test-psicometrico/:id',
     component: EditarTestPsicometricoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'listar-test-psicometrico',
     component: ListarTestPsicometricoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'agregar-modulo-psicoeducativo',
     component: AgregarModuloPsicoeducativoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'editar-modulo-psicoeducativo/:id',
     component: EditarModuloPsicoeducativoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path: 'listar-modulo-psicoeducativo',
     component: ListarModuloPsicoeducativoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path : 'agregar-ejercicio-practico',
     component : AgregarEjercicioPracticoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   },
   {
     path : 'listar-ejercicio-practico',
     component : ListarEjercicioPracticoComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorAdministradorGuard]
   }
 ];
 

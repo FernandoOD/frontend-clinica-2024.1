@@ -15,8 +15,6 @@ export class UploadPdfService {
     token?:String ="";
   
     constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-      this.tokenTest = servicioSeguridad.getTokenTest();
-      this.token = servicioSeguridad.getToken();
      }
   
      listRecords(): Observable<any[]>{
@@ -29,7 +27,7 @@ export class UploadPdfService {
     findRecord(id?: number): Observable<any>{
       return this.http.get<any>(`${this.url}/consultas/${id}/resultado-tests`,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }
@@ -37,7 +35,7 @@ export class UploadPdfService {
     saveRecord(archivo : FormData): Observable<any>{
       return this.http.post<any>(`${this.url}/uploadPDF`,archivo,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.tokenTest}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getTokenTest()}`
         })
       });
     }
@@ -45,14 +43,14 @@ export class UploadPdfService {
     updateRecord(model : any): Observable<any>{
       return this.http.put<any>(`${this.url}/pacientes/${model.id}`, model,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }
     deleteRecord(id:number): Observable<any>{
       return this.http.delete<any>(`${this.url}/pacientes/${id}`,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }
@@ -64,7 +62,7 @@ export class UploadPdfService {
         consultaId : model.consultaId
       },{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }

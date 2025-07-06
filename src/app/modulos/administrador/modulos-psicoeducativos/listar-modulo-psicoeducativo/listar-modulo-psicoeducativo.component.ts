@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ModuloPsicoeducativoModelo } from '../../../../modelos/ModuloPsicoeducativo.modelo';
 import { ModuloPsicoeducativoService } from '../../../../servicios/modulo-psicoeducativo.service';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listar-modulo-psicoeducativo',
@@ -21,7 +22,9 @@ export class ListarModuloPsicoeducativoComponent {
   ordenActual: string = '';  // Columna que está ordenada
 
   listaRegistros: ModuloPsicoeducativoModelo[] = [];
-  constructor (private servicio: ModuloPsicoeducativoService, private servicioSeguridad: SeguridadService, ){
+  constructor (private servicio: ModuloPsicoeducativoService,
+               private servicioSeguridad: SeguridadService,
+               public router : Router){
 
   }
 

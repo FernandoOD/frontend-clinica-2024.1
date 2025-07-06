@@ -13,7 +13,6 @@ export class HistoriaClinicaService {
   token?:String ="";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<HistoriaClinicaModelo[]>{
@@ -37,21 +36,21 @@ export class HistoriaClinicaService {
       pacienteId: model.pacienteId
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : HistoriaClinicaModelo): Observable<HistoriaClinicaModelo>{
     return this.http.put<HistoriaClinicaModelo>(`${this.url}/historias-clinicas/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/historias-clinicas/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

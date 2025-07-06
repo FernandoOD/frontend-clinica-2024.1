@@ -15,13 +15,12 @@ export class TestPsicometricoService {
   
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<TestPsicometricoModelo[]>{
     return this.http.get<TestPsicometricoModelo[]>(`${this.url}/tests-psicometricos/`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -29,7 +28,7 @@ export class TestPsicometricoService {
   findRecord(id : number): Observable<TestPsicometricoModelo>{
     return this.http.get<TestPsicometricoModelo>(`${this.url}/tests-psicometricos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -40,7 +39,7 @@ export class TestPsicometricoService {
       Descripcion: model.Descripcion
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -50,14 +49,14 @@ export class TestPsicometricoService {
       Nombre: model.Nombre,
       id : model.id
     },{headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
-    return this.http.delete<any>(`${this.url}/tests-psicometricoss/${id}`,{
+    return this.http.delete<any>(`${this.url}/tests-psicometricos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

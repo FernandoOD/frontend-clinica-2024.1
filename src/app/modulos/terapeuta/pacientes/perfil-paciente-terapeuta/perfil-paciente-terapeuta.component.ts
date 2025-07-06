@@ -99,6 +99,7 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
       next: (data) => {
         // Manejo de autenticación exitosa
         this.listaTests = data;
+        console.log("LISTA TEST",data);
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
       },
       error: (error: any) => {
@@ -174,11 +175,17 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
 
     this.testsConConsultas = this.listaConsultas.map(consulta => ({
       ...consulta,
-      tests: this.listaConsultaTest.filter(test => test.consultaId === consulta.id).map(test => ({
+      tests: this.listaConsultaTest
+    .filter(test => test.consultaId === consulta.id)
+    .map(test => {
+      const testEncontrado = this.listaTests.find(t => t.id === test.testPsicometricoId);
+      return {
         ...test,
-        nombreTest: this.listaTests[test.testPsicometricoId-1]?.Nombre || "Desconocido"
-    }))
+        nombreTest: testEncontrado ? testEncontrado.Nombre : "Desconocido"
+      };
+    })
   }));
+  console.log("TEST CON CONSULTAS",this.testsConConsultas);
     this.consultasConEvaluacion = this.testsConConsultas.map((consulta, index) => ({
       ...consulta,
       evaluacion: `Evaluación ${index + 1}`
@@ -365,7 +372,7 @@ export class PerfilPacienteTerapeutaComponent implements AfterViewInit {
           ['Mínima', 'Leve', 'Moderada', 'Grave'], 
           ['#2ecc71', '#f7dc6f', '#f39c12', '#e74c3c']
         );
-      } else if (test.nombreTest === 'Autoestima') {
+      } else if (test.nombreTest === 'Autoestima Rosenberg') {
         const interpretacion = test.Interpretacion.split(",").map(String);
         const patologias = ['Autoestima'];
         this.cuadroPatologico = interpretacion.map((valor:string, index:number) => ({

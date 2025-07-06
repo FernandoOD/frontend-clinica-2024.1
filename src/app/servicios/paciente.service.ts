@@ -13,7 +13,6 @@ export class PacienteService {
   token?:String ="";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<PacienteModelo[]>{
@@ -42,21 +41,21 @@ export class PacienteService {
       FechaRegistro: model.FechaRegistro
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : PacienteModelo): Observable<PacienteModelo>{
     return this.http.put<PacienteModelo>(`${this.url}/pacientes/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/pacientes/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

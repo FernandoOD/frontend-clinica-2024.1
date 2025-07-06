@@ -15,13 +15,12 @@ export class NotaClinicaService {
   filter = encodeURIComponent(`{"include":[{"relation":"pacienteNota"}]}`);
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecordsPaciente(id:number): Observable<NotaClinicaModelo[]>{
        return this.http.get<NotaClinicaModelo[]>(`${this.url}/pacientes/${id}/notas-clinicas/?filter=${this.filter}`,{
          headers: new HttpHeaders({
-           "Authorization": `Bearer ${this.token}`
+           "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
          })
        });
      }
@@ -29,7 +28,7 @@ export class NotaClinicaService {
   findRecord(id : number): Observable<NotaClinicaModelo>{
     return this.http.get<NotaClinicaModelo>(`${this.url}/notas-clinicas/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -44,21 +43,21 @@ export class NotaClinicaService {
       FechaCreacion : model.FechaCreacion
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : NotaClinicaModelo): Observable<NotaClinicaModelo>{
     return this.http.put<NotaClinicaModelo>(`${this.url}/notas-clinicas/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/notas-clinicas/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

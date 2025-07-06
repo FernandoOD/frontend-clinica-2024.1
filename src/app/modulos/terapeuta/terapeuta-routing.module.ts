@@ -12,62 +12,63 @@ import { AsignarEjerciciosComponent } from './ejercicios-practicos/asignar-ejerc
 import { PerfilPacienteTerapeutaComponent } from './pacientes/perfil-paciente-terapeuta/perfil-paciente-terapeuta.component';
 import { AsignarModulosComponent } from './modulos-psicoeducativos/asignar-modulos/asignar-modulos.component';
 import { verificadorSesionGuard } from '../../guardianes/verificador-sesion.guard';
+import { verificadorTerapeutaGuard } from '../../guardianes/verificador-terapeuta.guard';
 
 const routes: Routes = [
   {
     path : 'dashboard',
     component : DashboardTerapeutaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'mis-pacientes',
     component : ListarPacientesTerapeutaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'agregar-consulta/:id',
     component : AgregarConsultaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'editar-consulta/:id',
     component : EditarConsultaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'listar-consulta',
     component : ListarConsultaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'agregar-nota-clinica/:id',
     component : AgregarNotaClinicaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'editar-nota-clinica/:id',
     component : EditarNotaClinicaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'listar-nota-clinica',
     component : ListarNotaClinicaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'asignar-ejercicios/:id',
     component : AsignarEjerciciosComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'asignar-modulos/:id',
     component : AsignarModulosComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   },
   {
     path : 'perfil-paciente/:id',
     component : PerfilPacienteTerapeutaComponent,
-    canActivate: [verificadorSesionGuard]
+    canActivate: [verificadorTerapeutaGuard]
   }
 ];
 

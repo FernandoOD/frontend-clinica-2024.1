@@ -95,11 +95,12 @@ export class AgregarTerapeutaComponent implements OnInit{
     let obj = new UsuarioModelo();
     obj.idPersona = data.id;
     obj.Email  =data.Email;
-    obj.rolId = "66d2532a7142ea3216140932";
+    obj.rolId = "67eda5f70b73c998eff4819b";
     this.servicioUser.saveUser(obj).subscribe({
       next: (data: UsuarioModelo) => {
         // Manejo de autenticación exitosa
         // Aquí puedes redirigir al usuario o mostrar un mensaje de éxito
+        alert("Su contraseña es:"+data.Password,);
       },
       error: (error: any) => {
         // Manejo de error en autenticación

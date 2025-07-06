@@ -53,10 +53,6 @@ export class SeguridadService {
     return this.http.post<any>(this.url+'/identificar',{
       email:user.Email,
       password: user.Password
-    },{
-      headers: new HttpHeaders({
-
-      })
     });
   }
   dataSaveInLocal(usuario: UsuarioModelo) : boolean{

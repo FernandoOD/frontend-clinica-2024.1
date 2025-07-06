@@ -4,6 +4,7 @@ import { PacienteModelo } from '../../../../modelos/Paciente.modelo';
 import { SeguridadService } from '../../../../servicios/seguridad.service';
 import { Subscription } from 'rxjs';
 import { UsuarioService } from '../../../../servicios/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listar-paciente',
@@ -25,7 +26,8 @@ export class ListarPacienteComponent implements OnInit {
   constructor (
     private servicio: PacienteService,
     private servicioSeguridad: SeguridadService,
-    private servicioUsuario: UsuarioService
+    private servicioUsuario: UsuarioService,
+    public router : Router
    ){
 
   }

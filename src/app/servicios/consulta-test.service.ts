@@ -15,7 +15,6 @@ export class ConsultaTestService {
   filter = encodeURIComponent(`{"include":[{"relation":"consultas"}]}`);
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<ConsultaTestModelo[]>{
@@ -28,7 +27,7 @@ export class ConsultaTestService {
   findRecords(id?: number): Observable<ConsultaTestModelo[]>{
     return this.http.get<ConsultaTestModelo[]>(`${this.url}/consulta-tests/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -39,7 +38,7 @@ export class ConsultaTestService {
       testPsicometricoId: model.testPsicometricoId,
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -51,14 +50,14 @@ export class ConsultaTestService {
       contestado : model.contestado
       },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id?:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/consulta-tests/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

@@ -16,7 +16,6 @@ export class RespuestasRelevantesService {
   filter = encodeURIComponent(`{"include":[{"relation":"consultas"}]}`);
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<RespuestaRelevanteModelo[]>{
@@ -29,7 +28,7 @@ export class RespuestasRelevantesService {
   findRecords(id?: number): Observable<RespuestaRelevanteModelo[]>{
     return this.http.get<RespuestaRelevanteModelo[]>(`${this.url}/resultado-tests/${id}/respuesta-relevantes`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -40,7 +39,7 @@ export class RespuestasRelevantesService {
       resultadoTestId : model.resultadoTestId
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -54,14 +53,14 @@ export class RespuestasRelevantesService {
       resultadoTestId : model.resultadoTestId
       },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id?:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/consulta-tests/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

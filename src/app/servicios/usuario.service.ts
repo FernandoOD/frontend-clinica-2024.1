@@ -13,7 +13,6 @@ export class UsuarioService {
   token?:String ="";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
   }
 
   saveUser(model : UsuarioModelo): Observable<UsuarioModelo>{
@@ -23,7 +22,7 @@ export class UsuarioService {
       rolId: model.rolId
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -31,7 +30,7 @@ export class UsuarioService {
   deleteUser(id?:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/usuarios/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

@@ -16,7 +16,6 @@ export class PacienteModuloService {
     filter = encodeURIComponent(`{"include":[{"relation":"consultas"}]}`);
   
     constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-      this.token = servicioSeguridad.getToken();
      }
   
      listRecords(): Observable<PacienteModuloModelo[]>{
@@ -29,7 +28,7 @@ export class PacienteModuloService {
     findRecords(id?: number): Observable<PacienteModuloModelo[]>{
       return this.http.get<PacienteModuloModelo[]>(`${this.url}/paciente-modulos-psicoeducativos/${id}`,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }
@@ -40,21 +39,21 @@ export class PacienteModuloService {
         moduloPsicoeducativoId: model.moduloPsicoeducativoId,
       },{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }
     updateRecord(model : PacienteModuloModelo): Observable<PacienteModuloModelo>{
       return this.http.put<PacienteModuloModelo>(`${this.url}/paciente-modulo-psicoeducativos/${model.id}`, model,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }
     deleteRecord(id?:number): Observable<any>{
       return this.http.delete<any>(`${this.url}/paciente-modulo-psicoeducativos/${id}`,{
         headers: new HttpHeaders({
-          "Authorization": `Bearer ${this.token}`
+          "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
         })
       });
     }

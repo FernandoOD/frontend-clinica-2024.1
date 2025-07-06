@@ -15,13 +15,12 @@ export class ModuloPsicoeducativoService {
   token?:String ="";
 
   constructor(private http: HttpClient, private servicioSeguridad: SeguridadService) {
-    this.token = servicioSeguridad.getToken();
    }
 
    listRecords(): Observable<ModuloPsicoeducativoModelo[]>{
     return this.http.get<ModuloPsicoeducativoModelo[]>(`${this.url}/modulos-psicoeducativos`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -29,7 +28,7 @@ export class ModuloPsicoeducativoService {
   findRecord(id : number): Observable<ModuloPsicoeducativoModelo>{
     return this.http.get<ModuloPsicoeducativoModelo>(`${this.url}/modulos-psicoeducativos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
@@ -42,21 +41,21 @@ export class ModuloPsicoeducativoService {
       UrlVideo : model.UrlVideo,
     },{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   updateRecord(model : ModuloPsicoeducativoModelo): Observable<ModuloPsicoeducativoModelo>{
     return this.http.put<ModuloPsicoeducativoModelo>(`${this.url}/modulos-psicoeducativos/${model.id}`, model,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }
   deleteRecord(id:number): Observable<any>{
     return this.http.delete<any>(`${this.url}/modulos-psicoeducativos/${id}`,{
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+        "Authorization": `Bearer ${this.servicioSeguridad.getToken()}`
       })
     });
   }

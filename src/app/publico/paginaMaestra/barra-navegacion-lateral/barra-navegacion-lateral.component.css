@@ -29,7 +29,7 @@
 }
 
 .sidenav{
-    width: 16%;
+    width: 18%;
     background-color: "fff";
     padding-right: 10px;
 
@@ -42,8 +42,8 @@
 }
 
 .imagenUsuario{
-    background-image: url(../../../../assets/Imagenes/icon2.png);
-    background-size: cover;
+    background-image: url(../../../../assets/Imagenes/logoBarraSupAzul.png);
+    background-size: contain;
     background-position: center;
     height: 80px;
     width: 75px;
@@ -112,6 +112,7 @@
         font-size: 14px;
         font-weight:200;
         letter-spacing: 1.5px;
+        line-height: 20px;
 }
 
 .menu-toogle::before{

@@ -141,7 +141,7 @@
                             </thead>
                             <tbody>
                             <tr *ngFor="let modulo of modulosAsignados">
-                                <td ><span [class.tachado]="modulo.contestado">{{modulo.nombre}}</span></td>
+                                <td ><a [routerLink]="['/paciente/vista-modulo',modulo.moduloPsicoeducativoId]"><span [class.tachado]="modulo.contestado">{{modulo.nombre}}</span></a></td>
                                 <td>
                                 <input
                                     class="browser-default checkbox"
